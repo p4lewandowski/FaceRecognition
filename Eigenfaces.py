@@ -1,70 +1,70 @@
+from auxiliary.aux_plotting import reconstruction_fast, plot_eigenfaces, \
+    reconstruction, plot_faces_2components, compare_plot
 import cv2 as cv
 import os
 import numpy as np
 from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-import time
 
-rootdir = 'C:\\Users\\Aniesia\\PycharmProjects\\FaceRecognition\\'
+rootdir = os.getcwd()
 datadir = os.path.join(rootdir, 'detected_faces')
 image_matrix = []
-eigenfaces_num = 50
+eigenfaces_num = 111
+image_count = 0
 
-def plot_gallery(images, titles, h, w, n_row=4, n_col=2):
-    """Helper function to plot a gallery of portraits"""
-
-    plt.figure(figsize=(1.8 * n_col, 2.4 * n_row))
-    plt.subplots_adjust(bottom=0, left=.01, right=.99, top=.90, hspace=.35)
-    for i in range(n_row * n_col):
-        plt.subplot(n_row, n_col, i + 1)
-        plt.imshow(images[i].reshape((h, w)), cmap=plt.cm.gray)
-        plt.title(titles[i], size=12)
-        plt.xticks(())
-        plt.yticks(())
-
-def reconstruction(eigenfaces, average_face):
-
-    reconstructed_face = average_face
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    plt.ion()
-    plt.show()
-
-    for id, eigenface in enumerate(eigenfaces):
-        reconstructed_face += np.dot(face_weigths[5][id], eigenface)
-        time.sleep(0.1)
-        ax.imshow(reconstructed_face, cmap=plt.cm.bone)
-        fig.canvas.draw()
-        fig.canvas.flush_events()
-
-    plt.ioff()
-    plt.show()
-
-
-
+# Go through all the files and read in image, flatten them and append to matrix
 for file in os.listdir(datadir):
     im = cv.imread(os.path.join(datadir, file), 0)
-    image_shape = im.shape
-    im = np.array(im).reshape(86*86)
-    image_matrix.append(im)
+    image_shape = im.shape[0]
+    image_matrix.append(np.array(im).flatten())
+    image_count +=1
 
 
-image_matrix = np.array(image_matrix)
-
-pca = PCA(n_components= eigenfaces_num)
-pca.fit(image_matrix)
-
-eigenfaces = pca.components_
-eigenfaces = pca.components_.reshape((eigenfaces_num, image_shape[0], image_shape[1]))
-average_face = pca.mean_.reshape(image_shape)
-face_weigths = pca.transform(image_matrix - pca.mean_)
-reconstruction(eigenfaces, average_face)
+# Calculate the mean per pixel(feature), normalise it by the amount of pixels
+# and receive 'mean face'
+image_matrix_flat = np.array(np.transpose(image_matrix))
+mean_img = np.sum(image_matrix_flat, axis=1) / np.shape(image_matrix_flat)[1]
+mean_img = mean_img.reshape(image_shape, image_shape)
 
 
-### Plots ###
-eigenface_titles = ["eigenface %d" % i for i in range(eigenfaces.shape[0])]
-plot_gallery(eigenfaces, eigenface_titles, image_shape[0], image_shape[1])
-plt.show()
+# Subtract the mean from every flattened image and prepare covariance matrix
+# equal to  L^T*L  for computational efficiency
+image_matrix_flat = np.array([x - mean_img.flatten() for x in image_matrix_flat.transpose()]).transpose()
+cov_matrix = np.matmul(image_matrix_flat.transpose(), image_matrix_flat)
+cov_matrix /= image_count
 
-plt.imshow(average_face, cmap=plt.cm.bone)
-plt.show()
+
+# Calculate and choose eigenvectors corresponding to the highest eigenvalues
+pca = PCA(n_components = eigenfaces_num)
+pca.fit(cov_matrix)
+
+# Left multiply to get the correct eigenvectors
+eigenvectors = np.matmul(image_matrix_flat, np.transpose(pca.components_))
+pca = PCA(n_components = eigenfaces_num)
+pca.fit(eigenvectors.transpose())
+eigenfaces_flat = pca.components_
+
+
+# Calculate weights representing faces in new dimensional space
+# and reshape eigenface matrix to have
+# number_of_faces X shape1 X shape 2
+face_weights = np.matmul(image_matrix_flat.transpose(), eigenfaces_flat.transpose())
+eigenfaces = np.array(eigenfaces_flat).reshape((eigenfaces_num, image_shape, image_shape))
+
+
+# Find Face
+im = np.array(cv.imread(os.path.join(rootdir, '180.jpg'), 0), dtype='float64')
+im_mean = im.flatten() - mean_img.flatten().transpose()
+
+face_to_find = np.matmul(eigenfaces_flat, im_mean)
+dist = (face_weights - face_to_find)**2
+dist = np.sqrt(dist.sum(axis = 1))
+face_found_id = np.argmin(dist)
+print(face_found_id+100)
+
+
+# Plots
+plot_eigenfaces(eigenfaces)
+plot_faces_2components(image_matrix_flat, eigenfaces_flat, image_count, image_shape, face_weights)
+reconstruction_fast(eigenfaces, mean_img, face_weights, 274)
+compare_plot(im, image_matrix[face_found_id].reshape(86, 86))
+
