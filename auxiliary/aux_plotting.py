@@ -27,7 +27,7 @@ def plot_eigenfaces(images, rows=3, cols=3):
 
 def reconstruction(eigenfaces, average_face, face_weights):
 
-    reconstructed_face = average_face
+    reconstructed_face = np.copy(average_face)
     fig = plt.figure()
     ax = fig.add_subplot(111)
     plt.ion()
@@ -35,7 +35,8 @@ def reconstruction(eigenfaces, average_face, face_weights):
 
     for id, eigenface in enumerate(eigenfaces):
         reconstructed_face += np.dot(face_weights[55][id], eigenface)
-        time.sleep(0.03)
+        #time.sleep(0.01)
+        print(id)
         ax.imshow(reconstructed_face, cmap=plt.cm.bone)
         fig.canvas.draw()
         fig.canvas.flush_events()
@@ -46,19 +47,20 @@ def reconstruction(eigenfaces, average_face, face_weights):
 
 def reconstruction_fast(eigenfaces, average_face, face_weights, id):
 
-    reconstructed_face = average_face
+    reconstructed_face = np.copy(average_face)
     fig = plt.figure()
 
     ax = fig.add_subplot(121)
+    ax2 = fig.add_subplot(122)
+
     for iter, eigenface in enumerate(eigenfaces):
         reconstructed_face += np.dot(face_weights[id-100][iter], eigenface)
-    ax.imshow(reconstructed_face, cmap=plt.cm.bone)
+    ax2.imshow(reconstructed_face, cmap=plt.cm.bone)
 
-    ax2 = fig.add_subplot(122)
     for file in os.listdir(datadir):
         if int(file.split('.')[0]) == id:
             img = cv.imread(os.path.join(datadir, '{}.jpg'.format(id)))
-            ax2.imshow(img)
+            ax.imshow(img)
 
 
     plt.suptitle('Reconstructed face - comparison', fontsize=14)
@@ -117,7 +119,7 @@ def reconstruction_manual(mean_img, eigenfaces, face_weights):
     ax9_e = plt.axes([0.77, 0.3, 0.15, 0.03])
 
     # mean face to weights
-    mean_face_9pca = np.matmul(face_weights[0], eigenfaces.reshape(111, 86*86))[:9]
+    mean_face_9pca = np.matmul(face_weights[0], eigenfaces.reshape(np.shape(eigenfaces)[0], 86*86))[:9]
 
     # Back
     reconstructed_face_template = mean_img
