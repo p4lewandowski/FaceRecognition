@@ -69,24 +69,16 @@ reconstruction(eigenfaces, mean_img, face_weights)
 reconstruction_fast(eigenfaces, mean_img, face_weights, 274)
 compare_plot(im, image_matrix[face_found_id].reshape(86, 86))
 reconstruction_manual(mean_img, eigenfaces, face_weights)
-#
 
 
 
 
 
-
-
-
-#t-sne
-#95 % np.
 
 # 10 klas sporo reprezenttntow, wyznacz srednia, minimalna odleglosc twarzy od swojego modelu
 # zbior 1 zbior 2 i zobaczyc, gdzie jest polowqa
 # jesli ja pasuje do jakiejs klasy, to do kazdej powinno mi byc dalej, ile razy gorsze sa inne klasy
 # metoda sift
-
-# kazde zdjecie wyciete znowu przeskalowac
 
 # 22-28.07
 # 1-20.08
