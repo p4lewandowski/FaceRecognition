@@ -18,7 +18,6 @@ class FaceRecognitionEigenfaces():
         """Get images and determine mean_img as well as number of images
         and image shape."""
 
-        self.image_matrix = []
         self.eigenfaces_n = 0.99
         self.image_count = 0
         self.labels = []
@@ -26,10 +25,11 @@ class FaceRecognitionEigenfaces():
 
 
         # Go through all the files and read in image, flatten them and append to matrix
+        image_matrix = []
         for file in os.listdir(imagedir):
             im = cv.imread(os.path.join(imagedir, file), 0)
 
-            self.image_matrix.append(np.array(im).flatten())
+            image_matrix.append(np.array(im).flatten())
             self.image_count += 1
             self.labels.append(int(file.split('_')[1].split('.')[0]))
         self.image_shape = im.shape[0]
@@ -37,8 +37,8 @@ class FaceRecognitionEigenfaces():
 
         # Calculate the mean per pixel(feature), normalise it by the amount of pixels
         # and receive 'mean face'
-        self.image_matrix_flat = np.array(np.transpose(self.image_matrix))
-        self.mean_img = np.sum(self.image_matrix_flat, axis=1) / np.shape(self.image_matrix_flat)[1]
+        self.image_matrix_flat = np.array(np.transpose(image_matrix))
+        self.mean_img = np.sum(self.image_matrix_flat, axis=1) / self.image_count
         self.mean_img = self.mean_img.reshape(self.image_shape, self.image_shape)
 
     def get_eigenfaces(self):

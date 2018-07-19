@@ -3,6 +3,10 @@ import os
 from matplotlib.image import imsave
 import matplotlib.pyplot as plt
 
+scale_factor = 1.05
+min_neighbors = 3
+
+
 def image_selection():
     """Select images where faces are detected, crop and normalize them and save them to
     savepath directory."""
@@ -20,7 +24,7 @@ def image_selection():
         for file in files:
 
             im = cv.imread(os.path.join(subdir, file), 0)
-            faces = face_cascade.detectMultiScale(im, 1.3, 7)
+            faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
 
             for (x, y, w, h) in faces:
                 crop_img = im[y:y + h, x:x + w]
@@ -39,13 +43,11 @@ def image_selection():
 
 def image_cropping(filepath, findface = False):
     rootdir = os.getcwd()
-    newdir = os.path.join(rootdir, '..', 'Data', 'new_faces_notindetected')
-    im = cv.imread(os.path.join(newdir, filepath), 0)
-    print(os.path.join(newdir, filepath))
+    im = cv.imread(filepath, 0)
 
     if findface:
         face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
-        faces = face_cascade.detectMultiScale(im, 1.3, 7)
+        faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
         for (x, y, w, h) in faces:
             crop_img = im[y:y + h, x:x + w]
 
@@ -54,15 +56,17 @@ def image_cropping(filepath, findface = False):
 
     crop_img = cv.resize(crop_img, dsize=(86, 86), interpolation=cv.INTER_CUBIC)
     crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
-    cv.imwrite(os.path.join(newdir, '{}_newface.pgm'.format(
-        filepath.split('/')[-1].split('.')[0])), crop_img)
+
+    path = ''.join(filepath.split('/')[:-1])
+    filename = filepath.split('/')[-1].split('.')[0]
+    cv.imwrite(os.path.join(path, '{}_newface.pgm'.format(filename)), crop_img)
 
     return crop_img
 
 def detect_face(filepath):
     im = cv.imread(filepath, 0)
     face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
-    faces = face_cascade.detectMultiScale(im, 1.05, 3)
+    faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
     for (x, y, w, h) in faces:
         cv.rectangle(im, (x, y), (x + w, y + h), (255, 0, 0), 2)
     cv.imshow('img', im)
