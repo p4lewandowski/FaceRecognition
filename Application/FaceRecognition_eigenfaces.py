@@ -82,6 +82,20 @@ class FaceRecognitionEigenfaces():
         image = np.matmul(self.eigenfaces_flat, image)
         return image
 
+    def reconstruct_image(self, im_id = True, weights = False):
+
+        reconstructed_face = np.copy(self.mean_img)
+
+        if im_id:
+            reconstructed_face = np.copy(self.mean_img)
+            reconstructed_face += np.dot(self.face_weights[im_id], self.eigenfaces_flat) \
+                .reshape(self.image_shape, self.image_shape)
+        if weights:
+            reconstructed_face += np.dot(weights, self.eigenfaces_flat) \
+                .reshape(self.image_shape, self.image_shape)
+
+        return reconstructed_face
+
     def show_me_things(self):
         # Plots
         plot_eigenfaces(self)
