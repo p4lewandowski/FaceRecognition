@@ -1,4 +1,5 @@
 from FaceRecognition_ImagePreprocessing import image_cropping
+from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from auxiliary.aux_plotting import compare_plot
 
 import cv2 as cv
@@ -124,20 +125,28 @@ class EigenfaceRecognitionNewfaces:
 
 
 if __name__ == "__main__":
-    efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
-                                                               'Database\\212images-36people.p'))
-    # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
-    # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
-    efr.add_face('ja1.jpg', 999)
-    efr.add_face('ja2.jpg', 999)
-    efr.add_face('ja3.jpg', 999)
-    efr.add_face('ja4.jpg', 999)
-    efr.add_face('ja5.jpg', 999)
-    efr.add_face('ja6.jpg')
-    efr.add_face('ja11.jpg')
+    # efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
+    #                                                            'Database\\212images-36people.p'))
+    # # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
+    # # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
+    # efr.add_face('ja1.jpg', 999)
+    # efr.add_face('ja2.jpg', 999)
+    # efr.add_face('ja3.jpg', 999)
+    # efr.add_face('ja4.jpg', 999)
+    # efr.add_face('ja5.jpg', 999)
+    # efr.add_face('ja6.jpg')
+    # efr.add_face('ja11.jpg')
+    #
+    # efr.face_data.stochastic_neighbour_embedding()
+    # efr.face_data.show_me_things()
 
+    fr = FaceRecognitionEigenfaces()
+    fr.get_images()
+    fr.get_eigenfaces()
+    fr.show_me_things()
+    efr = EigenfaceRecognitionNewfaces(data=fr)
     efr.face_data.stochastic_neighbour_embedding()
-    efr.face_data.show_me_things()
+
 
     #Jak dodawac ludzi, z jakim label, kiedy ich klasyfikowac skoro knn ma 5 neighourow
     # jak to mialoby wygladac z kamera

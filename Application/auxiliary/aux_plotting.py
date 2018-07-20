@@ -4,6 +4,7 @@ import os
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import cv2 as cv
 from matplotlib.widgets import Slider, Button
+import seaborn as sns
 
 rootdir = os.getcwd()
 datadir = os.path.join(rootdir, 'detected_faces')
@@ -22,6 +23,13 @@ def plot_eigenfaces(fr, rows=3, cols=3):
     plt.suptitle('First {} eigenfaces'.format(rows*cols), fontsize = 14)
     plt.show()
 
+def plot_eigenfaces_variance(eigenfaces_count, variance_rep):
+    X = list(range(1, eigenfaces_count+1))
+    plot = sns.barplot(x=X, y=variance_rep)
+    plot.set_xlabel('N-ty główny komponent')
+    plot.set_ylabel('Wartosc procentowa reprezentowanej wariancji')
+    plot.set_title('Procentowa reprezentacja wariancji dla poszczególnych głównych składowych')
+    plt.show()
 
 def reconstruction(fr, id = 5):
     """Reconstruct example of a face given by id, from 1 up to im_count"""
@@ -213,21 +221,12 @@ def plot_tsne(fr):
             boxcoords="offset points")
         ax.add_artist(ab)
 
-    ab = AnnotationBbox(
-        OffsetImage(images_to_plot[len(fr.t_sne)-1], zoom=0.3),
-        fr.t_sne[-1],
-        pad=0,
-        xybox=(0., 0.),
-        boxcoords="offset points")
-    ax.add_artist(ab)
-
-    ab = AnnotationBbox(
-        OffsetImage(images_to_plot[len(fr.t_sne)-2], zoom=0.3),
-        fr.t_sne[-2],
-        pad=0,
-        xybox=(0., 0.),
-        boxcoords="offset points")
-    ax.add_artist(ab)
-
+    # ab = AnnotationBbox(
+    #     OffsetImage(images_to_plot[len(fr.t_sne)-1], zoom=0.3),
+    #     fr.t_sne[-1],
+    #     pad=0,
+    #     xybox=(0., 0.),
+    #     boxcoords="offset points")
+    # ax.add_artist(ab)
 
     plt.show()

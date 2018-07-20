@@ -1,6 +1,6 @@
 from auxiliary.aux_plotting import reconstruction_fast, plot_eigenfaces, \
     reconstruction, plot_faces_2components, compare_plot, reconstruction_manual, \
-    plot_tsne
+    plot_tsne, plot_eigenfaces_variance
 import cv2 as cv
 import os
 import numpy as np
@@ -67,6 +67,9 @@ class FaceRecognitionEigenfaces():
         # number_of_faces X shape1 X shape 2
         self.face_weights = np.matmul(self.image_matrix_flat.transpose(), self.eigenfaces_flat.transpose())
         self.eigenfaces = np.array(self.eigenfaces_flat).reshape((self.eigenfaces_n, self.image_shape, self.image_shape))
+
+        plot_eigenfaces_variance(self.eigenfaces_n, pca.explained_variance_ratio_ )
+
 
     def stochastic_neighbour_embedding(self):
         """"Show representation of faces in multidimensional space using t-distributed
