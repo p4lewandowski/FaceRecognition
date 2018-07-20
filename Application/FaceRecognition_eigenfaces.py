@@ -67,9 +67,7 @@ class FaceRecognitionEigenfaces():
         # number_of_faces X shape1 X shape 2
         self.face_weights = np.matmul(self.image_matrix_flat.transpose(), self.eigenfaces_flat.transpose())
         self.eigenfaces = np.array(self.eigenfaces_flat).reshape((self.eigenfaces_n, self.image_shape, self.image_shape))
-
-        plot_eigenfaces_variance(self.eigenfaces_n, pca.explained_variance_ratio_ )
-
+        self.explained_variance_ratio_ = pca.explained_variance_ratio_
 
     def stochastic_neighbour_embedding(self):
         """"Show representation of faces in multidimensional space using t-distributed
@@ -102,6 +100,7 @@ class FaceRecognitionEigenfaces():
     def show_me_things(self):
         # Plots
         plot_eigenfaces(self)
+        plot_eigenfaces_variance(self)
         plot_faces_2components(self)
         self.stochastic_neighbour_embedding()
         reconstruction(self)

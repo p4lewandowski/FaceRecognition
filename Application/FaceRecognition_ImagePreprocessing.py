@@ -41,8 +41,7 @@ def image_selection():
                 # cv.waitKey(0)
                 # cv.destroyAllWindows()
 
-def image_cropping(filepath, findface = False):
-    rootdir = os.getcwd()
+def image_cropping(filepath, findface = False, save=False):
     im = cv.imread(filepath, 0)
 
     if findface:
@@ -59,7 +58,8 @@ def image_cropping(filepath, findface = False):
 
     path = ''.join(filepath.split('/')[:-1])
     filename = filepath.split('/')[-1].split('.')[0]
-    cv.imwrite(os.path.join(path, '{}_newface.pgm'.format(filename)), crop_img)
+    if save:
+        cv.imwrite(os.path.join(path, '{}_newface.pgm'.format(filename)), crop_img)
 
     return crop_img
 

@@ -23,9 +23,9 @@ def plot_eigenfaces(fr, rows=3, cols=3):
     plt.suptitle('First {} eigenfaces'.format(rows*cols), fontsize = 14)
     plt.show()
 
-def plot_eigenfaces_variance(eigenfaces_count, variance_rep):
-    X = list(range(1, eigenfaces_count+1))
-    plot = sns.barplot(x=X, y=variance_rep)
+def plot_eigenfaces_variance(fr):
+    X = list(range(1, fr.eigenfaces_n+1))
+    plot = sns.barplot(x=X, y=fr.explained_variance_ratio_)
     plot.set_xlabel('N-ty główny komponent')
     plot.set_ylabel('Wartosc procentowa reprezentowanej wariancji')
     plot.set_title('Procentowa reprezentacja wariancji dla poszczególnych głównych składowych')

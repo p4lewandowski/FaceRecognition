@@ -65,6 +65,8 @@ class EigenfaceRecognitionNewfaces:
 
         if not face_recognized:
             print("New face detected or classified improperly")
+        if face_recognized:
+            print("Face was detected. Person in the database.")
 
         self.face_data.image_matrix_flat = self.face_data.image_matrix_flat.T
         self.face_data.image_matrix_flat = np.vstack((self.face_data.image_matrix_flat, im_mean.flatten()))
@@ -127,18 +129,6 @@ class EigenfaceRecognitionNewfaces:
 if __name__ == "__main__":
     # efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
     #                                                            'Database\\212images-36people.p'))
-    # # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
-    # # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
-    # efr.add_face('ja1.jpg', 999)
-    # efr.add_face('ja2.jpg', 999)
-    # efr.add_face('ja3.jpg', 999)
-    # efr.add_face('ja4.jpg', 999)
-    # efr.add_face('ja5.jpg', 999)
-    # efr.add_face('ja6.jpg')
-    # efr.add_face('ja11.jpg')
-    #
-    # efr.face_data.stochastic_neighbour_embedding()
-    # efr.face_data.show_me_things()
 
     fr = FaceRecognitionEigenfaces()
     fr.get_images()
@@ -146,6 +136,26 @@ if __name__ == "__main__":
     fr.show_me_things()
     efr = EigenfaceRecognitionNewfaces(data=fr)
     efr.face_data.stochastic_neighbour_embedding()
+
+    # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
+    # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
+    efr.add_face('ja1.jpg', 999)
+    efr.add_face('ja2.jpg', 999)
+    efr.add_face('ja3.jpg', 999)
+    efr.add_face('ja4.jpg', 999)
+    efr.add_face('ja5.jpg', 999)
+    efr.add_face('ja6.jpg')
+    efr.add_face('ja11.jpg')
+
+    efr.face_data.stochastic_neighbour_embedding()
+    efr.face_data.show_me_things()
+
+    # fr = FaceRecognitionEigenfaces()
+    # fr.get_images()
+    # fr.get_eigenfaces()
+    # fr.show_me_things()
+    # efr = EigenfaceRecognitionNewfaces(data=fr)
+    # efr.face_data.stochastic_neighbour_embedding()
 
 
     #Jak dodawac ludzi, z jakim label, kiedy ich klasyfikowac skoro knn ma 5 neighourow
