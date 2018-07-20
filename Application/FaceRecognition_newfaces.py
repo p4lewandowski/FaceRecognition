@@ -63,7 +63,7 @@ class EigenfaceRecognitionNewfaces:
         im_mean = im - self.face_data.mean_img
 
         if not face_recognized:
-            print("New face detected")
+            print("New face detected or classified improperly")
 
         self.face_data.image_matrix_flat = self.face_data.image_matrix_flat.T
         self.face_data.image_matrix_flat = np.vstack((self.face_data.image_matrix_flat, im_mean.flatten()))
@@ -88,41 +88,30 @@ class EigenfaceRecognitionNewfaces:
 
         # fit again in case new data appears
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
-        probabilities = self.knn_classifier.predict_proba(image_representation.reshape(1, -1))
-        isnew = 0
+        # probabilities = self.knn_classifier.predict_proba(image_representation.reshape(1, -1))
+        # probability = np.sort(probabilities)[0]
 
+        isnew = 0
         dist, ids = self.knn_classifier.kneighbors(X=image_representation.reshape(1, -1),
                                                    n_neighbors=5, return_distance=True)
         person_id = self.face_data.labels[ids]
 
-        probability = np.sort(probabilities)[0]
-
         # First elem is list of unique, second are ids
         face_ids = np.unique(person_id, return_index=True)[1]
+        # Distances from different people
         face_distances = [dist.T[x] for x in face_ids]
+        face_distances = face_distances[::-1]
 
-        print(probability[-1], probability[-2])
-        print(dist, ids)
-        print(person_id[0])
+        print('###', dist, person_id[0])
 
         # If too many candidates
         unique_propositions = len(np.unique(person_id))
         if unique_propositions >= 4:
             isnew = 1
 
-        # # If probability too small
-        # elif probability[-1] < 0.3:
-        #     isnew = 1
-        # elif (probability[-1] - probability[-2]) < 0.1:
-        #     isnew = 1
-
         # If distance between faces of different people is too small
-        # If first closest is far
         elif len(face_distances)>1:
-            # elif face_distances[0] > 1500:
-            #     isnew = 1
-            # If first and second are similar
-            if abs(face_distances[0] - face_distances[1]) < 700 and person_id[0][0] != person_id[0][1]:
+            if abs(face_distances[0] - face_distances[1]) < 700:
                 isnew = 1
 
         if not isnew:
@@ -145,10 +134,11 @@ if __name__ == "__main__":
     efr.add_face('ja4.jpg', 999)
     efr.add_face('ja5.jpg', 999)
     efr.add_face('ja6.jpg')
+    efr.add_face('ja11.jpg')
+
     efr.face_data.stochastic_neighbour_embedding()
     efr.face_data.show_me_things()
 
     #Jak dodawac ludzi, z jakim label, kiedy ich klasyfikowac skoro knn ma 5 neighourow
     # jak to mialoby wygladac z kamera
-
-    # zamien sprawdzenie dystensu na pierwsza minimalna odleglosc jednego id z druga minimalna drugiej osoby, a nie pierwsza i druga
+    # czy zmieniac wtedy twarz srednia? Twarze wlasne?
