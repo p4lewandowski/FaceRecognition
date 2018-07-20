@@ -17,7 +17,7 @@
             <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="428">
-                  <caret line="210" column="18" lean-forward="true" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
+                  <caret line="210" column="18" lean-forward="false" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -55,7 +55,7 @@
             <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1292">
-                  <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+                  <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#61#0" expanded="true" />
                   </folding>
@@ -746,7 +746,7 @@
     <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
-          <caret line="210" column="18" lean-forward="true" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
+          <caret line="210" column="18" lean-forward="false" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -764,7 +764,7 @@
     <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
-          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
