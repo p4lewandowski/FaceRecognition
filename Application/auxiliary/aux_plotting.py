@@ -31,7 +31,7 @@ def plot_eigenfaces_variance(fr):
     plot.set_title('Procentowa reprezentacja wariancji dla poszczególnych głównych składowych')
     plt.show()
 
-def reconstruction(fr, id = 5):
+def reconstruction(fr, id = 24):
     """Reconstruct example of a face given by id, from 1 up to im_count"""
 
     reconstructed_face = np.copy(fr.mean_img)

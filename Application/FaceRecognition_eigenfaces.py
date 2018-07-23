@@ -1,6 +1,7 @@
 from auxiliary.aux_plotting import reconstruction_fast, plot_eigenfaces, \
     reconstruction, plot_faces_2components, compare_plot, reconstruction_manual, \
     plot_tsne, plot_eigenfaces_variance
+
 import cv2 as cv
 import os
 import numpy as np
@@ -37,17 +38,18 @@ class FaceRecognitionEigenfaces():
 
         # Calculate the mean per pixel(feature), normalise it by the amount of pixels
         # and receive 'mean face'
-        self.image_matrix_flat = np.array(np.transpose(image_matrix))
-        self.mean_img = np.sum(self.image_matrix_flat, axis=1) / self.image_count
+        self.image_matrix_raw = np.array(np.transpose(image_matrix))
+        self.mean_img = np.sum(self.image_matrix_raw, axis=1) / self.image_count
         self.mean_img = self.mean_img.reshape(self.image_shape, self.image_shape)
+        # Subtract the mean from every flattened image
+        self.image_matrix_flat = np.array(
+            [x - self.mean_img.flatten() for x in self.image_matrix_raw.transpose()]).transpose()
 
     def get_eigenfaces(self):
         """ eigenfaces_n is passed as a parameter (percentage of variance to obtain
         and it is changed here to the number of eigenfaces obtained."""
 
-        # Subtract the mean from every flattened image and prepare covariance matrix
-        # equal to  L^T*L  for computational efficiency
-        self.image_matrix_flat = np.array([x - self.mean_img.flatten() for x in self.image_matrix_flat.transpose()]).transpose()
+        # Prepare covariance matrix equal to  L^T*L  for computational efficiency
         cov_matrix = np.matmul(self.image_matrix_flat.transpose(), self.image_matrix_flat)
         cov_matrix /= self.image_count
 
@@ -111,6 +113,11 @@ class FaceRecognitionEigenfaces():
         dbdir = os.path.join(self.datadir,'Database')
         pickle.dump(self, open("{}\\{}images-{}people.p".format(dbdir, self.image_count,
                                                                len(np.unique(self.labels))), "wb"))
+
+
+
+
+
 
 
 

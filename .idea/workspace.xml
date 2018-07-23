@@ -9,6 +9,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="FaceRecognition" />
+  </component>
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.4691358">
       <split-first>
@@ -16,8 +19,8 @@
           <file leaf-file-name="aux_plotting.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="37" />
+                <state relative-caret-position="561">
+                  <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#18#0" expanded="true" />
                   </folding>
@@ -25,11 +28,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FaceRecognition_eigenfaces.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="FaceRecognition_eigenfaces.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
+                <state relative-caret-position="374">
+                  <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#197#0" expanded="true" />
                   </folding>
@@ -37,11 +40,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FaceRecognition_ImagePreprocessing.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FaceRecognition_ImagePreprocessing.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="427">
-                  <caret line="61" column="45" lean-forward="false" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="45" />
+                <state relative-caret-position="580">
+                  <caret line="109" column="26" lean-forward="false" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#16#0" expanded="true" />
                   </folding>
@@ -56,30 +59,23 @@
           <file leaf-file-name="FaceRecognition_newfaces.py" pinned="true" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="181">
-                  <caret line="132" column="36" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+                <state relative-caret-position="-377">
+                  <caret line="141" column="105" lean-forward="false" selection-start-line="141" selection-start-column="105" selection-end-line="141" selection-end-column="105" />
                   <folding>
-                    <element signature="e#0#61#0" expanded="true" />
+                    <element signature="e#0#77#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Prototype.ipynb" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/notebooks/Prototype.ipynb">
-              <provider selected="true" editor-type-id="ipnb-editor">
-                <state>
-                  <selected id="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Application.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Application.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Application/Application.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="17">
-                  <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="28" />
-                  <folding />
+                <state relative-caret-position="323">
+                  <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#64#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -98,17 +94,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new</find>
-      <find>mean_img</find>
-      <find>rec</find>
-      <find>recon</find>
-      <find>knn</find>
-      <find>clas</find>
-      <find>knn_cla</find>
-      <find>tra</find>
-      <find>dir</find>
       <find>im</find>
-      <find>image_matrix</find>
       <find>image_matrix_f</find>
       <find>stochastic_neighbour_embedding</find>
       <find>image_matrix.</find>
@@ -118,7 +104,6 @@
       <find>face_we</find>
       <find>n)</find>
       <find>var</find>
-      <find>show</find>
       <find>print</find>
       <find>cwd</find>
       <find>cropp</find>
@@ -128,6 +113,17 @@
       <find>varianc</find>
       <find>varia</find>
       <find>_new</find>
+      <find>image_matrix</find>
+      <find>vsta</find>
+      <find>image_ma</find>
+      <find>imsa</find>
+      <find>show</find>
+      <find>cmap</find>
+      <find>person_</find>
+      <find>test</find>
+      <find>weig</find>
+      <find>wri</find>
+      <find>rec</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,11 +148,12 @@
         <option value="$PROJECT_DIR$/FaceRecognition.py" />
         <option value="$PROJECT_DIR$/Application/ImagePreprocessing.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition.py" />
-        <option value="$PROJECT_DIR$/Application/Application.py" />
+        <option value="$PROJECT_DIR$/Application/Testing_features/camera.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py" />
         <option value="$PROJECT_DIR$/Application/auxiliary/aux_plotting.py" />
-        <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces.py" />
+        <option value="$PROJECT_DIR$/Application/Application.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_newfaces.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces.py" />
       </list>
     </option>
   </component>
@@ -182,8 +179,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,7 +195,7 @@
               <item name="FaceRecognition" type="b2602c69:ProjectViewProjectNode" />
               <item name="FaceRecognition" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="auxiliary" type="462c0819:PsiDirectoryNode" />
+              <item name="Testing_features" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FaceRecognition" type="b2602c69:ProjectViewProjectNode" />
@@ -228,6 +223,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,13 +239,14 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aniesia\PycharmProjects\FaceRecognition\Application\Testing_features" />
+      <recent name="C:\Users\Aniesia\PycharmProjects\FaceRecognition" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aniesia\PycharmProjects\FaceRecognition\Data" />
       <recent name="C:\Users\Aniesia\PycharmProjects\FaceRecognition" />
       <recent name="C:\Users\Aniesia\PycharmProjects\FaceRecognition\auxiliary" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Aniesia\PycharmProjects\FaceRecognition" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -263,7 +261,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.FaceRecognition_newfaces">
+  <component name="RunManager" selected="Python.Application (1)">
     <configuration name="Application (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -277,24 +275,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="FaceRecognition" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/Application.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Application" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="FaceRecognition" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -354,6 +334,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="camera" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Application/Testing_features" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="FaceRecognition" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/Testing_features/camera.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="FaceRecognition" type="Python.Ipnb" factoryName="Jupyter Notebook">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -372,19 +370,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Jupyter Notebook.FaceRecognition" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Application" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Application (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ImagePreprocessing (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.FaceRecognition_newfaces" />
-      <item index="5" class="java.lang.String" itemvalue="Python.FaceRecognition_ImagePreprocessing" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Application (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.ImagePreprocessing (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.FaceRecognition_newfaces" />
+      <item index="4" class="java.lang.String" itemvalue="Python.FaceRecognition_ImagePreprocessing" />
+      <item index="5" class="java.lang.String" itemvalue="Python.camera" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.FaceRecognition_newfaces" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Application (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Application (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.FaceRecognition_newfaces" />
         <item index="2" class="java.lang.String" itemvalue="Python.FaceRecognition_ImagePreprocessing" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ImagePreprocessing (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Application" />
+        <item index="3" class="java.lang.String" itemvalue="Python.camera" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ImagePreprocessing (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -404,25 +402,34 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12809473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24109867" sideWeight="0.30624327" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24109867" sideWeight="0.6937567" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2889115" sideWeight="0.49784714" order="7" side_tool="false" content_ui="tabs" x="62" y="398" width="1858" height="284" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12799564" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.49782136" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29583332" sideWeight="0.16285403" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.49782136" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28854167" sideWeight="0.4956427" order="7" side_tool="false" content_ui="tabs" x="62" y="398" width="1858" height="284" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23020834" sideWeight="0.68246186" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29603255" sideWeight="0.85360605" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295207" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29583332" sideWeight="0.837146" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -431,13 +438,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py</url>
-          <line>214</line>
-          <option name="timeStamp" value="162" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -445,12 +445,41 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="173" />
+      <option name="time" value="197" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="face_distances[0] - face_distances[1]" language="Python" />
+        <watch expression="face_distances[0] * 0.65" language="Python" />
+        <watch expression="efr.face_data.image_matrix_flat.T" language="Python" />
+        <watch expression="__py_debug_temp_var_1203786255" />
+        <watch expression="__py_debug_temp_var_1203786255" />
+        <watch expression="__py_debug_temp_var_347274845[0:220] " />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>efr.face_data.image_matrix_flat.T</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>efr.face_data.image_matrix_flat</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>face_distances[0] * 0.65</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>face_distances[0] - face_distances[1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>person_id</expression-string>
         <language-id>Python</language-id>
@@ -463,11 +492,6 @@
       </expression>
       <expression>
         <expression-string>im_mean.flatten()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>face_distances[0] - face_distances[1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -486,21 +510,6 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>np.unique(a[0], return_index=True)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>np.unique(a[0], return_index=True)[1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>probability[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
@@ -511,52 +520,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/externals/joblib/memory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="509" column="0" lean-forward="false" selection-start-line="509" selection-start-column="0" selection-end-line="509" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/datasets/lfw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/matplotlib/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="621" column="0" lean-forward="false" selection-start-line="621" selection-start-column="0" selection-end-line="621" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/numpy/linalg/linalg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="210" column="0" lean-forward="false" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="1667" column="0" lean-forward="false" selection-start-line="1667" selection-start-column="0" selection-end-line="1667" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/decomposition/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Eigenfaces_v2.py" />
-    <entry file="file://$PROJECT_DIR$/prototype.py" />
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/BioID_0001.pgm" />
     <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/matplotlib/axis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -599,13 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="8397" column="4" lean-forward="false" selection-start-line="8397" selection-start-column="4" selection-end-line="8397" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="3785" column="22" lean-forward="false" selection-start-line="3785" selection-start-column="22" selection-end-line="3785" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -659,22 +615,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/utils/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="440" column="0" lean-forward="false" selection-start-line="440" selection-start-column="0" selection-end-line="440" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application.py" />
     <entry file="file://$PROJECT_DIR$/FaceRecognition.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/new_faces_notindetected/1.pgm-s5_newface.pgm">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -709,69 +651,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/numpy/lib/function_base.py">
+    <entry file="file://$PROJECT_DIR$/Application/_newface.pgm" />
+    <entry file="file://$PROJECT_DIR$/Application/Testing_features/haarcascade_frontalface_default.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="5165" column="0" lean-forward="false" selection-start-line="5165" selection-start-column="0" selection-end-line="5165" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/_newface.pgm">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Application.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="28" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
+    <entry file="file://$PROJECT_DIR$/Application/Testing_features/camera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="132" column="36" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="1071" column="0" lean-forward="false" selection-start-line="1071" selection-start-column="0" selection-end-line="1071" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notebooks/Prototype.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="1" />
+          <selected id="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces.py">
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/numpy/lib/function_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#197#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="509">
+          <caret line="5165" column="0" lean-forward="false" selection-start-line="5165" selection-start-column="0" selection-end-line="5165" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/utils/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="209">
+          <caret line="582" column="0" lean-forward="false" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/neighbors/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="764" column="0" lean-forward="false" selection-start-line="764" selection-start-column="0" selection-end-line="764" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/new_faces_notindetected/_newface.pgm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/a.pgm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/numpy/core/shape_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-505">
+          <caret line="235" column="4" lean-forward="false" selection-start-line="235" selection-start-column="4" selection-end-line="235" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/metrics/ranking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="109" column="4" lean-forward="false" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/sklearn/metrics/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-535">
+          <caret line="614" column="4" lean-forward="false" selection-start-line="614" selection-start-column="4" selection-end-line="614" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Przemek/Python/Lib/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="2565" column="26" lean-forward="true" selection-start-line="2565" selection-start-column="26" selection-end-line="2565" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-377">
+          <caret line="141" column="105" lean-forward="false" selection-start-line="141" selection-start-column="105" selection-end-line="141" selection-end-column="105" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="61" column="45" lean-forward="false" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="45" />
+        <state relative-caret-position="580">
+          <caret line="109" column="26" lean-forward="false" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#197#0" expanded="true" />
           </folding>
         </state>
       </provider>

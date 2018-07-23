@@ -1,11 +1,16 @@
-from FaceRecognition_ImagePreprocessing import image_cropping
+from FaceRecognition_ImagePreprocessing import image_cropping, face_recording
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from auxiliary.aux_plotting import compare_plot
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+from sklearn.metrics import f1_score, recall_score, accuracy_score
+
 
 import cv2 as cv
 import os
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
+import matplotlib.pyplot as plt
 import pickle
 
 class EigenfaceRecognitionNewfaces:
@@ -56,34 +61,21 @@ class EigenfaceRecognitionNewfaces:
 
         else: print('Could not identify the face - hard to distinguish')
 
-    def add_face(self, filepath, label=False):
-        im = image_cropping(os.path.join(self.newfacedir, filepath), findface=True)
+    def add__new_face(self, filepath, label=False):
+        im = image_cropping(filepath=os.path.join(self.newfacedir, filepath), findface=False) #!!!
         im_flat = im.flatten()
         im_representation = self.face_data.transfer_image(im_flat)
         face_recognized, found_id = self.recognize_face(im_representation)
-        im_mean = im - self.face_data.mean_img
 
         if not face_recognized:
             print("New face detected or classified improperly")
         if face_recognized:
             print("Face was detected. Person in the database.")
 
-        self.face_data.image_matrix_flat = self.face_data.image_matrix_flat.T
-        self.face_data.image_matrix_flat = np.vstack((self.face_data.image_matrix_flat, im_mean.flatten()))
-        self.face_data.image_matrix_flat = self.face_data.image_matrix_flat.T
-        self.face_data.face_weights = np.matmul(
-            self.face_data.image_matrix_flat.transpose(), self.face_data.eigenfaces_flat.transpose())
-
-        self.face_data.image_count += 1
-
         if label:
-            self.face_data.labels = np.append(self.face_data.labels, label)
+            self.add_image2database(im_flat, label)
         else:
-            self.face_data.labels = np.append(self.face_data.labels, found_id)
-
-
-    def update_database(self, image_representation):
-        self.face_data.image_matrix.append()
+            self.add_image2database(im_flat, found_id)
 
     def recognize_face(self, image_representation):
         """Check if face can be assigned to some person in the database.
@@ -105,7 +97,7 @@ class EigenfaceRecognitionNewfaces:
         face_distances = [dist.T[x] for x in face_ids]
         face_distances = face_distances[::-1]
 
-        print('###', dist, person_id[0])
+        # print('###', dist, person_id[0])
 
         # If too many candidates
         unique_propositions = len(np.unique(person_id))
@@ -114,7 +106,7 @@ class EigenfaceRecognitionNewfaces:
 
         # If distance between faces of different people is too small
         elif len(face_distances)>1:
-            if abs(face_distances[0] - face_distances[1]) < 700:
+            if face_distances[1] < face_distances[0] * 1.65:
                 isnew = 1
 
         if not isnew:
@@ -125,39 +117,124 @@ class EigenfaceRecognitionNewfaces:
 
         return False, max(self.face_data.labels)+1
 
+    def test_accuracy(self, iterations=10):
 
-if __name__ == "__main__":
-    # efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
-    #                                                            'Database\\212images-36people.p'))
+        precision = []
+        recall = []
+        f1 = []
+        iter_range = range(0, iterations)
 
-    fr = FaceRecognitionEigenfaces()
-    fr.get_images()
-    fr.get_eigenfaces()
-    fr.show_me_things()
-    efr = EigenfaceRecognitionNewfaces(data=fr)
-    efr.face_data.stochastic_neighbour_embedding()
+        for i in iter_range:
+            result = []
+            X_train, X_test, y_train, y_test = train_test_split(
+                self.face_data.face_weights, self.face_data.labels, test_size=0.15)
 
-    # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
-    # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
-    efr.add_face('ja1.jpg', 999)
-    efr.add_face('ja2.jpg', 999)
-    efr.add_face('ja3.jpg', 999)
-    efr.add_face('ja4.jpg', 999)
-    efr.add_face('ja5.jpg', 999)
-    efr.add_face('ja6.jpg')
-    efr.add_face('ja11.jpg')
+            for x in X_test:
+                result.append(self.recognize_face(x)[1])
 
-    efr.face_data.stochastic_neighbour_embedding()
-    efr.face_data.show_me_things()
+            result = self.face_data.labels[result]
+            precision.append(accuracy_score(y_test, result))
+            f1.append(f1_score(y_test, result, average='weighted'))
 
-    # fr = FaceRecognitionEigenfaces()
-    # fr.get_images()
-    # fr.get_eigenfaces()
-    # fr.show_me_things()
-    # efr = EigenfaceRecognitionNewfaces(data=fr)
-    # efr.face_data.stochastic_neighbour_embedding()
+        fig, ax = plt.subplots()
+        ax.plot(iter_range, precision,  label='Precision')
+        ax.plot(iter_range, f1, label='F1 score')
+        plt.axhline(np.mean(precision), label='Precision: {:.2f}'.format(np.mean(precision)), color='blue')
+        plt.axhline(np.mean(f1), label='F1 score: {:.2f}'.format(np.mean(f1)), color='orange')
+        legend = ax.legend(loc='lower right', shadow=True)
+        plt.title('Precision and F1 score for multiple iterations')
+        plt.xlabel('Iterations')
+        plt.ylabel('Score')
+        plt.show()
 
 
-    #Jak dodawac ludzi, z jakim label, kiedy ich klasyfikowac skoro knn ma 5 neighourow
-    # jak to mialoby wygladac z kamera
-    # czy zmieniac wtedy twarz srednia? Twarze wlasne?
+    def add_person(self):
+        data = face_recording()
+        data = np.array(data)
+
+        label = max(self.face_data.labels) + 1
+        count = len(data)
+        data = data.reshape(count, self.face_data.image_shape**2)
+
+        for image in data:
+            # plt.imshow(image.reshape(86, 86), cmap=plt.cm.bone)
+            # plt.show()
+            cv.imwrite('a.pgm', image.reshape(self.face_data.image_shape, self.face_data.image_shape))
+            self.add_image2database(image, label)
+
+        print('nah')
+
+
+    def add_image2database(self, image, label):
+        """Input is a flattened image."""
+
+        # Increase image count to keep consistency
+        self.face_data.image_count += 1
+        # Label the image
+        self.face_data.labels = np.append(self.face_data.labels, label)
+
+        # Create new 'mean' image
+        self.face_data.image_matrix_raw = np.vstack((self.face_data.image_matrix_raw.T, image)).T
+        self.mean_img = np.sum(self.face_data.image_matrix_raw, axis=1) / self.face_data.image_count
+        self.mean_img = self.mean_img.reshape(self.face_data.image_shape, self.face_data.image_shape)
+
+        # Substract mean from raw images
+        self.face_data.image_matrix_flat = np.array(
+            [x - self.mean_img.flatten() for x in self.face_data.image_matrix_raw.transpose()]).transpose()
+
+        # Add face weights for the given image
+        self.face_data.face_weights = np.matmul(self.face_data.image_matrix_flat.transpose(),
+                                                self.face_data.eigenfaces_flat.transpose())
+
+
+    def update_database(self, image_representation):
+        self.face_data.image_matrix.append()
+
+
+
+
+# if __name__ == "__main__":
+#     efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
+#                                                                'Database\\212images-36people.p'))
+#
+#     # fr = FaceRecognitionEigenfaces()
+#     # fr.get_images()
+#     # fr.get_eigenfaces()
+#     # fr.save_to_file()
+#     # fr.show_me_things()
+#     # efr = EigenfaceRecognitionNewfaces(data=fr)
+#
+#     # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
+#     # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
+#     # efr.add__new_face('ja1.jpg', 999)
+#     # efr.add__new_face('ja2.jpg', 999)
+#     # efr.add__new_face('ja3.jpg', 999)
+#     # efr.add__new_face('ja4.jpg', 999)
+#     # efr.add__new_face('ja5.jpg', 999)
+#     # efr.add__new_face('ja6.jpg')
+#     # efr.add__new_face('ja11.jpg')
+#
+#     efr.add_person()
+#     efr.add__new_face('a.pgm')
+#     efr.face_data.get_eigenfaces()
+#     # efr.face_data.stochastic_neighbour_embedding()
+#     efr.face_data.show_me_things()
+#
+#
+#     # fr = FaceRecognitionEigenfaces()
+#     # fr.get_images()
+#     # fr.get_eigenfaces()
+#     # fr.show_me_things()
+#     # efr = EigenfaceRecognitionNewfaces(data=fr)
+#     # efr.face_data.stochastic_neighbour_embedding()
+
+
+
+
+    # sprawdzic celnosc
+    # FAR FRR/True match rates
+
+    # a jak bedzie czas, to czy da sie opisac obraz za pomoca waveletow,
+    # falki gabora np. jak zmienic na taka reprezentacje
+    # pamietac o tym skalowaniu
+    # niech wymiary zostana
