@@ -24,7 +24,6 @@ class FaceRecognitionEigenfaces():
         self.labels = []
         imagedir = os.path.join(self.datadir, 'detected_faces')
 
-
         # Go through all the files and read in image, flatten them and append to matrix
         image_matrix = []
         for file in os.listdir(imagedir):
@@ -54,7 +53,7 @@ class FaceRecognitionEigenfaces():
         cov_matrix /= self.image_count
 
         # Calculate and choose eigenvectors corresponding to the highest eigenvalues
-        pca = PCA(n_components = self.eigenfaces_n)
+        pca = PCA(n_components=self.eigenfaces_n)
         pca.fit(cov_matrix)
 
         # Left multiply to get the correct eigenvectors
@@ -82,7 +81,7 @@ class FaceRecognitionEigenfaces():
         """Transfers image to multidimensional representation using eigenfaces
         Input should be flat."""
         image = image - self.mean_img.flatten().transpose()
-        image = np.matmul(self.eigenfaces_flat, image)
+        image = np.matmul(image.T, self.eigenfaces_flat.T)
         return image
 
     def reconstruct_image(self, im_id = True, weights = False):

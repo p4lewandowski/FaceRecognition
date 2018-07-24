@@ -3,7 +3,7 @@ import os
 from matplotlib.image import imsave
 import matplotlib.pyplot as plt
 
-scale_factor = 1.05
+scale_factor = 1.15
 min_neighbors = 3
 
 

@@ -1,9 +1,7 @@
 from FaceRecognition_ImagePreprocessing import image_cropping, face_recording
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from auxiliary.aux_plotting import compare_plot
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
-from sklearn.metrics import f1_score, recall_score, accuracy_score
+
 
 
 import cv2 as cv
@@ -83,8 +81,10 @@ class EigenfaceRecognitionNewfaces:
 
         # fit again in case new data appears
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
-        # probabilities = self.knn_classifier.predict_proba(image_representation.reshape(1, -1))
-        # probability = np.sort(probabilities)[0]
+        probabilities = self.knn_classifier.predict_proba(image_representation.reshape(1, -1))
+        prob_person = np.argsort(probabilities)[0][-3:]
+        prob_val = probabilities[0][prob_person]
+        prob_person +=1 # Compensating for the fact that ids begin at 0
 
         isnew = 0
         dist, ids = self.knn_classifier.kneighbors(X=image_representation.reshape(1, -1),
@@ -92,60 +92,41 @@ class EigenfaceRecognitionNewfaces:
         person_id = self.face_data.labels[ids]
 
         # First elem is list of unique, second are ids
-        face_ids = np.unique(person_id, return_index=True)[1]
+        face_ids = np.unique(person_id, return_index=True  )[1]
         # Distances from different people
         face_distances = [dist.T[x] for x in face_ids]
         face_distances = face_distances[::-1]
 
-        # print('###', dist, person_id[0])
+        class_distances = sum_class_distances(dist, person_id)
+        class_distances = sorted(class_distances, key=lambda x: x[1])
 
         # If too many candidates
         unique_propositions = len(np.unique(person_id))
         if unique_propositions >= 4:
             isnew = 1
 
-        # If distance between faces of different people is too small
+        # If average distance between candidate classes is too small
         elif len(face_distances)>1:
-            if face_distances[1] < face_distances[0] * 1.65:
+            if class_distances[1][1][0] < class_distances[0][1][0] * 1.6:
                 isnew = 1
 
+        if prob_val[-1] > prob_val[-2]:
+            face_found_id = prob_person[-1]
+        elif prob_val[-1] == prob_val[-2]:
+            if class_distances[0][1][0]< class_distances[1][1][0]:
+                face_found_id = prob_person[-1]
+            else:
+                face_found_id = prob_person[-2]
+
+        # Nearest neighbout
+        return person_id[0]
+
+        if isnew:
+            return False, face_found_id
+            # return False, max(self.face_data.labels) + 1
+
         if not isnew:
-            face_found_id = self.knn_classifier.predict(image_representation.reshape(1, -1))
-            face_found_id = np.where(self.face_data.labels == face_found_id)[0][0]  # it returns a tuple
-
             return True, face_found_id
-
-        return False, max(self.face_data.labels)+1
-
-    def test_accuracy(self, iterations=10):
-
-        precision = []
-        recall = []
-        f1 = []
-        iter_range = range(0, iterations)
-
-        for i in iter_range:
-            result = []
-            X_train, X_test, y_train, y_test = train_test_split(
-                self.face_data.face_weights, self.face_data.labels, test_size=0.15)
-
-            for x in X_test:
-                result.append(self.recognize_face(x)[1])
-
-            result = self.face_data.labels[result]
-            precision.append(accuracy_score(y_test, result))
-            f1.append(f1_score(y_test, result, average='weighted'))
-
-        fig, ax = plt.subplots()
-        ax.plot(iter_range, precision,  label='Precision')
-        ax.plot(iter_range, f1, label='F1 score')
-        plt.axhline(np.mean(precision), label='Precision: {:.2f}'.format(np.mean(precision)), color='blue')
-        plt.axhline(np.mean(f1), label='F1 score: {:.2f}'.format(np.mean(f1)), color='orange')
-        legend = ax.legend(loc='lower right', shadow=True)
-        plt.title('Precision and F1 score for multiple iterations')
-        plt.xlabel('Iterations')
-        plt.ylabel('Score')
-        plt.show()
 
 
     def add_person(self):
@@ -159,10 +140,8 @@ class EigenfaceRecognitionNewfaces:
         for image in data:
             # plt.imshow(image.reshape(86, 86), cmap=plt.cm.bone)
             # plt.show()
-            cv.imwrite('a.pgm', image.reshape(self.face_data.image_shape, self.face_data.image_shape))
+            # cv.imwrite('a.pgm', image.reshape(self.face_data.image_shape, self.face_data.image_shape))
             self.add_image2database(image, label)
-
-        print('nah')
 
 
     def add_image2database(self, image, label):
@@ -191,11 +170,27 @@ class EigenfaceRecognitionNewfaces:
         self.face_data.image_matrix.append()
 
 
+def sum_class_distances(distances, class_labels):
+    un_val = np.unique(class_labels)
+    arr = []
+    for i in un_val:
+        sum = 0
+        count = 0;
+        arr_pos = 0;
+        for elem in class_labels[0]:
+            if elem==i:
+                sum +=distances[0][arr_pos]
+                count+=1
+            arr_pos+=1
+        arr.append(np.vstack((i, sum/count)))
+
+    return arr
 
 
-# if __name__ == "__main__":
-#     efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
-#                                                                'Database\\212images-36people.p'))
+
+if __name__ == "__main__":
+    efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
+                                                               'Database\\212images-36people.p'))
 #
 #     # fr = FaceRecognitionEigenfaces()
 #     # fr.get_images()
@@ -206,10 +201,10 @@ class EigenfaceRecognitionNewfaces:
 #
 #     # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
 #     # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
-#     # efr.add__new_face('ja1.jpg', 999)
-#     # efr.add__new_face('ja2.jpg', 999)
-#     # efr.add__new_face('ja3.jpg', 999)
-#     # efr.add__new_face('ja4.jpg', 999)
+    efr.add__new_face('ja1.jpg', 999)
+    efr.add__new_face('ja2.jpg', 999)
+    efr.add__new_face('ja3.jpg', 999)
+    efr.add__new_face('ja4.jpg', 999)
 #     # efr.add__new_face('ja5.jpg', 999)
 #     # efr.add__new_face('ja6.jpg')
 #     # efr.add__new_face('ja11.jpg')
