@@ -113,14 +113,15 @@ class EigenfaceRecognitionNewfaces:
         if prob_val[-1] > prob_val[-2]:
             face_found_id = prob_person[-1]
         elif prob_val[-1] == prob_val[-2]:
-            if class_distances[0][1][0]< class_distances[1][1][0]:
+            if class_distances[0][1][0] < class_distances[1][1][0]:
                 face_found_id = prob_person[-1]
             else:
                 face_found_id = prob_person[-2]
 
-        # Nearest neighbout
-        return person_id[0]
+        # # Nearest neighbour
+        # return person_id[0]
 
+        # Knn nearest
         if isnew:
             return False, face_found_id
             # return False, max(self.face_data.labels) + 1
@@ -191,45 +192,8 @@ def sum_class_distances(distances, class_labels):
 if __name__ == "__main__":
     efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
                                                                'Database\\212images-36people.p'))
-#
-#     # fr = FaceRecognitionEigenfaces()
-#     # fr.get_images()
-#     # fr.get_eigenfaces()
-#     # fr.save_to_file()
-#     # fr.show_me_things()
-#     # efr = EigenfaceRecognitionNewfaces(data=fr)
-#
-#     # efr.find_me_face('new_faces_notindetected/1.pgm-s5_newface.pgm')
-#     # efr.find_me_face_knn('new_faces_notindetected/1.pgm-s5_newface.pgm')
+
     efr.add__new_face('ja1.jpg', 999)
     efr.add__new_face('ja2.jpg', 999)
     efr.add__new_face('ja3.jpg', 999)
     efr.add__new_face('ja4.jpg', 999)
-#     # efr.add__new_face('ja5.jpg', 999)
-#     # efr.add__new_face('ja6.jpg')
-#     # efr.add__new_face('ja11.jpg')
-#
-#     efr.add_person()
-#     efr.add__new_face('a.pgm')
-#     efr.face_data.get_eigenfaces()
-#     # efr.face_data.stochastic_neighbour_embedding()
-#     efr.face_data.show_me_things()
-#
-#
-#     # fr = FaceRecognitionEigenfaces()
-#     # fr.get_images()
-#     # fr.get_eigenfaces()
-#     # fr.show_me_things()
-#     # efr = EigenfaceRecognitionNewfaces(data=fr)
-#     # efr.face_data.stochastic_neighbour_embedding()
-
-
-
-
-    # sprawdzic celnosc
-    # FAR FRR/True match rates
-
-    # a jak bedzie czas, to czy da sie opisac obraz za pomoca waveletow,
-    # falki gabora np. jak zmienic na taka reprezentacje
-    # pamietac o tym skalowaniu
-    # niech wymiary zostana

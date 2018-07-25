@@ -2,12 +2,14 @@ from auxiliary.aux_plotting import reconstruction_fast, plot_eigenfaces, \
     reconstruction, plot_faces_2components, compare_plot, reconstruction_manual, \
     plot_tsne, plot_eigenfaces_variance
 
+from sklearn.preprocessing import StandardScaler
 import cv2 as cv
 import os
 import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 import pickle
+import pywt
 
 
 class FaceRecognitionEigenfaces():
@@ -15,7 +17,7 @@ class FaceRecognitionEigenfaces():
     rootdir = os.getcwd()
     datadir = os.path.join(rootdir, '..', 'Data')
 
-    def get_images(self):
+    def get_images(self, wavelet=False):
         """Get images and determine mean_img as well as number of images
         and image shape."""
 
@@ -35,14 +37,36 @@ class FaceRecognitionEigenfaces():
         self.image_shape = im.shape[0]
         self.labels = np.array(self.labels)
 
+        if wavelet:
+            self.image_matrix_raw = np.reshape(image_matrix,
+                                      (self.image_count, self.image_shape, self.image_shape))
+            self.wavelet_decomposition()
+            return
+
         # Calculate the mean per pixel(feature), normalise it by the amount of pixels
         # and receive 'mean face'
         self.image_matrix_raw = np.array(np.transpose(image_matrix))
+
         self.mean_img = np.sum(self.image_matrix_raw, axis=1) / self.image_count
         self.mean_img = self.mean_img.reshape(self.image_shape, self.image_shape)
         # Subtract the mean from every flattened image
         self.image_matrix_flat = np.array(
             [x - self.mean_img.flatten() for x in self.image_matrix_raw.transpose()]).transpose()
+
+    def wavelet_decomposition(self):
+        w = pywt.Wavelet('db1')
+        wavelet_coeffs = []
+        for x in self.image_matrix_raw:
+            coeffs = pywt.WaveletPacket2D(x, w)['a'].data
+            self.image_shape = coeffs.shape[0]
+            wavelet_coeffs.append(coeffs.flatten())
+        scaler = StandardScaler()
+        scaler.fit(np.transpose(wavelet_coeffs))
+        wavelet_coeffs_scaled = scaler.transform(np.transpose(wavelet_coeffs))
+        self.image_matrix_flat = wavelet_coeffs_scaled
+
+        return
+
 
     def get_eigenfaces(self):
         """ eigenfaces_n is passed as a parameter (percentage of variance to obtain

@@ -5,7 +5,9 @@ from sklearn.metrics import f1_score, accuracy_score
 import matplotlib.pyplot as plt
 import numpy as np
 
-def test_accuracy(iterations=10):
+
+def test_accuracy(iterations=10, wavelet=False):
+
     precision = []
     f1 = []
     iter_range = range(0, iterations)
@@ -13,7 +15,7 @@ def test_accuracy(iterations=10):
     for i in iter_range:
 
         fr_train = FaceRecognitionEigenfaces()
-        fr_train.get_images()
+        fr_train.get_images(wavelet)
 
         result = []
         X_train, X_test, y_train, y_test = train_test_split(
@@ -23,8 +25,6 @@ def test_accuracy(iterations=10):
         fr_train.labels = y_train
         fr_train.image_count -= len(y_test)
         fr_train.get_eigenfaces()
-
-        y = fr_train.transfer_image(X_train[0])
 
         efr = EigenfaceRecognitionNewfaces(data=fr_train)
 
@@ -48,3 +48,4 @@ def test_accuracy(iterations=10):
 
 
 test_accuracy(iterations=40)
+test_accuracy(iterations=40, wavelet=True)
