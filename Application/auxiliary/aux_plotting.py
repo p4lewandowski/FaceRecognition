@@ -221,12 +221,4 @@ def plot_tsne(fr):
             boxcoords="offset points")
         ax.add_artist(ab)
 
-    # ab = AnnotationBbox(
-    #     OffsetImage(images_to_plot[len(fr.t_sne)-1], zoom=0.3),
-    #     fr.t_sne[-1],
-    #     pad=0,
-    #     xybox=(0., 0.),
-    #     boxcoords="offset points")
-    # ax.add_artist(ab)
-
     plt.show()

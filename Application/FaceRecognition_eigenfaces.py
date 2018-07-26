@@ -99,7 +99,7 @@ class FaceRecognitionEigenfaces():
          Stochastic Neighbor Embedding."""
 
         self.t_sne = TSNE(n_components=2, perplexity=5, early_exaggeration=16).fit_transform(self.face_weights)
-        plot_tsne(self)
+
 
     def transfer_image(self, image):
         """Transfers image to multidimensional representation using eigenfaces
@@ -127,7 +127,7 @@ class FaceRecognitionEigenfaces():
         plot_eigenfaces(self)
         plot_eigenfaces_variance(self)
         plot_faces_2components(self)
-        self.stochastic_neighbour_embedding()
+        plot_tsne(self)
         reconstruction(self)
         reconstruction_fast(self)
         reconstruction_manual(self)

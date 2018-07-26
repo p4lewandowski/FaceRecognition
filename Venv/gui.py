@@ -86,12 +86,6 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.VisualizationTab, "")
         self.AddPersonTab = QtWidgets.QWidget()
         self.AddPersonTab.setObjectName("AddPersonTab")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.AddPersonTab)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.AddPersonLabel = QtWidgets.QLabel(self.AddPersonTab)
-        self.AddPersonLabel.setText("")
-        self.AddPersonLabel.setObjectName("AddPersonLabel")
-        self.gridLayout_5.addWidget(self.AddPersonLabel, 0, 0, 1, 1)
         self.tabWidget.addTab(self.AddPersonTab, "")
         self.IdentificationTab = QtWidgets.QWidget()
         self.IdentificationTab.setObjectName("IdentificationTab")
@@ -103,8 +97,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

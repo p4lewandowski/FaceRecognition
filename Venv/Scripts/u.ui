@@ -14,11 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="WelcomeTab">
        <attribute name="title">
@@ -129,11 +129,117 @@
        <attribute name="title">
         <string>Wizualizacja danych</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tabWidget_2">
+          <property name="currentIndex">
+           <number>4</number>
+          </property>
+          <widget class="QWidget" name="VisualizationEigenfacesTab">
+           <attribute name="title">
+            <string>Twarze Własne</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="VisualizationPCACoeffTab">
+           <attribute name="title">
+            <string>Komponenty główne</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="Visualization2PCATab">
+           <attribute name="title">
+            <string>Dwa komponenty główne</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="VisualizationTSNETab">
+           <attribute name="title">
+            <string>TSNE</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="VisualizationReconstructionTab">
+           <attribute name="title">
+            <string>Manualna rekonstrukcja twarzy</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="AddPersonTab">
        <attribute name="title">
         <string>Dodaj osobę</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="2" column="2">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="5" column="2">
+         <widget class="QPushButton" name="AddPersonButton">
+          <property name="text">
+           <string>START</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="2">
+         <widget class="QLabel" name="AddPersonLabel">
+          <property name="minimumSize">
+           <size>
+            <width>480</width>
+            <height>640</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>480</width>
+            <height>640</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QLabel" name="label_3">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>800</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Po wciśnięciu klawisza START rozpocznie się wykrywanie twarzy i robienie zdjęć, które
+    zostaną przetworzone i dodane do bazy wiedzy, dzięki czemu dana osoba będzie
+                                       mogła zostać nastepnie zidentyfikowana.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="IdentificationTab">
        <attribute name="title">

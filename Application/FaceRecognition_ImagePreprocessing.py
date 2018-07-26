@@ -97,8 +97,8 @@ def face_recording():
             cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
             roi_gray = gray[y:y + h, x:x + w]
             roi_color = frame[y:y + h, x:x + w]
-            im = image_cropping(im=gray, findface=True, save=False)
-            face_data.append(im)
+            # im = image_cropping(im=gray, findface=True, save=False)
+            # face_data.append(im)
             break
 
         cv.imshow('frame', frame)
@@ -113,10 +113,10 @@ def face_recording():
 
 
 if __name__ == "__main__":
-    image_selection()
+    # image_selection()
     # image_cropping('s5', '1.pgm')
     # detect_face(r'C:\Users\Aniesia\PycharmProjects\FaceRecognition\Data\\new_faces_notindetected\ja1.jpg')
-    # face_recording()
+    face_recording()
 
 
 
