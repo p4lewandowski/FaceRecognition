@@ -1,17 +1,21 @@
 import sys
 from PyQt5.QtGui import QIcon, QImage, QPixmap
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QDialog
 from gui import Ui_MainWindow
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+import matplotlib.pyplot as plt
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from FaceRecognition_newfaces import EigenfaceRecognitionNewfaces
+from FaceRecognition_ImagePreprocessing import image_selection
 import numpy as np
+import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.widgets import Slider, Button
 import cv2 as cv
+import os
+from matplotlib.image import imsave
 import matplotlib.pyplot as plt
-from FaceRecognition_ImagePreprocessing import image_cropping
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -30,14 +34,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # ############### Plot embedded display ################
         self.LearnEigenfaces.clicked.connect(self.DatabaseEigenfaces)
-        self.AddPersonButton.clicked.connect(self.addPerson)
 
 
         self.show()
-
-    def addPerson(self):
-        efr = EigenfaceRecognitionNewfaces(data=self.fr)
-        efr.add_person()
+        self.face_recording()
 
     def face_recording(self):
         scale_factor = 1.15
@@ -60,8 +60,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
                 roi_gray = gray[y:y + h, x:x + w]
                 roi_color = frame[y:y + h, x:x + w]
-                im = image_cropping(im=gray, findface=True, save=False)
-                face_data.append(im)
+                # im = image_cropping(im=gray, findface=True, save=False)
+                # face_data.append(im)
                 break
 
             image = QImage(
