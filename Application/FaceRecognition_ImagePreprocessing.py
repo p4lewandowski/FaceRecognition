@@ -2,6 +2,8 @@ import cv2 as cv
 import os
 from matplotlib.image import imsave
 import matplotlib.pyplot as plt
+from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import QMessageBox
 
 scale_factor = 1.15
 min_neighbors = 3
@@ -78,7 +80,11 @@ def detect_face(filepath):
     cv.waitKey(0)
     cv.destroyAllWindows()
 
-def face_recording():
+
+def face_recording(gui=False):
+
+    scale_factor = 1.15
+    min_neighbors = 3
     cap = cv.VideoCapture(0)
     cap.set(3, 640)  # WIDTH
     cap.set(4, 480)  # HEIGHT
@@ -86,7 +92,7 @@ def face_recording():
     face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
     face_data = []
 
-    while (True):
+    while (len(face_data) < 20):
         # Capture frame-by-frame
         ret, frame = cap.read()
         # Our operations on the frame come here
@@ -97,17 +103,32 @@ def face_recording():
             cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
             roi_gray = gray[y:y + h, x:x + w]
             roi_color = frame[y:y + h, x:x + w]
-            # im = image_cropping(im=gray, findface=True, save=False)
-            # face_data.append(im)
+            im = image_cropping(im=gray, findface=True, save=False)
+            face_data.append(im)
             break
 
-        cv.imshow('frame', frame)
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
 
+        if gui:
+            image = QImage(
+                frame,
+                frame.shape[1],
+                frame.shape[0],
+                frame.shape[1] * 3,
+                QImage.Format_RGB888
+            )
+            gui.AddPersonLabel.setPixmap(QPixmap.fromImage(image))
+        else:
+            cv.imshow('frame', frame)
+
     # When everything done, release the capture
     cap.release()
+    del cap
     cv.destroyAllWindows()
+
+    if gui:
+        gui.AddPersonLabel.clear()
 
     return face_data
 

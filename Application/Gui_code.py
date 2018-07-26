@@ -13,9 +13,9 @@ import matplotlib.pyplot as plt
 from GUI_Components.gui import Ui_MainWindow
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from FaceRecognition_newfaces import EigenfaceRecognitionNewfaces
-
+from FaceRecognition_ImagePreprocessing import face_recording
 from FaceRecognition_plotting import plotReconstructionManual, plotTSNE, plotPCA2components, plotEigenfaces, \
-    plotPCAcomponents, create_plots, face_recording
+    plotPCAcomponents, create_plots
 
 
 
@@ -37,14 +37,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # ############### Plot embedded display ################
         self.LearnEigenfaces.clicked.connect(self.DatabaseEigenfaces)
         self.AddPersonButton.clicked.connect(self.addPerson)
-
         self.show()
 
 
     def addPerson(self):
-        # efr = EigenfaceRecognitionNewfaces(data=self.fr)
-        # efr.add_person()
-        face_recording(self)
+        efr = EigenfaceRecognitionNewfaces(data=self.fr)
+        efr.add_person(gui=self)
+
+        self.fr.stochastic_neighbour_embedding()
+        plotPCAcomponents(self)
+        plotEigenfaces(self)
+        plotPCA2components(self)
+        plotTSNE(self)
+        plotReconstructionManual(self)
+
 
     def DatabaseEigenfaces(self):
         self.fr = FaceRecognitionEigenfaces()

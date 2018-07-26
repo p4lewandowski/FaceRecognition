@@ -130,8 +130,12 @@ class EigenfaceRecognitionNewfaces:
             return True, face_found_id
 
 
-    def add_person(self):
-        data = face_recording()
+    def add_person(self, **kwargs):
+        gui = kwargs.get('gui', False)
+        if gui:
+            data = face_recording(gui)
+        else:
+            data = face_recording()
         data = np.array(data)
 
         label = max(self.face_data.labels) + 1
@@ -139,9 +143,6 @@ class EigenfaceRecognitionNewfaces:
         data = data.reshape(count, self.face_data.image_shape**2)
 
         for image in data:
-            # plt.imshow(image.reshape(86, 86), cmap=plt.cm.bone)
-            # plt.show()
-            # cv.imwrite('a.pgm', image.reshape(self.face_data.image_shape, self.face_data.image_shape))
             self.add_image2database(image, label)
 
 

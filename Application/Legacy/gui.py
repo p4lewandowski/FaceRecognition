@@ -147,4 +147,3 @@ class Ui_MainWindow(object):
 "                                       mogła zostać nastepnie zidentyfikowana."))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.AddPersonTab), _translate("MainWindow", "Dodaj osobę"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.IdentificationTab), _translate("MainWindow", "Zidentyfikuj osobę"))
-

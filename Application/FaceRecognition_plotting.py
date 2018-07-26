@@ -1,13 +1,9 @@
-from PyQt5.QtGui import QImage, QPixmap
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 import numpy as np
-import cv2 as cv
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.widgets import Slider, Button
 import matplotlib.pyplot as plt
-
-from FaceRecognition_ImagePreprocessing import image_cropping
 
 
 def plotReconstructionManual(self):
@@ -172,47 +168,3 @@ def create_plots(self, parent, toolbar=True):
         toolbar.setParent(parent)
     figure.clear()
     return figure
-
-def face_recording(self):
-
-    scale_factor = 1.15
-    min_neighbors = 3
-    cap = cv.VideoCapture(0)
-    cap.set(3, 640)  # WIDTH
-    cap.set(4, 480)  # HEIGHT
-
-    face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
-    face_data = []
-
-    while (True):
-        # Capture frame-by-frame
-        ret, frame = cap.read()
-        # Our operations on the frame come here
-        gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors)
-        # Display the resulting frame
-        for (x, y, w, h) in faces:
-            cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-            roi_gray = gray[y:y + h, x:x + w]
-            roi_color = frame[y:y + h, x:x + w]
-            # im = image_cropping(im=gray, findface=True, save=False)
-            # face_data.append(im)
-            break
-
-        if cv.waitKey(1) & 0xFF == ord('q'):
-            break
-
-        image = QImage(
-            frame,
-            frame.shape[1],
-            frame.shape[0],
-            frame.shape[1] * 3,
-            QImage.Format_RGB888
-        )
-        self.AddPersonLabel.setPixmap(QPixmap.fromImage(image))
-
-    # When everything done, release the capture
-    cap.release()
-    cv.destroyAllWindows()
-
-    return face_data
