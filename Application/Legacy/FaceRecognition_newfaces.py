@@ -190,10 +190,10 @@ def sum_class_distances(distances, class_labels):
 
 
 if __name__ == "__main__":
-    efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
+    efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', '..', 'Data',
                                                                'Database\\212images-36people.p'))
 
-    efr.add__new_face('ja1.jpg', 999)
-    efr.add__new_face('ja2.jpg', 999)
-    efr.add__new_face('ja3.jpg', 999)
-    efr.add__new_face('ja4.jpg', 999)
+    efr.add__new_face(os.path.join(efr.newfacedir, 'ja1.jpg'), 999)
+    efr.add__new_face(os.path.join(efr.newfacedir, 'ja2.jpg'), 999)
+    efr.add__new_face(os.path.join(efr.newfacedir, 'ja3.jpg'), 999)
+    efr.add__new_face(os.path.join(efr.newfacedir, 'ja4.jpg'), 999)

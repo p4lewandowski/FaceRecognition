@@ -1,9 +1,6 @@
 import cv2 as cv
 import os
-from matplotlib.image import imsave
-import matplotlib.pyplot as plt
 from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtWidgets import QMessageBox
 
 scale_factor = 1.15
 min_neighbors = 3

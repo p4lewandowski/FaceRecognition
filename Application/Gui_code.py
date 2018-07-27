@@ -9,6 +9,7 @@ import cv2 as cv
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.widgets import Slider, Button
 import matplotlib.pyplot as plt
+from PyQt5.QtWidgets import QMessageBox
 
 from GUI_Components.gui import Ui_MainWindow
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
@@ -44,20 +45,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         efr = EigenfaceRecognitionNewfaces(data=self.fr)
         efr.add_person(gui=self)
 
-        self.fr.stochastic_neighbour_embedding()
-        plotPCAcomponents(self)
-        plotEigenfaces(self)
-        plotPCA2components(self)
-        plotTSNE(self)
-        plotReconstructionManual(self)
+        self.PlotEigenfacesData()
+
+        # Message box
+        self.msg = QMessageBox()
+        self.msg.setIcon(QMessageBox.Information)
+        self.msg.setWindowTitle("Dodawanie twarzy zakończone")
+        self.msg.setText("Baza twarzy została zaktualizowana.\nWizualizacja danych zawiera teraz nowe dane.")
+        self.msg.exec_()
 
 
     def DatabaseEigenfaces(self):
         self.fr = FaceRecognitionEigenfaces()
         self.fr.get_images()
         self.fr.get_eigenfaces()
-        self.fr.stochastic_neighbour_embedding()
 
+        self.PlotEigenfacesData()
+
+    def PlotEigenfacesData(self):
+        self.fr.stochastic_neighbour_embedding()
         plotPCAcomponents(self)
         plotEigenfaces(self)
         plotPCA2components(self)
