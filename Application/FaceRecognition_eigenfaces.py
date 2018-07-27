@@ -24,6 +24,11 @@ class FaceRecognitionEigenfaces():
         self.eigenfaces_n = 0.99
         self.image_count = 0
         self.labels = []
+
+        # label containers
+        label_id = -1
+        label_seen = []
+
         imagedir = os.path.join(self.datadir, 'detected_faces')
 
         # Go through all the files and read in image, flatten them and append to matrix
@@ -33,7 +38,10 @@ class FaceRecognitionEigenfaces():
 
             image_matrix.append(np.array(im).flatten())
             self.image_count += 1
-            self.labels.append(int(file.split('_')[1].split('.')[0]))
+            if not label_seen or int(file.split('_')[1].split('.')[0]) not in label_seen:
+                label_id+=1
+                label_seen.append(int(file.split('_')[1].split('.')[0]))
+            self.labels.append(label_id)
         self.image_shape = im.shape[0]
         self.labels = np.array(self.labels)
 
@@ -103,7 +111,7 @@ class FaceRecognitionEigenfaces():
 
     def transfer_image(self, image):
         """Transfers image to multidimensional representation using eigenfaces
-        Input should be flat."""
+        Input must be flat."""
         image = image - self.mean_img.flatten().transpose()
         image = np.matmul(image.T, self.eigenfaces_flat.T)
         return image

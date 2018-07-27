@@ -1,4 +1,4 @@
-from FaceRecognition_ImagePreprocessing import image_cropping, face_recording
+from FaceRecognition_ImagePreprocessing import image_cropping, face_recording, take_image
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from auxiliary.aux_plotting import compare_plot
 
@@ -26,107 +26,69 @@ class EigenfaceRecognitionNewfaces:
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
         self.newfacedir = os.path.join(self.face_data.datadir, 'new_faces_notindetected')
 
-    def find_me_face(self, file_path):
-        """"Find face most similar to the one in file_path."""
 
-        im = np.array(cv.imread(os.path.join(self.face_data.datadir, file_path), 0), dtype='uint8')
-        im = cv.normalize(im, im, 0, 255, cv.NORM_MINMAX)
-        face_to_find = self.face_data.transfer_image(im.flatten())
+    def recognize_face(self, image_path=False):
+        """Check if face can be assigned to some person in the database with some degree of confidence
+        (which is distance of class1 * 1.6 > class2 as we search for the closest class to face).
+        The class is chosen based on return from the 'sum_class_distances' function.
+        Returns:
+            - Find id of the best suited class.
+            - Return True if 'class confidence' is fulfilled and False if not."""
 
-        dist = (self.face_data.face_weights - face_to_find)**2
-        dist = np.sqrt(dist.sum(axis=1))
-        face_found_id = np.argmin(dist)
-
-        reconstructed_face = np.copy(self.face_data.mean_img)
-        reconstructed_face += np.dot(self.face_data.face_weights[face_found_id], self.face_data.eigenfaces_flat)\
-            .reshape(self.face_data.image_shape, self.face_data.image_shape)
-
-        compare_plot(im, self.face_data.image_matrix_flat.T[face_found_id].reshape(86, 86), reconstructed_face)
-
-    def find_me_face_knn(self, file_path):
-
-        im = np.array(cv.imread(os.path.join(self.face_data.datadir, file_path), 0), dtype='uint8')
-        im = cv.normalize(im, im, 0, 255, cv.NORM_MINMAX)
-
-        face_to_find = self.face_data.transfer_image(im.flatten())
-
-        face_recognized, found_id = self.recognize_face(face_to_find)
-
-        if face_recognized:
-
-            reconstructed_face = self.face_data.reconstruct_image(im_id=found_id)
-            compare_plot(im, self.face_data.image_matrix_flat.T[found_id].reshape(86, 86), reconstructed_face)
-
-        else: print('Could not identify the face - hard to distinguish')
-
-    def add__new_face(self, filepath, label=False):
-        im = image_cropping(filepath=os.path.join(self.newfacedir, filepath), findface=False) #!!!
-        im_flat = im.flatten()
-        im_representation = self.face_data.transfer_image(im_flat)
-        face_recognized, found_id = self.recognize_face(im_representation)
-
-        if not face_recognized:
-            print("New face detected or classified improperly")
-        if face_recognized:
-            print("Face was detected. Person in the database.")
-
-        if label:
-            self.add_image2database(im_flat, label)
+        # Get image representation
+        if image_path:
+            image = cv.imread(image_path, 0)
+            image = image_cropping(image)
         else:
-            self.add_image2database(im_flat, found_id)
-
-    def recognize_face(self, image_representation):
-        """Check if face can be assigned to some person in the database.
-        If it can, find id of this person. If it cannot, find free id."""
+            image = take_image()
+        image_representation = efr.face_data.transfer_image(image.flatten())
 
         # fit again in case new data appears
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
         probabilities = self.knn_classifier.predict_proba(image_representation.reshape(1, -1))
         prob_person = np.argsort(probabilities)[0][-3:]
         prob_val = probabilities[0][prob_person]
-        prob_person +=1 # Compensating for the fact that ids begin at 0
 
         isnew = 0
         dist, ids = self.knn_classifier.kneighbors(X=image_representation.reshape(1, -1),
                                                    n_neighbors=5, return_distance=True)
-        person_id = self.face_data.labels[ids]
+        person_ids = self.face_data.labels[ids]
+        candidates_n = len([1 for x in prob_val if x > 0])
 
-        # First elem is list of unique, second are ids
-        face_ids = np.unique(person_id, return_index=True  )[1]
-        # Distances from different people
-        face_distances = [dist.T[x] for x in face_ids]
-        face_distances = face_distances[::-1]
-
-        class_distances = sum_class_distances(dist, person_id)
+        class_distances = sum_class_distances(dist, person_ids)
         class_distances = sorted(class_distances, key=lambda x: x[1])
 
         # If too many candidates
-        unique_propositions = len(np.unique(person_id))
-        if unique_propositions >= 4:
-            isnew = 1
+        if candidates_n == 1:
+            face_found_id = prob_person[-1]
 
-        # If average distance between candidate classes is too small
-        elif len(face_distances)>1:
-            if class_distances[1][1][0] < class_distances[0][1][0] * 1.6:
+        else:
+            # If too many candidates =  not confident
+            if candidates_n >= 4:
                 isnew = 1
 
-        if prob_val[-1] > prob_val[-2]:
-            face_found_id = prob_person[-1]
-        elif prob_val[-1] == prob_val[-2]:
-            if class_distances[0][1][0] < class_distances[1][1][0]:
+            # Check for 'confidence'
+            # If there is more than one candidate
+            elif candidates_n != 1:
+                if class_distances[1][1][0] < class_distances[0][1][0] * 1.6:
+                    isnew = 1
+
+            # if one class more probable pick this one
+            if prob_val[-1] > prob_val[-2]:
                 face_found_id = prob_person[-1]
-            else:
-                face_found_id = prob_person[-2]
+            # If equally probable choose based on distace
+            elif prob_val[-1] == prob_val[-2]:
+                if class_distances[0][1][0] < class_distances[1][1][0]:
+                    face_found_id = prob_person[-1]
+                else:
+                    face_found_id = prob_person[-2]
 
-        # # Nearest neighbour
-        # return person_id[0]
-
-        # Knn nearest
         if isnew:
+            print("Face found without confidence, label = {}".format(face_found_id))
             return False, face_found_id
-            # return False, max(self.face_data.labels) + 1
 
         if not isnew:
+            print("Face found with confidence, label = {}".format(face_found_id))
             return True, face_found_id
 
 
@@ -144,6 +106,7 @@ class EigenfaceRecognitionNewfaces:
 
         for image in data:
             self.add_image2database(image, label)
+        print("Added face with label = {}.".format(label))
 
 
     def add_image2database(self, image, label):
@@ -173,6 +136,7 @@ class EigenfaceRecognitionNewfaces:
 
 
 def sum_class_distances(distances, class_labels):
+    """Sums distances to face from respective classes and calculates the average."""
     un_val = np.unique(class_labels)
     arr = []
     for i in un_val:
@@ -191,10 +155,11 @@ def sum_class_distances(distances, class_labels):
 
 
 if __name__ == "__main__":
-    efr = EigenfaceRecognitionNewfaces(filepath = os.path.join(os.getcwd(), '..', 'Data',
-                                                               'Database\\212images-36people.p'))
+    fr = FaceRecognitionEigenfaces()
+    fr.get_images()
+    fr.get_eigenfaces()
+    fr.save_to_file()
+    efr = EigenfaceRecognitionNewfaces(data=fr)
 
-    efr.add__new_face('ja1.jpg', 999)
-    efr.add__new_face('ja2.jpg', 999)
-    efr.add__new_face('ja3.jpg', 999)
-    efr.add__new_face('ja4.jpg', 999)
+    efr.add_person()
+    efr.recognize_face()

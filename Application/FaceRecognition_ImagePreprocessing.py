@@ -4,6 +4,11 @@ from PyQt5.QtGui import QImage, QPixmap
 
 scale_factor = 1.15
 min_neighbors = 3
+face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+cap = cv.VideoCapture(0)
+cap.set(3, 640)  # WIDTH
+cap.set(4, 480)  # HEIGHT
 
 
 def image_selection():
@@ -13,8 +18,6 @@ def image_selection():
     rootdir = os.getcwd()
     file_dir = os.path.join(rootdir, '..', 'Data', 'raw_faces_data')
     savepath = os.path.join(file_dir, '..', 'detected_faces')
-
-    face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
 
     id = 100
 
@@ -39,20 +42,22 @@ def image_selection():
                 # cv.waitKey(0)
                 # cv.destroyAllWindows()
 
-def image_cropping(im = None, filepath = None, findface = False, save=True):
+def image_cropping(im = None, filepath = None, findface = False, save=False):
     """Read in the image either from file or from image frame from a camera.
     Either save it to file or just return the image."""
     if filepath:
         im = cv.imread(filepath, 0)
 
     if findface:
-        face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
         face = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
         for (x, y, w, h) in face:
             crop_img = im[y:y + h, x:x + w]
+        if len(face) == 0:
+            return False
 
     else:
         crop_img = im[10:100, 2:90]
+
 
     crop_img = cv.resize(crop_img, dsize=(86, 86), interpolation=cv.INTER_CUBIC)
     crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
@@ -69,7 +74,6 @@ def image_cropping(im = None, filepath = None, findface = False, save=True):
 
 def detect_face(filepath):
     im = cv.imread(filepath, 0)
-    face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
     faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
     for (x, y, w, h) in faces:
         cv.rectangle(im, (x, y), (x + w, y + h), (255, 0, 0), 2)
@@ -80,13 +84,10 @@ def detect_face(filepath):
 
 def face_recording(gui=False):
 
-    scale_factor = 1.15
-    min_neighbors = 3
-    cap = cv.VideoCapture(0)
-    cap.set(3, 640)  # WIDTH
-    cap.set(4, 480)  # HEIGHT
+    # scale_factor = 1.15
+    # min_neighbors = 3
 
-    face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
+
     face_data = []
 
     while (len(face_data) < 20):
@@ -119,9 +120,6 @@ def face_recording(gui=False):
         else:
             cv.imshow('frame', frame)
 
-    # When everything done, release the capture
-    cap.release()
-    del cap
     cv.destroyAllWindows()
 
     if gui:
@@ -129,12 +127,31 @@ def face_recording(gui=False):
 
     return face_data
 
+def take_image():
+    while True:
+        ret, frame = cap.read()
+
+        gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        image = image_cropping(im=gray, findface=True)
+        cv.imshow('frame', frame)
+
+        if image is not False:
+            cv.destroyAllWindows()
+
+            break
+
+        if cv.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    return image
+
 
 if __name__ == "__main__":
     # image_selection()
     # image_cropping('s5', '1.pgm')
     # detect_face(r'C:\Users\Aniesia\PycharmProjects\FaceRecognition\Data\\new_faces_notindetected\ja1.jpg')
     face_recording()
+    take_image()
 
 
 
