@@ -116,16 +116,17 @@ class FaceRecognitionEigenfaces():
         image = np.matmul(image.T, self.eigenfaces_flat.T)
         return image
 
-    def reconstruct_image(self, im_id = True, weights = False):
+    def reconstruct_image(self, data, weights = False):
+        """"Take either image_id or weights to reconstruct the image."""
 
         reconstructed_face = np.copy(self.mean_img)
 
-        if im_id:
+        if not weights:
             reconstructed_face = np.copy(self.mean_img)
-            reconstructed_face += np.dot(self.face_weights[im_id], self.eigenfaces_flat) \
+            reconstructed_face += np.dot(self.face_weights[data], self.eigenfaces_flat) \
                 .reshape(self.image_shape, self.image_shape)
-        if weights:
-            reconstructed_face += np.dot(weights, self.eigenfaces_flat) \
+        else:
+            reconstructed_face += np.dot(data, self.eigenfaces_flat) \
                 .reshape(self.image_shape, self.image_shape)
 
         return reconstructed_face

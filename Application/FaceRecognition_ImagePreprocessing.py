@@ -1,6 +1,7 @@
 import cv2 as cv
 import os
 from PyQt5.QtGui import QImage, QPixmap
+import numpy as np
 
 scale_factor = 1.15
 min_neighbors = 3
@@ -127,13 +128,25 @@ def face_recording(gui=False):
 
     return face_data
 
-def take_image():
+def take_image(gui=False):
     while True:
         ret, frame = cap.read()
 
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         image = image_cropping(im=gray, findface=True)
-        cv.imshow('frame', frame)
+
+        if gui:
+            frame = cv.resize(frame, dsize=(320, 240), interpolation=cv.INTER_CUBIC)
+            image_gui = QImage(
+                frame,
+                frame.shape[1],
+                frame.shape[0],
+                frame.shape[1] * 3,
+                QImage.Format_RGB888
+            )
+            gui.IdentifySearchLabel.setPixmap(QPixmap.fromImage(image_gui))
+        else:
+            cv.imshow('frame', frame)
 
         if image is not False:
             cv.destroyAllWindows()

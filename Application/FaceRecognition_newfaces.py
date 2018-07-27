@@ -3,12 +3,10 @@ from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from auxiliary.aux_plotting import compare_plot
 
 
-
 import cv2 as cv
 import os
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
-import matplotlib.pyplot as plt
 import pickle
 
 class EigenfaceRecognitionNewfaces:
@@ -27,7 +25,7 @@ class EigenfaceRecognitionNewfaces:
         self.newfacedir = os.path.join(self.face_data.datadir, 'new_faces_notindetected')
 
 
-    def recognize_face(self, image_path=False):
+    def recognize_face(self, image_path=False, **kwargs):
         """Check if face can be assigned to some person in the database with some degree of confidence
         (which is distance of class1 * 1.6 > class2 as we search for the closest class to face).
         The class is chosen based on return from the 'sum_class_distances' function.
@@ -40,8 +38,13 @@ class EigenfaceRecognitionNewfaces:
             image = cv.imread(image_path, 0)
             image = image_cropping(image)
         else:
-            image = take_image()
-        image_representation = efr.face_data.transfer_image(image.flatten())
+            #Enable inGui plotting
+            gui = kwargs.get('gui', False)
+            if gui:
+                image = take_image(gui)
+            else:
+                image = take_image()
+        image_representation = self.face_data.transfer_image(image.flatten())
 
         # fit again in case new data appears
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
@@ -76,6 +79,10 @@ class EigenfaceRecognitionNewfaces:
             # if one class more probable pick this one
             if prob_val[-1] > prob_val[-2]:
                 face_found_id = prob_person[-1]
+                # If some class was chosen but its images were not the closest
+                # (majority rule decided, but not confident pick)
+                if prob_person[-1] != person_ids[0][0]:
+                    isnew=1
             # If equally probable choose based on distace
             elif prob_val[-1] == prob_val[-2]:
                 if class_distances[0][1][0] < class_distances[1][1][0]:
@@ -83,13 +90,25 @@ class EigenfaceRecognitionNewfaces:
                 else:
                     face_found_id = prob_person[-2]
 
+        #Find closest face for representation
+        # If the closest distance was indicating valid class
+        if person_ids[0][0] == face_found_id:
+            closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0]][0],
+                                      (self.face_data.image_shape, self.face_data.image_shape,))
+            closest_face_id = ids[0][0]
+        else:
+            closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0][1]],
+                                      (self.face_data.image_shape, self.face_data.image_shape,))
+            closest_face_id = ids[0][1]
+
+
         if isnew:
             print("Face found without confidence, label = {}".format(face_found_id))
-            return False, face_found_id
+            return False, face_found_id, image, closest_face, closest_face_id
 
         if not isnew:
             print("Face found with confidence, label = {}".format(face_found_id))
-            return True, face_found_id
+            return True, face_found_id, image, closest_face, closest_face_id
 
 
     def add_person(self, **kwargs):
@@ -162,4 +181,6 @@ if __name__ == "__main__":
     efr = EigenfaceRecognitionNewfaces(data=fr)
 
     efr.add_person()
-    efr.recognize_face()
+    confidence, person_id, im_searched, im_found, im_found_id = efr.recognize_face()
+
+    compare_plot(im_searched, im_found, efr.face_data.reconstruct_image(im_found_id))
