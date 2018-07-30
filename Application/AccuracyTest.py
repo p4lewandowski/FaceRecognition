@@ -25,12 +25,22 @@ def test_accuracy(iterations=10, wavelet=False):
         fr_train.labels = y_train
         fr_train.image_count -= len(y_test)
 
+        # t = [ind for ind, x in enumerate(y_train)if x == 14]
+        # for elem in t:
+        #     plt.imshow(np.reshape(X_train[elem], (86, 86)))
+
         for i, x in enumerate(X_test):
             fr_train.get_eigenfaces()
             efr = EigenfaceRecognitionNewfaces(data=fr_train)
-            x = np.matmul(x.T, fr_train.eigenfaces_flat.T)
+            conf, f_id, im, closest_f, closest_f_id = efr.recognize_face(direct_im=np.reshape(
+                x, (fr_train.image_shape, fr_train.image_shape)))
+            result.append(f_id)
 
-            result.append(efr.recognize_face(x)[1])
+            # plt.subplot(211)
+            # plt.imshow(im, cmap=plt.cm.bone)
+            # plt.subplot(212)
+            # plt.imshow(closest_f, cmap=plt.cm.bone)
+            # plt.show()
 
         precision.append(accuracy_score(y_test, result))
         f1.append(f1_score(y_test, result, average='weighted'))
@@ -47,5 +57,5 @@ def test_accuracy(iterations=10, wavelet=False):
     plt.show()
 
 
-test_accuracy(iterations=10)
-test_accuracy(iterations=10, wavelet=True)
+test_accuracy(iterations=40)
+test_accuracy(iterations=40, wavelet=True)

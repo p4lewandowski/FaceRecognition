@@ -25,7 +25,7 @@ class EigenfaceRecognitionNewfaces:
         self.newfacedir = os.path.join(self.face_data.datadir, 'new_faces_notindetected')
 
 
-    def recognize_face(self, image_path=False, **kwargs):
+    def recognize_face(self, image_path=False, direct_im=False, **kwargs):
         """Check if face can be assigned to some person in the database with some degree of confidence
         (which is distance of class1 * 1.6 > class2 as we search for the closest class to face).
         The class is chosen based on return from the 'sum_class_distances' function.
@@ -34,17 +34,22 @@ class EigenfaceRecognitionNewfaces:
             - Return True if 'class confidence' is fulfilled and False if not."""
 
         # Get image representation
-        if image_path:
-            image = cv.imread(image_path, 0)
-            image = image_cropping(image)
+        if np.any(direct_im):
+            # Mean was already substracted in this case
+            image = direct_im
+            image_representation = np.matmul(image.flatten(), self.face_data.eigenfaces_flat.T)
         else:
-            #Enable inGui plotting
-            gui = kwargs.get('gui', False)
-            if gui:
-                image = take_image(gui)
+            if image_path:
+                image = cv.imread(image_path, 0)
+                image = image_cropping(image)
             else:
-                image = take_image()
-        image_representation = self.face_data.transfer_image(image.flatten())
+                #Enable inGui plotting
+                gui = kwargs.get('gui', False)
+                if gui:
+                    image = take_image(gui)
+                else:
+                    image = take_image()
+            image_representation = self.face_data.transfer_image(image.flatten())
 
         # fit again in case new data appears
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
@@ -61,10 +66,10 @@ class EigenfaceRecognitionNewfaces:
         class_distances = sum_class_distances(dist, person_ids)
         class_distances = sorted(class_distances, key=lambda x: x[1])
 
-        # If too many candidates
+        # If one candidate
         if candidates_n == 1:
             face_found_id = prob_person[-1]
-
+        # If more than one candidate
         else:
             # If too many candidates =  not confident
             if candidates_n >= 4:
@@ -85,7 +90,7 @@ class EigenfaceRecognitionNewfaces:
                     isnew=1
             # If equally probable choose based on distace
             elif prob_val[-1] == prob_val[-2]:
-                if class_distances[0][1][0] < class_distances[1][1][0]:
+                if class_distances[-1][1][0] < class_distances[-2][1][0]:
                     face_found_id = prob_person[-1]
                 else:
                     face_found_id = prob_person[-2]
@@ -93,21 +98,21 @@ class EigenfaceRecognitionNewfaces:
         #Find closest face for representation
         # If the closest distance was indicating valid class
         if person_ids[0][0] == face_found_id:
-            closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0]][0],
+            closest_face = np.reshape(self.face_data.image_matrix_flat.T[ids[0][0]],
                                       (self.face_data.image_shape, self.face_data.image_shape,))
             closest_face_id = ids[0][0]
         else:
-            closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0][1]],
+            closest_face = np.reshape(self.face_data.image_matrix_flat.T[ids[0][1]],
                                       (self.face_data.image_shape, self.face_data.image_shape,))
             closest_face_id = ids[0][1]
 
 
         if isnew:
-            print("Face found without confidence, label = {}".format(face_found_id))
+            # print("Face found without confidence, label = {}".format(face_found_id))
             return False, face_found_id, image, closest_face, closest_face_id
 
         if not isnew:
-            print("Face found with confidence, label = {}".format(face_found_id))
+            # print("Face found with confidence, label = {}".format(face_found_id))
             return True, face_found_id, image, closest_face, closest_face_id
 
 
@@ -160,8 +165,8 @@ def sum_class_distances(distances, class_labels):
     arr = []
     for i in un_val:
         sum = 0
-        count = 0;
-        arr_pos = 0;
+        count = 0
+        arr_pos = 0
         for elem in class_labels[0]:
             if elem==i:
                 sum +=distances[0][arr_pos]
@@ -180,7 +185,7 @@ if __name__ == "__main__":
     fr.save_to_file()
     efr = EigenfaceRecognitionNewfaces(data=fr)
 
-    efr.add_person()
-    confidence, person_id, im_searched, im_found, im_found_id = efr.recognize_face()
+    # efr.add_person()
+    confidence, person_id, im_searched, im_found, im_found_id = efr.recognize_face(image_path='1.pgm-s5_newface.pgm')
 
     compare_plot(im_searched, im_found, efr.face_data.reconstruct_image(im_found_id))
