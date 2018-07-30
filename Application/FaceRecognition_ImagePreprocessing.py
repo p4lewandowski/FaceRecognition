@@ -1,7 +1,7 @@
 import cv2 as cv
 import os
 from PyQt5.QtGui import QImage, QPixmap
-import numpy as np
+import matplotlib.pyplot as plt
 
 scale_factor = 1.15
 min_neighbors = 3
@@ -85,10 +85,6 @@ def detect_face(filepath):
 
 def face_recording(gui=False):
 
-    # scale_factor = 1.15
-    # min_neighbors = 3
-
-
     face_data = []
 
     while (len(face_data) < 20):
@@ -136,7 +132,6 @@ def take_image(gui=False):
         image = image_cropping(im=gray, findface=True)
 
         if gui:
-            frame = cv.resize(frame, dsize=(320, 240), interpolation=cv.INTER_CUBIC)
             image_gui = QImage(
                 frame,
                 frame.shape[1],
@@ -155,6 +150,9 @@ def take_image(gui=False):
 
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
+
+    if gui:
+        gui.IdentifySearchLabel.clear()
 
     return image
 

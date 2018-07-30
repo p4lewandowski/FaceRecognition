@@ -18,7 +18,7 @@ from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from FaceRecognition_newfaces import EigenfaceRecognitionNewfaces
 from FaceRecognition_ImagePreprocessing import face_recording
 from FaceRecognition_plotting import plotReconstructionManual, plotTSNE, plotPCA2components, plotEigenfaces, \
-    plotPCAcomponents, create_plots
+    plotPCAcomponents, create_plots, show_found_face
 
 
 
@@ -43,37 +43,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.IdentifyButton.clicked.connect(self.identifyPerson)
         self.show()
 
-        # self.DatabaseEigenfaces()
-        # confidence, person_id, im_searched, im_found, im_found_id = self.efr.recognize_face(gui=self)
-        #
-        # # Message box
-        # self.msg = QMessageBox()
-        # self.msg.setIcon(QMessageBox.Information)
-        # self.msg.setWindowTitle("Twarz została odnaleziona")
-        # self.msg.setText("Pewnosc jest, nie ma?")
-        # self.msg.exec_()
-        #
-        # # Message box
-        # self.msg = QMessageBox()
-        # self.msg.setIcon(QMessageBox.Information)
-        # self.msg.setWindowTitle("Twarz została odnaleziona")
-        # self.msg.setText("Pewnosc jest, nie ma?")
-        # self.msg.exec_()
-        #
-        # # Transfer numpy arrays to QImages
-        # im_searched = np.array(im_searched).astype(np.int32)
-        # qimage1 = QImage(im_searched, im_searched.shape[0], im_searched.shape[1],
-        #                 QImage.Format_RGB32)
-        # pixmap1 = QPixmap(qimage1)
-        # pixmap1 = pixmap1.scaled(320, 240, Qt.KeepAspectRatio)
-        # self.IdentifySearchLabel.setPixmap(pixmap1)
-        #
-        # qimage2 = QImage(im_found, im_found.shape[1], im_found.shape[0],
-        #                 QImage.Format_RGB888)
-        # pixmap2 = QPixmap(qimage2)
-        # pixmap2 = pixmap2.scaled(320, 240, Qt.KeepAspectRatio)
-        # self.IdentifyFoundLabel.setPixmap(pixmap2)
-
 
     def identifyPerson(self):
         confidence, person_id, im_searched, im_found, im_found_id = self.efr.recognize_face(gui=self)
@@ -82,28 +51,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.msg = QMessageBox()
         self.msg.setIcon(QMessageBox.Information)
         self.msg.setWindowTitle("Twarz została odnaleziona")
-        self.msg.setText("Pewnosc jest, nie ma?")
+        if confidence:
+            self.msg.setText("Twarz została odnaleziona.")
+        else:
+            self.msg.setText("Dodana twarz nie została zaklasyfikowana.\n"
+                             "Nastąpi wyświetlenie najbardziej zbliżonej twarzy.")
         self.msg.exec_()
 
-        # Message box
-        self.msg = QMessageBox()
-        self.msg.setIcon(QMessageBox.Information)
-        self.msg.setWindowTitle("Twarz została odnaleziona")
-        self.msg.setText("Pewnosc jest, nie ma?")
-        self.msg.exec_()
-
-        # Transfer numpy arrays to QImages
-        qimage1 = QImage(im_searched, im_searched.shape[1], im_searched.shape[0],
-                        QImage.Format_RGB888)
-        pixmap1 = QPixmap(qimage1)
-        # pixmap1 = pixmap1.scaled(320, 240, Qt.KeepAspectRatio)
-        self.IdentifySearchLabel.setPixmap(pixmap1)
-
-        qimage2 = QImage(im_searched, im_searched.shape[1], im_searched.shape[0],
-                        QImage.Format_RGB888)
-        pixmap2 = QPixmap(qimage2)
-        # pixmap2 = pixmap2.scaled(320, 240, Qt.KeepAspectRatio)
-        self.IdentifyFoundLabel.setPixmap(pixmap2)
+        show_found_face(im_searched, im_found)
 
 
     def addPerson(self):

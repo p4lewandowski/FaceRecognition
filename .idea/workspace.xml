@@ -19,22 +19,10 @@
           <file leaf-file-name="Gui_code.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Application/Gui_code.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="622">
-                  <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+                <state relative-caret-position="399">
+                  <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#10#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FaceRecognition_newfaces.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="422">
-                  <caret line="67" selection-start-line="67" selection-end-line="67" />
-                  <folding>
-                    <element signature="e#0#89#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -52,26 +40,53 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="aux_plotting.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1257">
-                  <caret line="117" column="37" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="AccuracyTest.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="AccuracyTest.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/AccuracyTest.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="238">
                   <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#64#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FaceRecognition_newfaces.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="508">
+                  <caret line="105" column="69" selection-start-line="105" selection-start-column="69" selection-end-line="105" selection-end-column="69" />
+                  <folding>
+                    <element signature="e#0#89#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FaceRecognition_ImagePreprocessing.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="385">
+                  <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+                  <folding>
+                    <element signature="e#0#16#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FaceRecognition_plotting.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-6">
+                  <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+                  <folding>
+                    <element signature="e#0#80#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -91,7 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ax_s</find>
       <find>QtWidget</find>
       <find>sns</find>
       <find>stocha</find>
@@ -121,6 +135,7 @@
       <find>recognize_face</find>
       <find>shap</find>
       <find>compare</find>
+      <find>recogni</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,11 +179,11 @@
         <option value="$PROJECT_DIR$/Application/Legacy/FaceRecognition_newfaces.py" />
         <option value="$PROJECT_DIR$/Application/Legacy/FaceRecognition_ImagePreprocessing_precamerachange.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces.py" />
-        <option value="$PROJECT_DIR$/Application/FaceRecognition_plotting.py" />
+        <option value="$PROJECT_DIR$/Application/AccuracyTest.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py" />
         <option value="$PROJECT_DIR$/Application/Gui_code.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_plotting.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_newfaces.py" />
-        <option value="$PROJECT_DIR$/Application/AccuracyTest.py" />
       </list>
     </option>
   </component>
@@ -201,6 +216,12 @@
               <item name="FaceRecognition" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="auxiliary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FaceRecognition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FaceRecognition" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI_Components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FaceRecognition" type="b2602c69:ProjectViewProjectNode" />
@@ -265,7 +286,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.AccuracyTest">
+  <component name="RunManager" selected="Python.Gui_code (1)">
     <configuration name="AccuracyTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="FaceRecognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -381,9 +402,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Gui_code (1)" />
         <item itemvalue="Python.AccuracyTest" />
         <item itemvalue="Python.FaceRecognition_newfaces (1)" />
-        <item itemvalue="Python.Gui_code (1)" />
         <item itemvalue="Python.FaceRecognition_eigenfaces" />
         <item itemvalue="Python.FaceRecognition_ImagePreprocessing" />
       </list>
@@ -466,7 +487,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py</url>
-          <line>146</line>
+          <line>141</line>
           <option name="timeStamp" value="308" />
         </line-breakpoint>
       </breakpoints>
@@ -790,25 +811,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="146" column="75" selection-start-line="146" selection-start-column="12" selection-end-line="146" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/111_10.pgm">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Venv/Lib/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="3204" selection-start-line="3204" selection-end-line="3204" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Venv/Lib/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -821,20 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="171" column="8" selection-start-line="171" selection-start-column="8" selection-end-line="171" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1257">
-          <caret line="117" column="37" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -864,22 +854,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
+    <entry file="file://$PROJECT_DIR$/Application/auxiliary/aux_plotting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="314">
+          <caret line="113" column="30" lean-forward="true" selection-start-line="111" selection-start-column="4" selection-end-line="113" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
           <folding>
-            <element signature="e#0#89#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Venv/Lib/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="235" column="4" selection-start-line="235" selection-start-column="4" selection-end-line="235" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Gui_code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+        <state relative-caret-position="399">
+          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_newfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="105" column="69" selection-start-line="105" selection-start-column="69" selection-end-line="105" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#89#0" expanded="true" />
           </folding>
         </state>
       </provider>

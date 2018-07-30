@@ -97,22 +97,23 @@ class EigenfaceRecognitionNewfaces:
 
         #Find closest face for representation
         # If the closest distance was indicating valid class
+        ###
         if person_ids[0][0] == face_found_id:
-            closest_face = np.reshape(self.face_data.image_matrix_flat.T[ids[0][0]],
+            closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0][0]],
                                       (self.face_data.image_shape, self.face_data.image_shape,))
             closest_face_id = ids[0][0]
         else:
-            closest_face = np.reshape(self.face_data.image_matrix_flat.T[ids[0][1]],
+            closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0][1]],
                                       (self.face_data.image_shape, self.face_data.image_shape,))
             closest_face_id = ids[0][1]
 
 
         if isnew:
-            # print("Face found without confidence, label = {}".format(face_found_id))
+            print("Face found without confidence, label = {}".format(face_found_id))
             return False, face_found_id, image, closest_face, closest_face_id
 
         if not isnew:
-            # print("Face found with confidence, label = {}".format(face_found_id))
+            print("Face found with confidence, label = {}".format(face_found_id))
             return True, face_found_id, image, closest_face, closest_face_id
 
 

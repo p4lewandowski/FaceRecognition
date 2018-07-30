@@ -169,3 +169,17 @@ def create_plots(self, parent, toolbar=True):
         toolbar.setParent(parent)
     figure.clear()
     return figure
+
+def show_found_face(image_s, image_f):
+    plt.close('all')
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, num="Rozpoznawanie Twarzy")
+    plt.axis('off')
+    ax1.set_title("Poszukiwana twarz")
+    ax1.imshow(image_s, cmap=plt.cm.bone)
+
+    plt.axis('off')
+    ax2.set_title("Znaleziona twarz")
+    ax2.imshow(image_f, cmap=plt.cm.bone)
+
+    plt.show()
