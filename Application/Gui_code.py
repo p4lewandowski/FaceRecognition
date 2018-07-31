@@ -11,14 +11,13 @@ import cv2 as cv
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.widgets import Slider, Button
 import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import QMessageBox
 
 from GUI_Components.gui import Ui_MainWindow
 from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
 from FaceRecognition_newfaces import EigenfaceRecognitionNewfaces
 from FaceRecognition_ImagePreprocessing import face_recording
 from FaceRecognition_plotting import plotReconstructionManual, plotTSNE, plotPCA2components, plotEigenfaces, \
-    plotPCAcomponents, create_plots, show_found_face
+    plotPCAcomponents, create_plots, show_found_face, create_messagebox
 
 
 
@@ -37,6 +36,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowTitle('Basic Face Recognition System')
         self.setWindowIcon(QIcon('GUI_Components//app_icon.jpg'))
 
+        # Setting up images for database choice
+        pixmap_eigen = QPixmap('GUI_Components\\eigenfaces.png').scaledToWidth(250)
+        self.Eigenfaces_label.setPixmap(pixmap_eigen)
+        pixmap_wavelet = QPixmap('GUI_Components\\wavelet.jpg').scaledToWidth(250)
+        self.Wavelet_label.setPixmap(pixmap_wavelet)
+        pixmap_neural = QPixmap('GUI_Components\\neural_networks_g.jpg').scaledToWidth(250)
+        self.Neuralnetworks_label.setPixmap(pixmap_neural)
+
         # ############### Plot embedded display ################
         self.LearnEigenfaces.clicked.connect(self.DatabaseEigenfaces)
         self.AddPersonButton.clicked.connect(self.addPerson)
@@ -44,34 +51,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.show()
 
 
+
     def identifyPerson(self):
-        confidence, person_id, im_searched, im_found, im_found_id = self.efr.recognize_face(gui=self)
+        try:
+            confidence, person_id, im_searched, im_found, im_found_id = self.efr.recognize_face(gui=self)
+            if confidence:
+                create_messagebox(self, "Twarz została odnaleziona", "Wyświetlona zostanie najbardziej podobna twarz.")
+            else:
+                create_messagebox(self, "Twarz nie została odnaleziona",
+                                  "Dodana twarz nie została zaklasyfikowana.\n"
+                                  "Nastąpi wyświetlenie najbardziej zbliżonej twarzy.")
 
-        # Message box
-        self.msg = QMessageBox()
-        self.msg.setIcon(QMessageBox.Information)
-        self.msg.setWindowTitle("Twarz została odnaleziona")
-        if confidence:
-            self.msg.setText("Twarz została odnaleziona.")
-        else:
-            self.msg.setText("Dodana twarz nie została zaklasyfikowana.\n"
-                             "Nastąpi wyświetlenie najbardziej zbliżonej twarzy.")
-        self.msg.exec_()
-
-        show_found_face(im_searched, im_found)
+            show_found_face(im_searched, im_found)
+        except:
+            create_messagebox(self, "Brak bazy danych", "Wczytaj bazę danych.")
 
 
     def addPerson(self):
-        self.efr.add_person(gui=self)
-        self.PlotEigenfacesData()
-
-        # Message box
-        self.msg = QMessageBox()
-        self.msg.setIcon(QMessageBox.Information)
-        self.msg.setWindowTitle("Dodawanie twarzy zakończone")
-        self.msg.setText("Baza twarzy została zaktualizowana.\nWizualizacja danych zawiera teraz nowe dane.")
-        self.msg.exec_()
-
+        try:
+            self.efr.add_person(gui=self)
+            self.PlotEigenfacesData()
+            create_messagebox(self, "Dodawanie twarzy zakończone",
+                          "Baza twarzy została zaktualizowana.\nWizualizacja danych zawiera teraz nowe dane.")
+        except:
+            create_messagebox(self, "Brak bazy danych", "Wczytaj bazę danych.")
 
     def DatabaseEigenfaces(self):
         self.fr = FaceRecognitionEigenfaces()
@@ -80,6 +83,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.efr = EigenfaceRecognitionNewfaces(data=self.fr)
 
         self.PlotEigenfacesData()
+        create_messagebox(self, "Baza danych została wczytana", "Wizualizacja danych dostępna.")
 
     def PlotEigenfacesData(self):
         self.fr.stochastic_neighbour_embedding()

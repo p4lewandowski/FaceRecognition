@@ -78,7 +78,9 @@ class EigenfaceRecognitionNewfaces:
             # Check for 'confidence'
             # If there is more than one candidate
             elif candidates_n != 1:
-                if class_distances[1][1][0] < class_distances[0][1][0] * 1.6:
+                # If first class not smaller than 0.7 * second class
+                print(class_distances)
+                if class_distances[1][1][0]*0.8 < class_distances[0][1][0]:
                     isnew = 1
 
             # if one class more probable pick this one

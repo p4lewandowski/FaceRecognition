@@ -156,7 +156,6 @@ def take_image(gui=False):
 
     return image
 
-
 if __name__ == "__main__":
     # image_selection()
     # image_cropping('s5', '1.pgm')

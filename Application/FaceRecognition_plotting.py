@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.widgets import Slider, Button
 import matplotlib.pyplot as plt
+from PyQt5.QtWidgets import QMessageBox
 
 
 
@@ -170,16 +171,28 @@ def create_plots(self, parent, toolbar=True):
     figure.clear()
     return figure
 
+def create_messagebox(self, wintitle, text):
+    self.msg = QMessageBox()
+    self.msg.setIcon(QMessageBox.Information)
+    self.msg.setWindowTitle(wintitle)
+    self.msg.setText(text)
+    self.msg.exec_()
+
 def show_found_face(image_s, image_f):
+    # Block popup figures from before
     plt.close('all')
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, num="Rozpoznawanie Twarzy")
-    plt.axis('off')
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True)
+    fig.suptitle("Porównanie twarzy", fontsize=20)
+
     ax1.set_title("Poszukiwana twarz")
     ax1.imshow(image_s, cmap=plt.cm.bone)
+    ax1.set_yticklabels([])
+    ax1.set_xticklabels([])
 
-    plt.axis('off')
     ax2.set_title("Znaleziona twarz")
     ax2.imshow(image_f, cmap=plt.cm.bone)
+    ax2.set_yticklabels([])
+    ax2.set_xticklabels([])
 
     plt.show()
