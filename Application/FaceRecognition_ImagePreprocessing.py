@@ -2,6 +2,7 @@ import cv2 as cv
 import os
 from PyQt5.QtGui import QImage, QPixmap
 import matplotlib.pyplot as plt
+import numpy as np
 
 scale_factor = 1.15
 min_neighbors = 3
@@ -106,13 +107,15 @@ def face_recording(gui=False):
             break
 
         if gui:
+            RGB_image = np.array(cv.cvtColor(frame, cv.COLOR_BGR2RGB))
             image = QImage(
-                frame,
-                frame.shape[1],
-                frame.shape[0],
-                frame.shape[1] * 3,
+                RGB_image,
+                RGB_image.shape[1],
+                RGB_image.shape[0],
+                RGB_image.shape[1] * 3,
                 QImage.Format_RGB888
             )
+
             gui.AddPersonLabel.setPixmap(QPixmap.fromImage(image))
         else:
             cv.imshow('frame', frame)
@@ -132,11 +135,12 @@ def take_image(gui=False):
         image = image_cropping(im=gray, findface=True)
 
         if gui:
+            RGB_image = np.array(cv.cvtColor(frame, cv.COLOR_BGR2RGB))
             image_gui = QImage(
-                frame,
-                frame.shape[1],
-                frame.shape[0],
-                frame.shape[1] * 3,
+                RGB_image,
+                RGB_image.shape[1],
+                RGB_image.shape[0],
+                RGB_image.shape[1] * 3,
                 QImage.Format_RGB888
             )
             gui.IdentifySearchLabel.setPixmap(QPixmap.fromImage(image_gui))

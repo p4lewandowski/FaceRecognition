@@ -1,4 +1,4 @@
-#!C:\Users\Aniesia\PycharmProjects\FaceRecognition\Venv\Scripts\python.exe
+#!c:\users\aniesia\pycharmprojects\facerecognition\venv\scripts\python.exe
 # See http://cens.ioc.ee/projects/f2py2e/
 from __future__ import division, print_function
 
