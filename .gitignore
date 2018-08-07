@@ -2,3 +2,11 @@
 Application/Testing_features/dataset/
 
 Application/Testing_features/filtered_dataset/
+
+Application/Testing_features/my_model_pretrained
+
+Application/Testing_features/my_model_pretrained_night
+
+Application/Testing_features/my_model_trained
+
+Application/Testing_features/my_model_trained_night

@@ -5,6 +5,7 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.widgets import Slider, Button
 import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QIcon
 
 
 
@@ -174,6 +175,7 @@ def create_plots(self, parent, toolbar=True):
 def create_messagebox(self, wintitle, text):
     self.msg = QMessageBox()
     self.msg.setIcon(QMessageBox.Information)
+    self.msg.setWindowIcon(QIcon('GUI_Components//app_icon.jpg'))
     self.msg.setWindowTitle(wintitle)
     self.msg.setText(text)
     self.msg.exec_()

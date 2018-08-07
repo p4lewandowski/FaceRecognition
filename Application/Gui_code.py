@@ -33,14 +33,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         ################## Cosmetic settings ##################
         # Setting up icon and window title
-        self.setWindowTitle('Basic Face Recognition System')
+        self.setWindowTitle('System rozpoznawania twarzy')
         self.setWindowIcon(QIcon('GUI_Components//app_icon.jpg'))
 
         # Setting up images for database choice
         pixmap_eigen = QPixmap('GUI_Components\\eigenfaces.png').scaledToWidth(250)
         self.Eigenfaces_label.setPixmap(pixmap_eigen)
-        pixmap_wavelet = QPixmap('GUI_Components\\wavelet.jpg').scaledToWidth(250)
-        self.Wavelet_label.setPixmap(pixmap_wavelet)
         pixmap_neural = QPixmap('GUI_Components\\neural_networks_g.jpg').scaledToWidth(250)
         self.Neuralnetworks_label.setPixmap(pixmap_neural)
 
@@ -48,29 +46,40 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.LearnEigenfaces.clicked.connect(self.DatabaseEigenfaces)
         self.AddPersonButton.clicked.connect(self.addPerson)
         self.IdentifyButton.clicked.connect(self.identifyPerson)
+        self.WelcomeButton.clicked.connect(self.turnDatabaseTab)
         self.show()
 
 
+    def turnDatabaseTab(self):
+        self.tabWidget.setCurrentIndex(1)
 
     def identifyPerson(self):
         try:
-            confidence, person_id, im_searched, im_found, im_found_id = self.efr.recognize_face(gui=self)
-            if confidence:
-                create_messagebox(self, "Twarz została odnaleziona", "Wyświetlona zostanie najbardziej podobna twarz.")
-            else:
-                create_messagebox(self, "Twarz nie została odnaleziona",
-                                  "Dodana twarz nie została zaklasyfikowana.\n"
-                                  "Nastąpi wyświetlenie najbardziej zbliżonej twarzy.")
+            if self.iden_radio_eigen.isChecked():
+                confidence, person_id, im_searched, im_found, im_found_id = self.efr.recognize_face(gui=self)
+                if confidence:
+                    create_messagebox(self, "Twarz została odnaleziona",
+                                      "Wyświetlona zostanie najbardziej podobna twarz.")
+                else:
+                    create_messagebox(self, "Twarz nie została odnaleziona",
+                                      "Dodana twarz nie została zaklasyfikowana.\n"
+                                      "Nastąpi wyświetlenie najbardziej zbliżonej twarzy.")
 
-            show_found_face(im_searched, im_found)
+                show_found_face(im_searched, im_found)
+            if self.iden_radio_nn.isChecked():
+                pass
         except:
             create_messagebox(self, "Brak bazy danych", "Wczytaj bazę danych.")
 
 
     def addPerson(self):
         try:
-            self.efr.add_person(gui=self)
-            self.PlotEigenfacesData()
+            if self.add_radio_eigen.isChecked():
+                self.efr.add_person(gui=self)
+                self.PlotEigenfacesData()
+            if self.add_radio_nn.isChecked():
+                pass
+
             create_messagebox(self, "Dodawanie twarzy zakończone",
                           "Baza twarzy została zaktualizowana.\nWizualizacja danych zawiera teraz nowe dane.")
         except:

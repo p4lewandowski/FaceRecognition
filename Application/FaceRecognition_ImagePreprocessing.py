@@ -84,24 +84,39 @@ def detect_face(filepath):
     cv.destroyAllWindows()
 
 
-def face_recording(gui=False):
+def face_recording(gui=False, im_count=20, idle=True):
+    """Take images from camera and return array with all the cropped images collected where face was detected.
+        gui - if displaying in gui enabled
+        im_count - how many images to take
+        idle - if enabled - give some 'free' frames before image processing takes place"""
 
     face_data = []
+    #enable some idle time (number of frames without computations)
+    if idle:
+        idle = 50
 
-    while (len(face_data) < 20):
+    while (len(face_data) < im_count):
         # Capture frame-by-frame
         ret, frame = cap.read()
         # Our operations on the frame come here
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors)
-        # Display the resulting frame
-        for (x, y, w, h) in faces:
+        # If there are any faces at all
+        if np.any(faces):
+            # Take the biggest found face
+            (x, y, w, h) = faces[0]
+            for i, coord in enumerate(faces):
+                if coord[2] > w:
+                    (x, y, w, h) = coord
+
+            # Display rectangle where face is detected
             cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-            roi_gray = gray[y:y + h, x:x + w]
-            roi_color = frame[y:y + h, x:x + w]
-            im = image_cropping(im=gray, findface=True, save=False)
-            face_data.append(im)
-            break
+
+            if idle:
+                idle -=1
+            else:
+                im = image_cropping(im=gray, findface=True, save=False)
+                face_data.append(im)
 
         if cv.waitKey(1) & 0xFF == ord('q'):
             break

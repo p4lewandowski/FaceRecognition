@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>793</width>
-    <height>615</height>
+    <height>616</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,69 +30,110 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="WelcomeTab">
        <attribute name="title">
         <string>Witaj</string>
        </attribute>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>20</y>
-          <width>331</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>System rozpoznawania twarzy v0.2</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="WelcomeButton">
-        <property name="geometry">
-         <rect>
-          <x>310</x>
-          <y>300</y>
-          <width>151</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Stwórz Bazę</string>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>System rozpoznawania twarzy v0.4</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="WelcomeButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1000</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Stwórz Bazę</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTextEdit" name="textEdit">
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Rozpoznawanie twarzy umożliwia identyfikację osób na podstawie wykonanego zdjęcia twarzy. System rozpoznawania twarzy posiada zbiór danych nt. zidentyfikowanych osób, dzięki którym może określić czy nowo dodane zdjęcie należy do osoby z danego zbioru (a jeśli tak, to do której), czy też jest ono fotografią kogoś zupełnie nowego. W tej aplikacji zostały zaimplementowane dwie metody rozpoznawania twarzy:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1. Jedną z pierwszych metod umożliwiających stosunkowo skuteczne rozpoznawanie twarzy była metoda &amp;quot;twarzy własnych&amp;quot; (ang. Eigenfaces). Umożliwiła ona reprezentację twarzy jako punkt w przestrzeni wielowymiarowej używając metody PCA, redukując ilość danych potrzebnych do opisania twarzy. Baza danych zostanie stworzona po naciśnięciu &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Stwórz bazę &amp;gt;&amp;gt; Twarze własne&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;. &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Zidentyfikuj osobę&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; znajdzie najbardziej podobną twarz z bazy do nowo dodanej. &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;&amp;quot;Dodaj osobę&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; umożliwi dodanie nowej osoby do bazy danych.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2. Sieci neuronowe są popularnym narzędziem do rozpoznawania i klasyfikacji wzorców dlatego też są skuteczną techniką w rozpoznawaniu twarzy. Aby móc rozpoznawać twarze należy w pierwszej kolejności dodać osoby z dużą liczbą zdjęć, na których sieć będzie się uczyć. Następnie, po skończonym procesie uczenia, rozpoznawanie twarzy jest możliwe.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="TrainTab">
        <attribute name="title">
         <string>Stwórz bazę</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="2" column="3">
-         <widget class="QLabel" name="Neuralnetworks_label">
-          <property name="minimumSize">
+        <item row="2" column="4">
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
            <size>
-            <width>250</width>
-            <height>0</height>
+            <width>120</width>
+            <height>20</height>
            </size>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>250</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
+         </spacer>
         </item>
-        <item row="2" column="1">
+        <item row="2" column="8">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="3">
          <widget class="QLabel" name="Eigenfaces_label">
           <property name="minimumSize">
            <size>
@@ -102,7 +143,7 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>250</width>
+            <width>500</width>
             <height>500</height>
            </size>
           </property>
@@ -111,24 +152,8 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="1">
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>30</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="2">
-         <widget class="QLabel" name="Wavelet_label">
+        <item row="2" column="5">
+         <widget class="QLabel" name="Neuralnetworks_label">
           <property name="minimumSize">
            <size>
             <width>250</width>
@@ -137,7 +162,7 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>250</width>
+            <width>500</width>
             <height>16777215</height>
            </size>
           </property>
@@ -146,7 +171,39 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="1" colspan="3">
+        <item row="2" column="2">
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>45</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="1">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="2" colspan="6">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QPushButton" name="LearnEigenfaces">
@@ -162,17 +219,20 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="LearnWavelet">
-            <property name="minimumSize">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
              <size>
-              <width>0</width>
-              <height>40</height>
+              <width>40</width>
+              <height>20</height>
              </size>
             </property>
-            <property name="text">
-             <string>Transformacja falkowa</string>
-            </property>
-           </widget>
+           </spacer>
           </item>
           <item>
            <widget class="QPushButton" name="LearnNetworks">
@@ -189,7 +249,23 @@
           </item>
          </layout>
         </item>
-        <item row="0" column="1" colspan="3">
+        <item row="2" column="7">
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>50</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2" colspan="6">
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
@@ -202,6 +278,22 @@
            <string>Stwórz bazę i reprezentacje twarzy z wykorzystaniem różnych metod</string>
           </property>
          </widget>
+        </item>
+        <item row="5" column="1" colspan="8">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>30</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -249,11 +341,30 @@
         <string>Dodaj osobę</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="4" column="2">
+        <item row="11" column="2">
+         <widget class="QLabel" name="AddPersonLabel">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1000</width>
+            <height>10000</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2" colspan="2">
          <widget class="QLabel" name="label_3">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>650</width>
             <height>50</height>
            </size>
           </property>
@@ -277,7 +388,26 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
+        <item row="5" column="2" colspan="2">
+         <widget class="QPushButton" name="AddPersonButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>800</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>START</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2" colspan="3">
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -293,42 +423,30 @@
           </property>
          </spacer>
         </item>
-        <item row="10" column="2">
-         <widget class="QLabel" name="AddPersonLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
+        <item row="4" column="4" rowspan="2">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Do bazy danych:</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>1000</width>
-            <height>10000</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QPushButton" name="AddPersonButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>565</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>START</string>
-          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QRadioButton" name="add_radio_eigen">
+             <property name="text">
+              <string>Twarze własne</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="add_radio_nn">
+             <property name="text">
+              <string>Sieci neuronowe</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -338,21 +456,32 @@
         <string>Zidentyfikuj osobę</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>40</height>
+            <width>650</width>
+            <height>50</height>
            </size>
           </property>
-         </spacer>
+          <property name="maximumSize">
+           <size>
+            <width>600</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>      Po wciśnięciu klawisza START nastąpi wykonanie jednego zdjęcia bezpośrednio po
+detekcji twarzy. Następnie zostanie wyświetlona informacja o statusie wykrycia twarzy.</string>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="IdentifySearchLabel">
@@ -373,44 +502,59 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>600</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>   Po wciśnięciu klawisza START nastąpi wykonanie jednego zdjęcia bezpośrednio po
-detekcji twarzy. Następnie zostanie wyświetlona informacja o statusie wykrycia twarzy.</string>
-          </property>
-         </widget>
-        </item>
         <item row="2" column="0">
          <widget class="QPushButton" name="IdentifyButton">
           <property name="maximumSize">
            <size>
-            <width>565</width>
+            <width>700</width>
             <height>16777215</height>
            </size>
           </property>
           <property name="text">
            <string>START</string>
           </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1" rowspan="2">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Do bazy danych:</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QRadioButton" name="iden_radio_eigen">
+             <property name="text">
+              <string>Twarze własne</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="iden_radio_nn">
+             <property name="text">
+              <string>Sieci neuronowe</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
