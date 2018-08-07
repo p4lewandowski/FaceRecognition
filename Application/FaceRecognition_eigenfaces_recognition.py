@@ -1,7 +1,5 @@
-from FaceRecognition_ImagePreprocessing import image_cropping, face_recording, take_image
-from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
-from auxiliary.aux_plotting import compare_plot
-
+from FaceRecognition_imagepreprocessing import image_cropping, face_recording, take_image
+from FaceRecognition_eigenfaces_core import FaceRecognitionEigenfaces
 
 import cv2 as cv
 import os
@@ -9,7 +7,7 @@ import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 import pickle
 
-class EigenfaceRecognitionNewfaces:
+class EigenfaceRecognition:
 
     face_data = None
 
@@ -186,9 +184,8 @@ if __name__ == "__main__":
     fr.get_images()
     fr.get_eigenfaces()
     fr.save_to_file()
-    efr = EigenfaceRecognitionNewfaces(data=fr)
-
+    efr = EigenfaceRecognition(data=fr)
     # efr.add_person()
-    confidence, person_id, im_searched, im_found, im_found_id = efr.recognize_face(image_path='1.pgm-s5_newface.pgm')
+    # confidence, person_id, im_searched, im_found, im_found_id =
+    #  efr.recognize_face(image_path='1.pgm-s5_newface.pgm')
 
-    compare_plot(im_searched, im_found, efr.face_data.reconstruct_image(im_found_id))

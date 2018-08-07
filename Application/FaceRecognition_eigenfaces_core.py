@@ -1,7 +1,3 @@
-from auxiliary.aux_plotting import reconstruction_fast, plot_eigenfaces, \
-    reconstruction, plot_faces_2components, compare_plot, reconstruction_manual, \
-    plot_tsne, plot_eigenfaces_variance
-
 from sklearn.preprocessing import StandardScaler
 import cv2 as cv
 import os
@@ -24,6 +20,11 @@ class FaceRecognitionEigenfaces():
         self.eigenfaces_n = 0.99
         self.image_count = 0
         self.labels = []
+
+        # label containers
+        label_id = -1
+        label_seen = []
+
         imagedir = os.path.join(self.datadir, 'detected_faces')
 
         # Go through all the files and read in image, flatten them and append to matrix
@@ -33,7 +34,10 @@ class FaceRecognitionEigenfaces():
 
             image_matrix.append(np.array(im).flatten())
             self.image_count += 1
-            self.labels.append(int(file.split('_')[1].split('.')[0]))
+            if not label_seen or int(file.split('_')[1].split('.')[0]) not in label_seen:
+                label_id+=1
+                label_seen.append(int(file.split('_')[1].split('.')[0]))
+            self.labels.append(label_id)
         self.image_shape = im.shape[0]
         self.labels = np.array(self.labels)
 
@@ -103,34 +107,25 @@ class FaceRecognitionEigenfaces():
 
     def transfer_image(self, image):
         """Transfers image to multidimensional representation using eigenfaces
-        Input should be flat."""
+        Input must be flat."""
         image = image - self.mean_img.flatten().transpose()
         image = np.matmul(image.T, self.eigenfaces_flat.T)
         return image
 
-    def reconstruct_image(self, im_id = True, weights = False):
+    def reconstruct_image(self, data, weights = False):
+        """"Take either image_id or weights to reconstruct the image."""
 
         reconstructed_face = np.copy(self.mean_img)
 
-        if im_id:
+        if not weights:
             reconstructed_face = np.copy(self.mean_img)
-            reconstructed_face += np.dot(self.face_weights[im_id], self.eigenfaces_flat) \
+            reconstructed_face += np.dot(self.face_weights[data], self.eigenfaces_flat) \
                 .reshape(self.image_shape, self.image_shape)
-        if weights:
-            reconstructed_face += np.dot(weights, self.eigenfaces_flat) \
+        else:
+            reconstructed_face += np.dot(data, self.eigenfaces_flat) \
                 .reshape(self.image_shape, self.image_shape)
 
         return reconstructed_face
-
-    def show_me_things(self):
-        # Plots
-        plot_eigenfaces(self)
-        plot_eigenfaces_variance(self)
-        plot_faces_2components(self)
-        plot_tsne(self)
-        reconstruction(self)
-        reconstruction_fast(self)
-        reconstruction_manual(self)
 
     def save_to_file(self):
         dbdir = os.path.join(self.datadir,'Database')

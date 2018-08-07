@@ -1,7 +1,6 @@
 import cv2 as cv
 import os
 from PyQt5.QtGui import QImage, QPixmap
-import matplotlib.pyplot as plt
 import numpy as np
 
 scale_factor = 1.15
@@ -44,25 +43,46 @@ def image_selection():
                 # cv.waitKey(0)
                 # cv.destroyAllWindows()
 
-def image_cropping(im = None, filepath = None, findface = False, save=False):
+def detect_face(filepath):
+    im = cv.imread(filepath, 0)
+    faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
+    for (x, y, w, h) in faces:
+        cv.rectangle(im, (x, y), (x + w, y + h), (255, 0, 0), 2)
+    cv.imshow('img', im)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
+def image_cropping(im = None, cnn=False, filepath = None, save=False):
     """Read in the image either from file or from image frame from a camera.
     Either save it to file or just return the image."""
     if filepath:
         im = cv.imread(filepath, 0)
 
-    if findface:
-        face = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
-        for (x, y, w, h) in face:
-            crop_img = im[y:y + h, x:x + w]
-        if len(face) == 0:
+    else:
+        faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
+        if np.any(faces):
+            # Take the biggest found face
+            (x, y, w, h) = faces[0]
+            for i, coord in enumerate(faces):
+                if coord[2] > w:
+                    (x, y, w, h) = coord
+
+            # If cnn is used we require bigger image, not only face
+            if cnn:
+                bias = 15
+                crop_img = im[y-bias:y + h + bias, x-bias:x + w + bias]
+                crop_img = cv.resize(crop_img, dsize=(180, 180), interpolation=cv.INTER_CUBIC)
+                crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
+                crop_img = crop_img / 255.
+
+            else:
+                crop_img = im[y:y + h, x:x + w]
+                crop_img = cv.resize(crop_img, dsize=(86, 86), interpolation=cv.INTER_CUBIC)
+                crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
+
+        if len(faces) == 0:
             return False
 
-    else:
-        crop_img = im[10:100, 2:90]
-
-
-    crop_img = cv.resize(crop_img, dsize=(86, 86), interpolation=cv.INTER_CUBIC)
-    crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
 
     if save:
         if filepath:
@@ -74,26 +94,17 @@ def image_cropping(im = None, filepath = None, findface = False, save=False):
 
     return crop_img
 
-def detect_face(filepath):
-    im = cv.imread(filepath, 0)
-    faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
-    for (x, y, w, h) in faces:
-        cv.rectangle(im, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    cv.imshow('img', im)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
 
-
-def face_recording(gui=False, im_count=20, idle=True):
+def face_recording(gui=False, im_count=20, idle=True, cnn=False):
     """Take images from camera and return array with all the cropped images collected where face was detected.
         gui - if displaying in gui enabled
         im_count - how many images to take
         idle - if enabled - give some 'free' frames before image processing takes place"""
 
     face_data = []
-    #enable some idle time (number of frames without computations)
+    # Enable some idle time (number of frames without computations)
     if idle:
-        idle = 50
+        idle = 20
 
     while (len(face_data) < im_count):
         # Capture frame-by-frame
@@ -102,21 +113,16 @@ def face_recording(gui=False, im_count=20, idle=True):
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors)
         # If there are any faces at all
-        if np.any(faces):
-            # Take the biggest found face
-            (x, y, w, h) = faces[0]
-            for i, coord in enumerate(faces):
-                if coord[2] > w:
-                    (x, y, w, h) = coord
-
+        for (x, y, w, h) in faces:
             # Display rectangle where face is detected
             cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-            if idle:
-                idle -=1
-            else:
-                im = image_cropping(im=gray, findface=True, save=False)
+            if not idle:
+                im = image_cropping(im=gray, save=False, cnn=cnn)
                 face_data.append(im)
+
+        if idle:
+            idle -= 1
 
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
@@ -130,7 +136,6 @@ def face_recording(gui=False, im_count=20, idle=True):
                 RGB_image.shape[1] * 3,
                 QImage.Format_RGB888
             )
-
             gui.AddPersonLabel.setPixmap(QPixmap.fromImage(image))
         else:
             cv.imshow('frame', frame)
@@ -142,12 +147,17 @@ def face_recording(gui=False, im_count=20, idle=True):
 
     return face_data
 
-def take_image(gui=False):
+def take_image(gui=False, idle=True, cnn=False):
+    """The closest, biggest face will be considered"""
+    if idle:
+        idle=20
+
     while True:
         ret, frame = cap.read()
-
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-        image = image_cropping(im=gray, findface=True)
+
+        if idle:
+            idle -= 1
 
         if gui:
             RGB_image = np.array(cv.cvtColor(frame, cv.COLOR_BGR2RGB))
@@ -162,10 +172,11 @@ def take_image(gui=False):
         else:
             cv.imshow('frame', frame)
 
-        if image is not False:
-            cv.destroyAllWindows()
-
-            break
+        if not idle:
+            image = image_cropping(im=gray)
+            if image is not False:
+                cv.destroyAllWindows()
+                break
 
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
@@ -175,11 +186,10 @@ def take_image(gui=False):
 
     return image
 
+
+
 if __name__ == "__main__":
-    # image_selection()
-    # image_cropping('s5', '1.pgm')
-    # detect_face(r'C:\Users\Aniesia\PycharmProjects\FaceRecognition\Data\\new_faces_notindetected\ja1.jpg')
-    face_recording()
+    face_recording(cnn=True)
     take_image()
 
 

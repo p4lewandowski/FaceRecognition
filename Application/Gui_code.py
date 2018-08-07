@@ -1,25 +1,12 @@
 import sys
-
-from PyQt5.QtGui import QIcon, QImage, QPixmap
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtCore import Qt
-
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-import numpy as np
-import cv2 as cv
-from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-from matplotlib.widgets import Slider, Button
-import matplotlib.pyplot as plt
 
 from GUI_Components.gui import Ui_MainWindow
-from FaceRecognition_eigenfaces import FaceRecognitionEigenfaces
-from FaceRecognition_newfaces import EigenfaceRecognitionNewfaces
-from FaceRecognition_ImagePreprocessing import face_recording
+from FaceRecognition_eigenfaces_core import FaceRecognitionEigenfaces
+from FaceRecognition_eigenfaces_recognition import EigenfaceRecognition
 from FaceRecognition_plotting import plotReconstructionManual, plotTSNE, plotPCA2components, plotEigenfaces, \
     plotPCAcomponents, create_plots, show_found_face, create_messagebox
-
-
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -89,7 +76,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.fr = FaceRecognitionEigenfaces()
         self.fr.get_images()
         self.fr.get_eigenfaces()
-        self.efr = EigenfaceRecognitionNewfaces(data=self.fr)
+        self.efr = EigenfaceRecognition(data=self.fr)
 
         self.PlotEigenfacesData()
         create_messagebox(self, "Baza danych została wczytana", "Wizualizacja danych dostępna.")

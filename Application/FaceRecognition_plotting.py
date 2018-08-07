@@ -112,6 +112,9 @@ def plotTSNE(self):
 
 
 def plotPCA2components(self):
+    # Close previously created plots
+    plt.close('all')
+    # Create new ones
     figure = create_plots(self, self.Visualization2PCATab)
     face_weights_plot = np.matmul(self.fr.image_matrix_flat.transpose(),
                                   self.fr.eigenfaces_flat[:2].transpose()).transpose()
