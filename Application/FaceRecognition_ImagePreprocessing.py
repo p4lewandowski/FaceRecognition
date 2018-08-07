@@ -59,6 +59,9 @@ def image_cropping(im = None, cnn=False, filepath = None, save=False):
         im = cv.imread(filepath, 0)
 
     else:
+        if cnn:
+            im_init = im
+            im = cv.cvtColor(im, cv.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
         if np.any(faces):
             # Take the biggest found face
@@ -70,7 +73,7 @@ def image_cropping(im = None, cnn=False, filepath = None, save=False):
             # If cnn is used we require bigger image, not only face
             if cnn:
                 bias = 15
-                crop_img = im[y-bias:y + h + bias, x-bias:x + w + bias]
+                crop_img = im_init[y-bias:y + h + bias, x-bias:x + w + bias]
                 crop_img = cv.resize(crop_img, dsize=(180, 180), interpolation=cv.INTER_CUBIC)
                 crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
                 crop_img = crop_img / 255.
@@ -117,9 +120,17 @@ def face_recording(gui=False, im_count=20, idle=True, cnn=False):
             # Display rectangle where face is detected
             cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
+            # If idle time has ended
             if not idle:
-                im = image_cropping(im=gray, save=False, cnn=cnn)
-                face_data.append(im)
+                # if eigenfaces
+                if not cnn:
+                    im = image_cropping(im=gray, save=False, cnn=cnn)
+                # if cnn
+                if cnn:
+                    im = image_cropping(im=frame, save=False, cnn=cnn)
+                # if face was detected and image was cropped
+                if np.any(im):
+                    face_data.append(im)
 
         if idle:
             idle -= 1

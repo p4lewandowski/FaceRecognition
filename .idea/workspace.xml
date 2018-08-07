@@ -19,8 +19,8 @@
           <file leaf-file-name="Gui_code.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/Gui_code.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+                <state relative-caret-position="221">
+                  <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#10#0" expanded="true" />
                   </folding>
@@ -28,34 +28,37 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CNN.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CNN.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Application/Testing_features/CNN.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FaceRecognition_plotting.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-714">
-                  <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
+                <state relative-caret-position="433">
+                  <caret line="103" column="37" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="37" />
                   <folding>
-                    <element signature="e#0#80#0" expanded="true" />
+                    <element signature="e#0#30#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FaceRecognition_imagepreprocessing.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FaceRecognition_imagepreprocessing.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_imagepreprocessing.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="536">
-                  <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+                <state relative-caret-position="365">
+                  <caret line="144" column="35" lean-forward="true" selection-start-line="144" selection-start-column="35" selection-end-line="144" selection-end-column="35" />
                   <folding>
                     <element signature="e#0#16#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FaceRecognition_eigenfaces_recognition.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="229">
+                  <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+                  <folding>
+                    <element signature="e#0#89#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -65,13 +68,13 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="FaceRecognition_eigenfaces_recognition.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py">
+          <file leaf-file-name="FaceRecognition_cnn.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_cnn.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="386">
-                  <caret line="150" column="40" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="40" />
+                <state relative-caret-position="328">
+                  <caret line="126" column="18" lean-forward="true" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
                   <folding>
-                    <element signature="e#0#89#0" expanded="true" />
+                    <element signature="e#0#30#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -91,12 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ident</find>
-      <find>format</find>
-      <find>mean</find>
-      <find>recog</find>
-      <find>recognize_face</find>
-      <find>shap</find>
       <find>compare</find>
       <find>recogni</find>
       <find>exec_</find>
@@ -121,6 +118,12 @@
       <find>findfa</find>
       <find>find</find>
       <find>image_c</find>
+      <find>nb_class</find>
+      <find>kwar</find>
+      <find>to_categorical</find>
+      <find>categ</find>
+      <find>train_generator</find>
+      <find>false</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,11 +173,11 @@
         <option value="$PROJECT_DIR$/Application/Testing_features/CNN_read.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py" />
         <option value="$PROJECT_DIR$/Application/Gui_code.py" />
-        <option value="$PROJECT_DIR$/Application/FaceRecognition_cnn.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py" />
-        <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_plotting.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py" />
         <option value="$PROJECT_DIR$/Application/FaceRecognition_imagepreprocessing.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_cnn.py" />
       </list>
     </option>
   </component>
@@ -255,24 +258,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.Gui_code (1)">
-    <configuration name="CNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="FaceRecognition" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Application/Testing_features" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/Testing_features/CNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="CNN_read" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="FaceRecognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -304,6 +289,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Users\Aniesia\PycharmProjects\FaceRecognition\Application\FaceRecognition_imagepreprocessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="FaceRecognition_cnn" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FaceRecognition" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Application" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/FaceRecognition_cnn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -363,18 +366,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.Gui_code (1)" />
-      <item itemvalue="Python.CNN" />
       <item itemvalue="Python.FaceRecognition_ImagePreprocessing" />
       <item itemvalue="Python.CNN_read" />
       <item itemvalue="Python.FaceRecognition_imagepreprocessing" />
+      <item itemvalue="Python.FaceRecognition_cnn" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Gui_code (1)" />
+        <item itemvalue="Python.FaceRecognition_cnn" />
         <item itemvalue="Python.FaceRecognition_imagepreprocessing" />
         <item itemvalue="Python.FaceRecognition_ImagePreprocessing" />
         <item itemvalue="Python.CNN_read" />
-        <item itemvalue="Python.CNN" />
       </list>
     </recent_temporary>
   </component>
@@ -409,7 +412,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32985386" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.19102296" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.28496867" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32672232" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -463,6 +466,11 @@
           <line>61</line>
           <option name="timeStamp" value="363" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Application/FaceRecognition_cnn.py</url>
+          <line>132</line>
+          <option name="timeStamp" value="382" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -471,18 +479,8 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="373" />
+      <option name="time" value="383" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="faces[0]" language="Python" />
-        <watch expression="faces.sort()" language="Python" />
-        <watch expression="np.sort(faces)" language="Python" />
-        <watch expression="sorted(faces)" language="Python" />
-        <watch expression="sorted(faces, key=lambda tup: tup[3], reverse=True)" language="Python" />
-        <watch expression="sorted(len(faces), key=lambda tup: tup[3])" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -546,13 +544,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Venv/Lib/site-packages/matplotlib/axes/_axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2354">
-          <caret line="2021" column="8" selection-start-line="2021" selection-start-column="8" selection-end-line="2021" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Venv/Lib/site-packages/matplotlib/figure.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-472">
@@ -783,13 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="1657" selection-start-line="1657" selection-end-line="1657" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../venv-python36-x64/Lib/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -801,13 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv-python36-x64/Lib/site-packages/keras_preprocessing/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="1365" selection-start-line="1365" selection-end-line="1365" />
         </state>
       </provider>
     </entry>
@@ -834,9 +811,6 @@
     <entry file="file://$PROJECT_DIR$/Application/1.pgm-s5_newface.pgm">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_cnn.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Legacy_07.08/Legacy/FaceRecognition_eigenfaces.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -844,46 +818,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="150" column="40" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Gui_code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Testing_features/CNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
+        <state relative-caret-position="-255">
           <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
           <folding>
             <element signature="e#0#80#0" expanded="true" />
@@ -891,12 +828,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1751">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Gui_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="1657" selection-start-line="1657" selection-end-line="1657" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_imagepreprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+        <state relative-caret-position="365">
+          <caret line="144" column="35" lean-forward="true" selection-start-line="144" selection-start-column="35" selection-end-line="144" selection-end-column="35" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv-python36-x64/Lib/site-packages/keras_preprocessing/image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="826" selection-start-line="826" selection-end-line="826" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="1484" selection-start-line="1484" selection-end-line="1484" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Testing_features/CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="103" column="37" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="126" column="18" lean-forward="true" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>

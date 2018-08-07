@@ -43,10 +43,7 @@ class EigenfaceRecognition:
             else:
                 #Enable inGui plotting
                 gui = kwargs.get('gui', False)
-                if gui:
-                    image = take_image(gui)
-                else:
-                    image = take_image()
+                image = take_image(gui=gui)
             image_representation = self.face_data.transfer_image(image.flatten())
 
         # fit again in case new data appears
