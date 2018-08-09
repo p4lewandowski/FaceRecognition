@@ -5,28 +5,22 @@ from keras_vggface.vggface import VGGFace
 from keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from FaceRecognition_imagepreprocessing import image_cropping, face_recording, take_image
+from FaceRecognition_imagepreprocessing import face_recording, take_image
 
-from keras import models
-import cv2 as cv
 import numpy as np
 from keras import optimizers
-import os
 import time, datetime
 
-class cnn_model:
+class Cnn_model:
 
     # Initial parameters
     label_id = []
     img_data = []
     index = 0
-    # Change the batchsize according to RAM amount
-    train_batchsize = 64
-    val_batchsize = 5
     # Custom parameters
     nb_class = 0
     hidden_dim = 512
-    epochs_num = 20
+    epochs_num = 2
 
     def initialize_networkmodel(self):
 
@@ -78,6 +72,10 @@ class cnn_model:
             fill_mode='nearest')
         validation_datagen = ImageDataGenerator()
 
+        # Batchsize parameters
+        self.train_batchsize = int(round(len(X_train)/10))
+        self.val_batchsize = self.train_batchsize
+
         self.train_generator = train_datagen.flow(
             X_train,
             y_train,
@@ -101,7 +99,15 @@ class cnn_model:
             verbose=1)
 
         self.custom_vgg_model.save('trained_model_{}'.format(
-            datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d%H:%M:%S')))
+            datetime.datetime.fromtimestamp(time.time()).strftime('%Y%m%d_%H%M%S')))
+
+    def recognize_face(self, gui=False):
+        try:
+            assert self.custom_vgg_model
+        except:
+            raise AttributeError()
+        image = take_image(gui=gui, cnn=True)
+        print(np.argmax(self.custom_vgg_model.predict(np.expand_dims(image, axis=0))))
 
     def accuracy_statistics(self):
         ##### Show results #####
@@ -109,27 +115,33 @@ class cnn_model:
         val_acc = self.history.history['val_acc']
         loss = self.history.history['loss']
         val_loss = self.history.history['val_loss']
-
         epochs = range(len(acc))
 
-        plt.plot(epochs, acc, 'b', label='Training acc')
-        plt.plot(epochs, val_acc, 'r', label='Validation acc')
-        plt.title('Training and validation accuracy')
-        plt.legend()
-
-        plt.figure()
-
-        plt.plot(epochs, loss, 'b', label='Training loss')
-        plt.plot(epochs, val_loss, 'r', label='Validation loss')
-        plt.title('Training and validation loss')
-        plt.legend()
-
+        # summarize history for accuracy
+        plt.subplot(121)
+        plt.plot(epochs, acc)
+        plt.plot(epochs, val_acc)
+        plt.title('model accuracy')
+        plt.ylabel('accuracy')
+        plt.xlabel('epoch')
+        plt.legend(['train', 'test'], loc='upper left')
+        # summarize history for loss
+        plt.subplot(122)
+        plt.plot(epochs,loss)
+        plt.plot(epochs,val_loss)
+        plt.title('model loss')
+        plt.ylabel('loss')
+        plt.xlabel('epoch')
+        plt.legend(['train', 'test'], loc='upper left')
         plt.show()
 
 if __name__ == "__main__":
-    nnmodel = cnn_model()
+    nnmodel = Cnn_model()
     nnmodel.add_person()
+    time.sleep(1)
     nnmodel.add_person()
     nnmodel.data_processing()
     nnmodel.initialize_networkmodel()
     nnmodel.train_cnn()
+    nnmodel.accuracy_statistics()
+    nnmodel.recognize_face()

@@ -23,7 +23,7 @@ class EigenfaceRecognition:
         self.newfacedir = os.path.join(self.face_data.datadir, 'new_faces_notindetected')
 
 
-    def recognize_face(self, image_path=False, direct_im=False, **kwargs):
+    def recognize_face(self, **kwargs):
         """Check if face can be assigned to some person in the database with some degree of confidence
         (which is distance of class1 * 1.6 > class2 as we search for the closest class to face).
         The class is chosen based on return from the 'sum_class_distances' function.
@@ -31,20 +31,10 @@ class EigenfaceRecognition:
             - Find id of the best suited class.
             - Return True if 'class confidence' is fulfilled and False if not."""
 
-        # Get image representation
-        if np.any(direct_im):
-            # Mean was already substracted in this case
-            image = direct_im
-            image_representation = np.matmul(image.flatten(), self.face_data.eigenfaces_flat.T)
-        else:
-            if image_path:
-                image = cv.imread(image_path, 0)
-                image = image_cropping(image)
-            else:
-                #Enable inGui plotting
-                gui = kwargs.get('gui', False)
-                image = take_image(gui=gui)
-            image_representation = self.face_data.transfer_image(image.flatten())
+        #Enable inGui plotting
+        gui = kwargs.get('gui', False)
+        image = take_image(gui=gui)
+        image_representation = self.face_data.transfer_image(image.flatten())
 
         # fit again in case new data appears
         self.knn_classifier.fit(self.face_data.face_weights, self.face_data.labels)
@@ -93,8 +83,6 @@ class EigenfaceRecognition:
                     face_found_id = prob_person[-2]
 
         #Find closest face for representation
-        # If the closest distance was indicating valid class
-        ###
         if person_ids[0][0] == face_found_id:
             closest_face = np.reshape(self.face_data.image_matrix_raw.T[ids[0][0]],
                                       (self.face_data.image_shape, self.face_data.image_shape,))
@@ -153,10 +141,6 @@ class EigenfaceRecognition:
                                                 self.face_data.eigenfaces_flat.transpose())
 
 
-    def update_database(self, image_representation):
-        self.face_data.image_matrix.append()
-
-
 def sum_class_distances(distances, class_labels):
     """Sums distances to face from respective classes and calculates the average."""
     un_val = np.unique(class_labels)
@@ -173,7 +157,6 @@ def sum_class_distances(distances, class_labels):
         arr.append(np.vstack((i, sum/count)))
 
     return arr
-
 
 
 if __name__ == "__main__":

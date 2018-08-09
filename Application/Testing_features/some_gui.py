@@ -1,63 +1,78 @@
-
-import sys
-from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QVBoxLayout
-
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+from keras.engine import Model
+from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Flatten, Dense, Input
+from keras_vggface.vggface import VGGFace
+from keras.utils import to_categorical
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
-import random
+from keras import models
+import cv2 as cv
+import numpy as np
+from keras import optimizers
+import os
+import time
 
-class Window(QDialog):
-    def __init__(self, parent=None):
-        super(Window, self).__init__(parent)
+from keras.engine import Model
+from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Flatten, Dense, Input
+from keras_vggface.vggface import VGGFace
+from keras.utils import to_categorical
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
-        # a figure instance to plot on
-        self.figure = plt.figure()
+from keras import models
+import cv2 as cv
+import numpy as np
+from keras import optimizers
+import os
+import time
 
-        # this is the Canvas Widget that displays the `figure`
-        # it takes the `figure` instance as a parameter to __init__
-        self.canvas = FigureCanvas(self.figure)
+def new_img_convert(img, h = 10, w = 10):
+    img = img[h:-h, w:-w]
+    img = cv.resize(img, (180, 180), interpolation=cv.INTER_CUBIC)
+    img = img.astype('float32')
+    img = img / 255.
+    return img
 
-        # this is the Navigation widget
-        # it takes the Canvas widget and a parent
-        self.toolbar = NavigationToolbar(self.canvas, self)
+# Start measuring time
+start = time.time()
+label_id = []
+label_names = []
+img_data = []
+index = 0
+# Change the batchsize according to RAM amount
+train_batchsize = 64
+val_batchsize = 5
+# Custom parameters
+nb_class = 0
+hidden_dim = 512
+epochs_num = 20
+for subdir, dirs, files in os.walk(os.path.join(os.getcwd(), 'filtered_dataset')):
 
-        # Just some button connected to `plot` method
-        self.button = QPushButton('Plot')
-        self.button.clicked.connect(self.plot)
+    # Start indexing when something appears
+    if not label_id:
+        index = 0
+    else:
+        index +=1
 
-        # set the layout
-        layout = QVBoxLayout()
-        layout.addWidget(self.toolbar)
-        layout.addWidget(self.canvas)
-        layout.addWidget(self.button)
-        self.setLayout(layout)
+    for file in files:
+        im = cv.imread(os.path.join(subdir, file))
+        img_data.append(new_img_convert(im))
+        label_id.append(index)
+        if ''.join(file.split('.')[0].split('_')[:-1]) not in label_names:
+            label_names.append(''.join(file.split('.')[0].split('_')[:-1]))
+            nb_class += 1
 
-    def plot(self):
-        ''' plot some random stuff '''
-        # random data
-        data = [random.random() for i in range(10)]
+label = to_categorical(label_id)
+print(np.shape(img_data), nb_class, np.shape(label), np.shape(label_names))
 
-        # instead of ax.hold(False)
-        self.figure.clear()
 
-        # create an axis
-        ax = self.figure.add_subplot(111)
-
-        # discards the old graph
-        # ax.hold(False) # deprecated, see above
-
-        # plot data
-        ax.plot(data, '*-')
-
-        # refresh canvas
-        self.canvas.draw()
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-
-    main = Window()
-    main.show()
-
-    sys.exit(app.exec_())
+huh = models.load_model("my_model_trained_night")
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[0], axis=0)))])
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[5], axis=0)))])
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[10], axis=0)))])
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[55], axis=0)))])
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[100], axis=0)))])
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[110], axis=0)))])
+print(label_names[np.argmax(huh.predict(np.expand_dims(img_data[150], axis=0)))])

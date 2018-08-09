@@ -52,50 +52,44 @@ def detect_face(filepath):
     cv.waitKey(0)
     cv.destroyAllWindows()
 
-def image_cropping(im = None, cnn=False, filepath = None, save=False):
+def image_cropping(im = None, cnn=False):
     """Read in the image either from file or from image frame from a camera.
     Either save it to file or just return the image."""
-    if filepath:
-        im = cv.imread(filepath, 0)
 
-    else:
-        if cnn:
-            im_init = im
-            im = cv.cvtColor(im, cv.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
-        if np.any(faces):
-            # Take the biggest found face
-            (x, y, w, h) = faces[0]
-            for i, coord in enumerate(faces):
-                if coord[2] > w:
-                    (x, y, w, h) = coord
-
-            # If cnn is used we require bigger image, not only face
-            if cnn:
-                bias = 15
-                crop_img = im_init[y-bias:y + h + bias, x-bias:x + w + bias]
-                crop_img = cv.resize(crop_img, dsize=(180, 180), interpolation=cv.INTER_CUBIC)
-                crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
-                crop_img = crop_img / 255.
-
-            else:
-                crop_img = im[y:y + h, x:x + w]
-                crop_img = cv.resize(crop_img, dsize=(86, 86), interpolation=cv.INTER_CUBIC)
-                crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
-
-        if len(faces) == 0:
+    # If cnn input image was in RGB and we need its gray representation
+    if cnn:
+        im_init = im
+        im = cv.cvtColor(im, cv.COLOR_BGR2GRAY)
+        # If some pix values are different than 0
+        if not np.any(im_init):
             return False
 
+    faces = face_cascade.detectMultiScale(im, scale_factor, min_neighbors)
+    # If face detected
+    if np.any(faces):
+        # Take the biggest found face
+        (x, y, w, h) = faces[0]
+        for i, coord in enumerate(faces):
+            if coord[2] > w:
+                (x, y, w, h) = coord
 
-    if save:
-        if filepath:
-            path = ''.join(filepath.split('/')[:-1])
-            filename = filepath.split('/')[-1].split('.')[0]
-            cv.imwrite(os.path.join(path, '{}_newface.pgm'.format(filename)), crop_img)
+        # If cnn is used we require bigger image, not only face
+        if cnn:
+            bias = 15
+            crop_img = im_init[y-bias:y + h + bias, x-bias:x + w + bias]
+            crop_img = cv.resize(crop_img, dsize=(180, 180), interpolation=cv.INTER_CUBIC)
+            crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
+            crop_img = crop_img / 255.
+
         else:
-            cv.imwrite('newface.pgm', crop_img)
+            crop_img = im[y:y + h, x:x + w]
+            crop_img = cv.resize(crop_img, dsize=(86, 86), interpolation=cv.INTER_CUBIC)
+            crop_img = cv.normalize(crop_img, crop_img, 0, 255, cv.NORM_MINMAX)
 
-    return crop_img
+        return crop_img
+
+    else:
+        return False
 
 
 def face_recording(gui=False, im_count=20, idle=True, cnn=False):
@@ -124,10 +118,10 @@ def face_recording(gui=False, im_count=20, idle=True, cnn=False):
             if not idle:
                 # if eigenfaces
                 if not cnn:
-                    im = image_cropping(im=gray, save=False, cnn=cnn)
+                    im = image_cropping(im=gray)
                 # if cnn
                 if cnn:
-                    im = image_cropping(im=frame, save=False, cnn=cnn)
+                    im = image_cropping(im=frame, cnn=cnn)
                 # if face was detected and image was cropped
                 if np.any(im):
                     face_data.append(im)
@@ -135,6 +129,7 @@ def face_recording(gui=False, im_count=20, idle=True, cnn=False):
         if idle:
             idle -= 1
 
+        # Give time for image visualization
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
 
@@ -184,20 +179,26 @@ def take_image(gui=False, idle=True, cnn=False):
             cv.imshow('frame', frame)
 
         if not idle:
-            image = image_cropping(im=gray)
-            if image is not False:
-                cv.destroyAllWindows()
-                break
+            # Detect faces
+            faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors)
+            # If there are any faces at all
+            for (x, y, w, h) in faces:
+                if cnn:
+                    image = image_cropping(im=frame, cnn=cnn)
+                else:
+                    image = image_cropping(im=gray)
 
+                # If image was properly processed
+                if image is not False:
+                    cv.destroyAllWindows()
+                    if gui:
+                        gui.IdentifySearchLabel.clear()
+
+                    return image
+
+        # Give time for image visualization
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
-
-    if gui:
-        gui.IdentifySearchLabel.clear()
-
-    return image
-
-
 
 if __name__ == "__main__":
     face_recording(cnn=True)
