@@ -1,0 +1,7 @@
+Keras==2.2.0
+matplotlib==2.2.2
+keras_vggface==0.5
+opencv_python==3.4.2.17
+numpy==1.14.5
+PyQt5==5.11.2
+scikit_learn==0.19.2

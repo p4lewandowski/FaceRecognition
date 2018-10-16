@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SystemRozpoznawaniaTwarzy module &#8212; SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha 1.0 - dokumentacja</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-SystemRozpoznawaniaTwarzy">
+<span id="systemrozpoznawaniatwarzy-module"></span><h1>SystemRozpoznawaniaTwarzy module<a class="headerlink" href="#module-SystemRozpoznawaniaTwarzy" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="class">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow">
+<em class="property">class </em><code class="descclassname">SystemRozpoznawaniaTwarzy.</code><code class="descname">MainWindow</code><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Klasy bazowe: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code>, <a class="reference internal" href="FaceRecognition_gui.html#FaceRecognition_gui.Ui_MainWindow" title="FaceRecognition_gui.Ui_MainWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">FaceRecognition_gui.Ui_MainWindow</span></code></a></p>
+<p>Szkielet aplikacji. Inicjalizuje GUI a także rozporządza poszczególnymi zaimportowanymi funkcjami.
+Klasa po wywołaniu inicjalizuje klasy dotyczące obliczeń związanych z sieciami neuronowymi i
+twarzami własnymi. Dziedziczy GUI i przypisuje przyciskom różne funkcje.</p>
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.Bulk_FindFace">
+<code class="descname">Bulk_FindFace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.Bulk_FindFace"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.Bulk_FindFace" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zaznaczająca twarze na wcześniej wczytanym zdjęciu.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.Bulk_IndetifyFaces">
+<code class="descname">Bulk_IndetifyFaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.Bulk_IndetifyFaces"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.Bulk_IndetifyFaces" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja nadpisująca oryginalne twarze wykrytymi twarzami a także wyświetlająca wartości
+procentowe uzyskane przez sieć neuronową co do poprawności identyfikacji.
+Funkcja dostepna wyłącznie po przetrenowaniu sieci i dodaniu zdjęcia.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.Bulk_LoadImage">
+<code class="descname">Bulk_LoadImage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.Bulk_LoadImage"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.Bulk_LoadImage" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wczytująca plik zdjęciowy a następnie wyświetlająca zdjęcie w aplikacji.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.DatabaseEigenfaces">
+<code class="descname">DatabaseEigenfaces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.DatabaseEigenfaces"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.DatabaseEigenfaces" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wywoływana przyciskiem. Wczytuje ona bazę danych dotyczącą twarzy własnych a
+następnie wyznacza twarze i wywołuje funkcję do wizualizacji obliczonych danych.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.PlotEigenfacesData">
+<code class="descname">PlotEigenfacesData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.PlotEigenfacesData"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.PlotEigenfacesData" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wywoływana automatycznie po wczytaniu bazy dotyczacej twarzy własnych bądź w
+przypadku dodania nowej osoby do bazy danych.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.TrainCNN">
+<code class="descname">TrainCNN</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.TrainCNN"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.TrainCNN" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wywoływana przyciskiem. Gdy więcej niż jedna twarz została dodana do przetrenowania
+dla sieci neuronowej funkcja inicjalizuje trening sieci a także tworzy nowe okno prezentujące
+proces treningu sieci. Funkcja wyświetla komunikaty zależne od stanu powodzenia funkcji.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.addPerson">
+<code class="descname">addPerson</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.addPerson"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.addPerson" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja inicjalizowana przyciskiem, odpowiedzialna za dodanie nowej osoby. Zależnie od
+przycisku radiowego funkcja albo dodaje osobę do wcześniej wczytanej bazy danych związanej
+z twarzami własnymi bądź dodaje osobę do zbioru danych związanego z sieciami neuronowymi do
+przetrenowania sieci w późniejszym czasie. Funkcja wyświetla komunikaty zależne od stanu
+powodzenia funkcji.
+Po dodaniu osoby wyświetlone zostanie ID nowo dodanej osoby.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.identifyPerson">
+<code class="descname">identifyPerson</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.identifyPerson"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.identifyPerson" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja inicjalizowana przyciskiem, gdzie zależnie od opcji zaznaczonej na przycisku
+radiowym następuje identyfikacja twarzy z użyciem twarzy własnych bądź z użyciem sieci
+neuronowej. Funkcja wyświetla również komunikaty zależne od stanu powodzenia funkcji.
+ID osoby jest pokazywane w oknie komunikatu bądź bezpośrednio na zdjęciu zależnie
+od użytej metody.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemRozpoznawaniaTwarzy.MainWindow.turnDatabaseTab">
+<code class="descname">turnDatabaseTab</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemRozpoznawaniaTwarzy.html#MainWindow.turnDatabaseTab"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemRozpoznawaniaTwarzy.MainWindow.turnDatabaseTab" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja inicjalizowana przyciskiem, zmieniająca obecną zakładkę na zakładkę gdzie ładowana
+jest baza danych dla twarzy własnych i gdzie trenowana jest sieć neuronowa.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Przemyslaw Lewandowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/SystemRozpoznawaniaTwarzy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

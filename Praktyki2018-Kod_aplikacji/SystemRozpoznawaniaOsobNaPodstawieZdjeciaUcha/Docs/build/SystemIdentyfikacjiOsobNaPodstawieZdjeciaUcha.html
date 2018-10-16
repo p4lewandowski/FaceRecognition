@@ -1,0 +1,181 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha module &#8212; SystemRozpoznawaniaTwarzy 1.0 - dokumentacja</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha">
+<span id="systemidentyfikacjiosobnapodstawiezdjeciaucha-module"></span><h1>SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha module<a class="headerlink" href="#module-SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="class">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow">
+<em class="property">class </em><code class="descclassname">SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.</code><code class="descname">MainWindow</code><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Klasy bazowe: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code>, <a class="reference internal" href="EarRecognition_gui.html#EarRecognition_gui.Ui_MainWindow" title="EarRecognition_gui.Ui_MainWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarRecognition_gui.Ui_MainWindow</span></code></a></p>
+<p>Szkielet aplikacji. Inicjalizuje GUI a także rozporządza poszczególnymi zaimportowanymi funkcjami.
+Klasa po wywołaniu inicjalizuje klasy dotyczące obliczeń związanych z sieciami neuronowymi i
+uszami własnymi. Dziedziczy GUI i przypisuje przyciskom różne funkcje.</p>
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.Bulk_FindEar">
+<code class="descname">Bulk_FindEar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.Bulk_FindEar"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.Bulk_FindEar" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zaznaczająca twarze na wcześniej wczytanym zdjęciu.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.Bulk_IndetifyEars">
+<code class="descname">Bulk_IndetifyEars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.Bulk_IndetifyEars"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.Bulk_IndetifyEars" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja nadpisująca oryginalne twarze wykrytymi twarzami a także wyświetlająca wartości
+procentowe uzyskane przez sieć neuronową co do poprawności identyfikacji.
+Funkcja dostepna wyłącznie po przetrenowaniu sieci i dodaniu zdjęcia.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.Bulk_LoadImage">
+<code class="descname">Bulk_LoadImage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.Bulk_LoadImage"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.Bulk_LoadImage" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wczytująca plik zdjęciowy a następnie wyświetlająca zdjęcie w aplikacji.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.DatabaseEigenears">
+<code class="descname">DatabaseEigenears</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.DatabaseEigenears"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.DatabaseEigenears" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wywoływana przyciskiem. Wczytuje ona bazę danych dotyczącą uszu własnych a
+następnie wyznacza uszy własne i wywołuje funkcję do wizualizacji obliczonych danych.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.PlotEigenearsData">
+<code class="descname">PlotEigenearsData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.PlotEigenearsData"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.PlotEigenearsData" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wywoływana automatycznie po wczytaniu bazy dotyczacej uszu własnych bądź w
+przypadku dodania nowej osoby do bazy danych.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.TrainCNN">
+<code class="descname">TrainCNN</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.TrainCNN"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.TrainCNN" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wywoływana przyciskiem. Gdy więcej niż jedno ucho z zostało dodane do przetrenowania
+dla sieci neuronowej funkcja inicjalizuje trening sieci a także tworzy nowe okno prezentujące
+proces treningu sieci. Wyświetlane są komunikaty zależne od stanu powodzenia funkcji.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.addPerson">
+<code class="descname">addPerson</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.addPerson"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.addPerson" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja inicjalizowana przyciskiem, odpowiedzialna za dodanie nowej osoby(ucha). Zależnie od
+przycisku radiowego funkcja albo dodaje osobę do wcześniej wczytanej bazy danych związanej
+z uszami własnymi bądź dodaje osobę do zbioru danych związanego z sieciami neuronowymi do
+przetrenowania sieci w późniejszym czasie. Funkcja wyświetla komunikaty zależne od stanu
+powodzenia funkcji.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.identifyPerson">
+<code class="descname">identifyPerson</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.identifyPerson"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.identifyPerson" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja inicjalizowana przyciskiem, gdzie zależnie od opcji zaznaczonej na przycisku
+radiowym następuje identyfikacja osób z użyciem uszu własnych bądź z użyciem sieci
+neuronowej. Funkcja wyświetla również komunikaty zależne od stanu powodzenia funkcji.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.turnDatabaseTab">
+<code class="descname">turnDatabaseTab</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.html#MainWindow.turnDatabaseTab"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.MainWindow.turnDatabaseTab" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja inicjalizowana przyciskiem, zmieniająca obecną zakładkę na zakładkę gdzie ładowana
+jest baza danych dla uszu własnych i gdzie trenowana jest sieć neuronowa.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SystemRozpoznawaniaTwarzy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Przemyslaw Lewandowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

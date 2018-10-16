@@ -1,0 +1,223 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FaceRecognition_eigenfaces_recognition module &#8212; SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha 1.0 - dokumentacja</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-FaceRecognition_eigenfaces_recognition">
+<span id="facerecognition-eigenfaces-recognition-module"></span><h1>FaceRecognition_eigenfaces_recognition module<a class="headerlink" href="#module-FaceRecognition_eigenfaces_recognition" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="class">
+<dt id="FaceRecognition_eigenfaces_recognition.EigenfaceRecognition">
+<em class="property">class </em><code class="descclassname">FaceRecognition_eigenfaces_recognition.</code><code class="descname">EigenfaceRecognition</code><span class="sig-paren">(</span><em>filepath=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_eigenfaces_recognition.html#EigenfaceRecognition"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Klasy bazowe: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(w Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Klasa zawierająca funkcje dotyczące dodawania nowych osób do bazy danych a także ich
+identyfikacji. Używa danych z klasy <em>FaceRecognitionEigenfaces</em>. Po zainstancjowaniu
+inicjalizująca parametry do metody k-najbliższych sąsiadów. Wczytuje ona dane do klasy z
+wcześniej stworzonego obiektu <em>FaceRecognitionEigenfaces</em> z wyznaczonymi twarzami własnymi bądź
+z pliku zawierającego wcześniej zapisaną kopię takiego obiektu. Dane z klasy
+<em>FaceRecognitionEigenfaces</em> są przypisane do <em>face_data</em>. Liczba najbliższych sąsiadów dla
+metody k-nn wynosi 5.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">filepath: Ścieżka bezwzględna do pliku.</p>
+<p class="last">data: Obiekt klasy <em>FaceRecognitionEigenfaces</em> z wyznaczonymi twarzami własnymi.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.add_image2database">
+<code class="descname">add_image2database</code><span class="sig-paren">(</span><em>image</em>, <em>label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_eigenfaces_recognition.html#EigenfaceRecognition.add_image2database"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.add_image2database" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Dodaje zdjęcia do bazy danych dotyczącej twarzy własnych z określoną etykietą.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">image: „Spłaszczone” zdjęcie, jako wektor danych, które ma zostać dodane do bazy.</p>
+<p class="last">label: Etykieta osoby, do której należy zdjęcie.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.add_person">
+<code class="descname">add_person</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_eigenfaces_recognition.html#EigenfaceRecognition.add_person"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.add_person" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja umożliwiająca dodanie nowej osoby do bazy danych, z której zostaną wyznaczone twarze
+własne. Jest ona odpowiedzialna za wywołanie funkcji, która robi i przetwarza zdjęcia nowej
+osoby. Przyjmuje ona opcjonalny argument gui, który umożliwia wyświetlanie danych z kamery w
+aplikacj GUI.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs:</dt>
+<dd>gui: Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych
+z kamery w aplikacji GUI.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.recognize_face">
+<code class="descname">recognize_face</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_eigenfaces_recognition.html#EigenfaceRecognition.recognize_face"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.recognize_face" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja umożliwiająca rozpoznawanie twarzy z użyciem twarzy własnych oraz metody
+k-najbliższych sąsiadów. Jest ona również odpowiedzialna za wywołanie funkcji, która zrobi
+zdjęcie nowej osobie a także je przetworzy. Funkcja determinuje czy osoba dana na zdjęciu
+jest w zbiorze (tj. czy została rozpoznana) na podstawie dwóch czynników:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">należy sprawdzić średnią odległość euklidesową zdjęć osoby A (wybranej przez knn) do
+nowo dodanego zdjęcia, które były brane pod uwagę przez k-nn. Jeśli odległość
+euklidesowa do nowo dodanego zdjęcia od innej osoby będzie mniejsza niż odległość
+klasy A pomnożona przez 1.6 to nowo dodana twarz jest traktowana jako nowa twarz nie
+będąca w bazie.</p>
+<blockquote>
+<div><p>Przykład:
+Mając 3 zdjęcia osoby A i 2 zdjęcia osoby B najbliższe nowo dodanemu zdjęciu jeśli
+średnia odległość zdjęć osoby A wynosi 100, a osoby B 150, to nowo dodane zdjęcie
+będzie zaklasyfikowane jako nie będące w bazie (nowa osoba) jako że 100 * 1.6 nie
+jest mniejsze niż 150.</p>
+</div></blockquote>
+</li>
+<li><p class="first">jeśli dla 5 najbliższych sąsiadów będzie więcej niż 3 róznych kandydatów to nowo dodane
+zdjęcie klasyfikowane jest jako nowa osoba.</p>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt><a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs:</dt>
+<dd>gui: Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych
+z kamery w aplikacji GUI.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd><p class="first">boolean: True - Jeśli twarz została uznana za będącą w bazie danych. False - jeśli nie.</p>
+<p>face_found_id: indeks odnoszący się do osoby uznanej za najbardziej podobną do nowo
+dodanego zdjęcia. Odnosi się on do tablicy <em>label_id</em> z obiektu <em>FaceRecognitionEigenfaces</em>. ID klasy.</p>
+<p>image: zdjęcie nowo dodanej osoby.</p>
+<p>closest_face: zdjęcie, które zostało wytypowane jako „najbliższe” do nowo dodanej osoby.</p>
+<p class="last">closest_face_id: indeks „najbliższego zdjęcia. Odnosi się on do tablicy <em>image_matrix_raw</em>
+z obiektu <em>FaceRecognitionEigenfaces</em>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_eigenfaces_recognition.sum_class_distances">
+<code class="descclassname">FaceRecognition_eigenfaces_recognition.</code><code class="descname">sum_class_distances</code><span class="sig-paren">(</span><em>distances</em>, <em>class_labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_eigenfaces_recognition.html#sum_class_distances"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_eigenfaces_recognition.sum_class_distances" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja oblicza średni dystans od klas(osób) do nowo dodanej twarzy.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">distances: Dystanse poszczególnych zdjęć twarzy w bazie do nowo dodanego zdjęcia.</p>
+<p class="last">class_labels: Etykiety opisujące do której klasy należy zdjęcie w <em>distances</em>.</p>
+</dd>
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>arr: Lista elementów zawierających w każdym wierszu:</dt>
+<dd><ul class="first last simple">
+<li>klasę do której należą zdjęcia,</li>
+<li>średnią odległość twarz z danej klasy do nowo dodanej twarzy.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Przemyslaw Lewandowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FaceRecognition_eigenfaces_recognition.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

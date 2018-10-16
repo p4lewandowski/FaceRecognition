@@ -1,0 +1,337 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FaceRecognition_eigenfaces_recognition &#8212; SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha 1.0 - dokumentacja</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Kod źródłowy modułu FaceRecognition_eigenfaces_recognition</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">FaceRecognition_imagepreprocessing</span> <span class="k">import</span> <span class="n">face_recording</span><span class="p">,</span> <span class="n">take_image</span>
+<span class="kn">from</span> <span class="nn">FaceRecognition_eigenfaces_core</span> <span class="k">import</span> <span class="n">FaceRecognitionEigenfaces</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<div class="viewcode-block" id="EigenfaceRecognition"><a class="viewcode-back" href="../FaceRecognition_eigenfaces_recognition.html#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition">[dokumentacja]</a><span class="k">class</span> <span class="nc">EigenfaceRecognition</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa zawierająca funkcje dotyczące dodawania nowych osób do bazy danych a także ich</span>
+<span class="sd">    identyfikacji. Używa danych z klasy *FaceRecognitionEigenfaces*. Po zainstancjowaniu</span>
+<span class="sd">    inicjalizująca parametry do metody k-najbliższych sąsiadów. Wczytuje ona dane do klasy z</span>
+<span class="sd">    wcześniej stworzonego obiektu *FaceRecognitionEigenfaces* z wyznaczonymi twarzami własnymi bądź</span>
+<span class="sd">    z pliku zawierającego wcześniej zapisaną kopię takiego obiektu. Dane z klasy</span>
+<span class="sd">    *FaceRecognitionEigenfaces* są przypisane do *face_data*. Liczba najbliższych sąsiadów dla</span>
+<span class="sd">    metody k-nn wynosi 5.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filepath: Ścieżka bezwzględna do pliku.</span>
+
+<span class="sd">        data: Obiekt klasy *FaceRecognitionEigenfaces* z wyznaczonymi twarzami własnymi.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">filepath</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="c1"># Zainicjalizuj parametry dla obiektu knn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn_classifier</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">face_weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newfacedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;new_faces_notindetected&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaded_im_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fotosperclass_number</span> <span class="o">=</span> <span class="mi">20</span>
+
+
+
+<div class="viewcode-block" id="EigenfaceRecognition.recognize_face"><a class="viewcode-back" href="../FaceRecognition_eigenfaces_recognition.html#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.recognize_face">[dokumentacja]</a>    <span class="k">def</span> <span class="nf">recognize_face</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Funkcja umożliwiająca rozpoznawanie twarzy z użyciem twarzy własnych oraz metody</span>
+<span class="sd">        k-najbliższych sąsiadów. Jest ona również odpowiedzialna za wywołanie funkcji, która zrobi</span>
+<span class="sd">        zdjęcie nowej osobie a także je przetworzy. Funkcja determinuje czy osoba dana na zdjęciu</span>
+<span class="sd">        jest w zbiorze (tj. czy została rozpoznana) na podstawie dwóch czynników:</span>
+<span class="sd">            - należy sprawdzić średnią odległość euklidesową zdjęć osoby A (wybranej przez knn) do</span>
+<span class="sd">              nowo dodanego zdjęcia, które były brane pod uwagę przez k-nn. Jeśli odległość</span>
+<span class="sd">              euklidesowa do nowo dodanego zdjęcia od innej osoby będzie mniejsza niż odległość</span>
+<span class="sd">              klasy A pomnożona przez 1.6 to nowo dodana twarz jest traktowana jako nowa twarz nie</span>
+<span class="sd">              będąca w bazie.</span>
+<span class="sd">                Przykład:</span>
+<span class="sd">                Mając 3 zdjęcia osoby A i 2 zdjęcia osoby B najbliższe nowo dodanemu zdjęciu jeśli</span>
+<span class="sd">                średnia odległość zdjęć osoby A wynosi 100, a osoby B 150, to nowo dodane zdjęcie</span>
+<span class="sd">                będzie zaklasyfikowane jako nie będące w bazie (nowa osoba) jako że 100 * 1.6 nie</span>
+<span class="sd">                jest mniejsze niż 150.</span>
+
+<span class="sd">            - jeśli dla 5 najbliższych sąsiadów będzie więcej niż 3 róznych kandydatów to nowo dodane</span>
+<span class="sd">              zdjęcie klasyfikowane jest jako nowa osoba.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs:</span>
+<span class="sd">                gui: Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych</span>
+<span class="sd">                z kamery w aplikacji GUI.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            boolean: True - Jeśli twarz została uznana za będącą w bazie danych. False - jeśli nie.</span>
+
+<span class="sd">            face_found_id: indeks odnoszący się do osoby uznanej za najbardziej podobną do nowo</span>
+<span class="sd">            dodanego zdjęcia. Odnosi się on do tablicy *label_id* z obiektu *FaceRecognitionEigenfaces*. ID klasy.</span>
+
+<span class="sd">            image: zdjęcie nowo dodanej osoby.</span>
+
+<span class="sd">            closest_face: zdjęcie, które zostało wytypowane jako &quot;najbliższe&quot; do nowo dodanej osoby.</span>
+
+<span class="sd">            closest_face_id: indeks &quot;najbliższego zdjęcia. Odnosi się on do tablicy *image_matrix_raw*</span>
+<span class="sd">            z obiektu *FaceRecognitionEigenfaces*.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Umożliw wyświetlanie w GUI jśli przekazano parametr</span>
+        <span class="n">gui</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gui&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Zrób zdjęcie, znajdź twarz i oblicz jego reprezentację</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">take_image</span><span class="p">(</span><span class="n">gui</span><span class="o">=</span><span class="n">gui</span><span class="p">)</span>
+        <span class="n">image_representation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">transfer_image</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+        <span class="c1"># Uaktualnij dane do knn (po nowo dodanej twarzy)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">face_weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+        <span class="c1"># Policz prawdopodobieństwo dla knn</span>
+        <span class="n">probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knn_classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">image_representation</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">prob_person</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+        <span class="n">prob_val</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">prob_person</span><span class="p">]</span>
+
+        <span class="n">isnew</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knn_classifier</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">image_representation</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+                                                   <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">person_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">ids</span><span class="p">]</span>
+        <span class="n">candidates_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">prob_val</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">class_distances</span> <span class="o">=</span> <span class="n">sum_class_distances</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">person_ids</span><span class="p">)</span>
+        <span class="n">class_distances</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">class_distances</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Jeśli jeden kandydat</span>
+        <span class="k">if</span> <span class="n">candidates_n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">face_found_id</span> <span class="o">=</span> <span class="n">prob_person</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Jeśli więcej</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Jesli za dużo - nie można stwierdzić czyja to twarz</span>
+            <span class="k">if</span> <span class="n">candidates_n</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">isnew</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="c1"># Sprawdź czy można stwierdzić z pewnością czyja to twarz</span>
+            <span class="c1"># Jeśli więcej niż jeden kandydat</span>
+            <span class="k">elif</span> <span class="n">candidates_n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># Jeśli odległość pierwszej klasy *1.6 jest większa niż odległość drugiej klasy</span>
+                <span class="c1"># - twrz nie jest zaklasyfikowana z &quot;pewnością&quot;</span>
+                <span class="k">if</span> <span class="n">class_distances</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">class_distances</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.6</span><span class="p">:</span>
+                    <span class="n">isnew</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="c1"># Wybierz klasę bardziej prawdopodobną (lista posortowana od najmniejszego prawdop.)</span>
+            <span class="k">if</span> <span class="n">prob_val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">prob_val</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="n">face_found_id</span> <span class="o">=</span> <span class="n">prob_person</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="c1"># Jeśli klasa została wybrana, a twarz innej klasy jako zdjęcie i tak było bliżej</span>
+                <span class="c1"># - mimo, że większość decyduje - jest to &quot;niepewny&quot; wybór</span>
+                <span class="k">if</span> <span class="n">prob_person</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">person_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">isnew</span><span class="o">=</span><span class="mi">1</span>
+            <span class="c1"># Jeśli prawdopodobieństwo takie samo - wybierz bliższą w kontekście dystansu klasy do twarzy</span>
+            <span class="k">elif</span> <span class="n">prob_val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">prob_val</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">class_distances</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">class_distances</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">face_found_id</span> <span class="o">=</span> <span class="n">prob_person</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">face_found_id</span> <span class="o">=</span> <span class="n">prob_person</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># Wybranie twarzy do wyświetlenia jako znaleziona</span>
+        <span class="k">if</span> <span class="n">person_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">face_found_id</span><span class="p">:</span>
+            <span class="n">closest_face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_raw</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span>
+                                      <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="p">,))</span>
+            <span class="n">closest_face_id</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">closest_face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_raw</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span>
+                                      <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="p">,))</span>
+            <span class="n">closest_face_id</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+
+        <span class="k">if</span> <span class="n">isnew</span><span class="p">:</span>
+            <span class="c1"># print(&quot;Face found without confidence, label = {}&quot;.format(face_found_id))</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">face_found_id</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">closest_face</span><span class="p">,</span> <span class="n">closest_face_id</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">isnew</span><span class="p">:</span>
+            <span class="c1"># print(&quot;Face found with confidence, label = {}&quot;.format(face_found_id))</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">face_found_id</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">closest_face</span><span class="p">,</span> <span class="n">closest_face_id</span></div>
+
+
+<div class="viewcode-block" id="EigenfaceRecognition.add_person"><a class="viewcode-back" href="../FaceRecognition_eigenfaces_recognition.html#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.add_person">[dokumentacja]</a>    <span class="k">def</span> <span class="nf">add_person</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Funkcja umożliwiająca dodanie nowej osoby do bazy danych, z której zostaną wyznaczone twarze</span>
+<span class="sd">        własne. Jest ona odpowiedzialna za wywołanie funkcji, która robi i przetwarza zdjęcia nowej</span>
+<span class="sd">        osoby. Przyjmuje ona opcjonalny argument gui, który umożliwia wyświetlanie danych z kamery w</span>
+<span class="sd">        aplikacj GUI.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs:</span>
+<span class="sd">                gui: Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych</span>
+<span class="sd">                z kamery w aplikacji GUI.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Jeśli przekazano - użyj GUI</span>
+        <span class="n">gui</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gui&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">face_recording</span><span class="p">(</span><span class="n">gui</span><span class="o">=</span><span class="n">gui</span><span class="p">,</span> <span class="n">im_count</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fotosperclass_number</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Znajdź nową etykietę i zaktualizuj bazę</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_image2database</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EigenfaceRecognition.add_image2database"><a class="viewcode-back" href="../FaceRecognition_eigenfaces_recognition.html#FaceRecognition_eigenfaces_recognition.EigenfaceRecognition.add_image2database">[dokumentacja]</a>    <span class="k">def</span> <span class="nf">add_image2database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dodaje zdjęcia do bazy danych dotyczącej twarzy własnych z określoną etykietą.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            image: &quot;Spłaszczone&quot; zdjęcie, jako wektor danych, które ma zostać dodane do bazy.</span>
+
+<span class="sd">            label: Etykieta osoby, do której należy zdjęcie.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Zwiększ licznik liczby zdjęć dla spójności</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># Dodaj etykietę</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+        <span class="c1"># Zaktualizuj twarz średnią</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_raw</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">image</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_raw</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_shape</span><span class="p">)</span>
+
+        <span class="c1"># Odejmij twarz średnią od nieprzetworzonych zdjęć wejściowych dla spójności</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_img</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_raw</span><span class="o">.</span><span class="n">transpose</span><span class="p">()])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+        <span class="c1"># Dodaj reprezentację twarzy do bazy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">face_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">image_matrix_flat</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">face_data</span><span class="o">.</span><span class="n">eigenfaces_flat</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="sum_class_distances"><a class="viewcode-back" href="../FaceRecognition_eigenfaces_recognition.html#FaceRecognition_eigenfaces_recognition.sum_class_distances">[dokumentacja]</a><span class="k">def</span> <span class="nf">sum_class_distances</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">class_labels</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funkcja oblicza średni dystans od klas(osób) do nowo dodanej twarzy.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        distances: Dystanse poszczególnych zdjęć twarzy w bazie do nowo dodanego zdjęcia.</span>
+
+<span class="sd">        class_labels: Etykiety opisujące do której klasy należy zdjęcie w *distances*.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        arr: Lista elementów zawierających w każdym wierszu:</span>
+<span class="sd">            - klasę do której należą zdjęcia,</span>
+<span class="sd">            - średnią odległość twarz z danej klasy do nowo dodanej twarzy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">un_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_labels</span><span class="p">)</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">un_val</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">arr_pos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">class_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">elem</span><span class="o">==</span><span class="n">i</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span><span class="n">distances</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">arr_pos</span><span class="p">]</span>
+                <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">arr_pos</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="nb">sum</span><span class="o">/</span><span class="n">count</span><span class="p">)))</span>
+
+    <span class="k">return</span> <span class="n">arr</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Kod modułu</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Przemyslaw Lewandowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

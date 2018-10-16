@@ -1,0 +1,259 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FaceRecognition_imagepreprocessing module &#8212; SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha 1.0 - dokumentacja</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-FaceRecognition_imagepreprocessing">
+<span id="facerecognition-imagepreprocessing-module"></span><h1>FaceRecognition_imagepreprocessing module<a class="headerlink" href="#module-FaceRecognition_imagepreprocessing" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.bgr2rgb">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">bgr2rgb</code><span class="sig-paren">(</span><em>BGR_image</em>, <em>qim=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#bgr2rgb"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.bgr2rgb" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Konwersja zdjęcia w BGR (używanego przez openCV) do RGB.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>BGR_image: Zdjęcie wejściowe BGR.
+qim: Jeśli <em>True</em> - stwórz QImage umożliwiające wyświetlenie obrazu w aplikacji PyQt. Jeśli
+<em>False</em> - pomiń ten krok.</dd>
+<dt>Returns:</dt>
+<dd>image: Zdjęcie RGB bądź Qimage ze zdjęcia RGB - zależnie od parametru <em>qim</em>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.bulk_face_detection">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">bulk_face_detection</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#bulk_face_detection"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.bulk_face_detection" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wykrywa twarze z wcześniej wczytanego zdjęcia i wyświetla je w aplikacji GUI poprzez
+zakreślenie niebieskim prostokątem.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>app - Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych z kamery</dt>
+<dd>w aplikacji. Dodatkowo użyte jest app.bulk_image, które jest wcześniej wczytanym zdjęciem
+grupowym.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.bulk_face_visualization">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">bulk_face_visualization</code><span class="sig-paren">(</span><em>path</em>, <em>app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#bulk_face_visualization"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.bulk_face_visualization" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Zdjęcie wizualizujące wcześniej wczytane zdjęcie z pliku w aplikacji GUI. Wymagane jest
+przeskalowanie i zmiana z BGR na RGB oraz ustawienie centrowania.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">path - ścieżka do pliku.
+app -  Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych z kamery</p>
+<blockquote class="last">
+<div>w aplikacji.</div></blockquote>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.bulk_identify_faces">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">bulk_identify_faces</code><span class="sig-paren">(</span><em>app</em>, <em>class_count</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#bulk_identify_faces"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.bulk_identify_faces" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Identyfikacja osób, dla których wykryto twarz w zdjęciu. Funkcja dostępna po wcześniejszym
+wczytaniu pliku zdjęciowego oraz wytrenowaniu sieci. Funkcja w pierwszej kolejności wycina
+wykryte twarze i sprawdza dla nich przynależność a następnie nadpisuje wykryte twarze twarzami
+reprezentacyjnymi (które są 5 wykonanym poprawnie zdjęciem przy dodawaniu osoby).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>app - Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych z kamery
+w aplikacji. Dodatkowo użyte jest app.bulk_image, które jest wcześniej wczytanym zdjęciem
+grupowym.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.detect_face">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">detect_face</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#detect_face"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.detect_face" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Metoda umożliwia detekcję twarzy z wykorzystaniem metody Viola-Jones. Po detekcji następuje
+wyświetlenie zdjęcia z zaznaczonymi twarzami.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>image: Zdjęcie na którym zostaną zaznaczone twarze.</dd>
+<dt>Returns:</dt>
+<dd>image: Zdjęcie z zaznaczonymi twarzami</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.face_recording">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">face_recording</code><span class="sig-paren">(</span><em>gui=False</em>, <em>im_count=20</em>, <em>idle=True</em>, <em>cnn=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#face_recording"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.face_recording" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Zrobienie zdjęć, przekazywanych do bazy danych w celu dodania kolejnej osoby. Zdjęcia są
+przetworzone do potrzeb bazy danych. Pomiędzy każdym dodanym poprawnie zdjęciem umożliw kilka
+sekund bez obliczeń - przeciwdziałanie dodaniu zbyt wielu podobnych zdjęć do bazy.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">gui: Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych
+z kamery w aplikacji.</p>
+<p>im_count: Ilość zdjęć osoby do wykonania.</p>
+<p>idle: Ilość klatek bezczynności przed rozpoczęciem analizy obrazu.</p>
+<p class="last">cnn: Jeśli <em>True</em> - operacje na zdjęciu kolorowym dla sieci neuronowej. Jeśli <em>False</em> -
+operacje na zdjęciu czarno białym dla twarzy własnych.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>face_data: Zdjęcia zebrane przez funkcję.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.image_cropping">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">image_cropping</code><span class="sig-paren">(</span><em>im=None</em>, <em>cnn=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#image_cropping"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.image_cropping" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja umożliwia wycięcie obszaru zainteresowania ze zdjęcia, gdzie obszar zainteresowania
+zależny jest od użycia metody rozpoznawania twarzy: twarzy własnych, czy sieci neuronowych. W
+przypadku twarzy własnych zdjęcia zawierają jedynie rozpoznaną twarz. W przypadku sieci twarz i
+niewielka ramka dookoła twarzy jest wycinana do dalszej analizy. Wycięty obszar jest
+przeskalowywany i normalizowany.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">im: Przekazane zdjęcie, na którym ma zostać dokonana detekcja twarzy.</p>
+<dl class="last docutils">
+<dt>cnn: Jeśli <em>True</em> - detekcja twarzy dla sieci neuronowej, większy obszar zainteresowania</dt>
+<dd>niż tylko twarz jest wycinany. Wycięty obszar ze zdjęcia RGB. Jeśli <em>False</em> - tylko
+twarz jest wycinana. Wycięty obszar ze zdjęcia w skali szarości.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>crop_img: Wycięty obszar zainteresowania.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.image_selection">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">image_selection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#image_selection"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.image_selection" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>W ścieżce <em>filedir</em> następuje wybór zdjęć, na których detekcja twarzy jest pozytywna. Nastepuje
+wycięcie obszaru zainteresowania za zdjęcia, przeskalowanie go do stałego rozmiaru a także
+normalizacja odcieni szarości. Następnie zdjęcia zapisane są do ścieżki <em>savepath</em> jako obrazy
+wejściowe do detekcji twarzy z użyciem twarzy własnych.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.resize_image">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">resize_image</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#resize_image"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.resize_image" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja skalująca zdjęcia aby zmieściły się one w aplikacji GUI.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>image: zdjęcie w RGP do przeskalowania.</dd>
+<dt>Returns:</dt>
+<dd>image: przeslaowane zdjęcie.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_imagepreprocessing.take_image">
+<code class="descclassname">FaceRecognition_imagepreprocessing.</code><code class="descname">take_image</code><span class="sig-paren">(</span><em>gui=False</em>, <em>idle=True</em>, <em>cnn=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_imagepreprocessing.html#take_image"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_imagepreprocessing.take_image" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja służąca do wykonania zdjęcia do identyfikacji osoby.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">gui: Obiekt głównej aplikacji GUI, dzięki któremu możliwa jest wizualizacja danych z kamery
+w aplikacji.</p>
+<p>idle: Ilość klatek bezczynności przed rozpoczęciem analizy obrazu.</p>
+<p class="last">cnn: Jeśli <em>True</em> - operacje na zdjęciu kolorowym dla sieci neuronowej. Jeśli <em>False</em> -
+operacje na zdjęciu czarno białym dla twarzy własnych.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>image: Wycięte zdjęcie z wykryta twarzą.</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Przemyslaw Lewandowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FaceRecognition_imagepreprocessing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

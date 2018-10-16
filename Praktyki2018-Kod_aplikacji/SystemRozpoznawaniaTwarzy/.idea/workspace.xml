@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a0345364-dbed-4d11-85d5-cc134829388b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FaceRecognition.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/App.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/FaceRecognition_Gui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/FaceRecognition_ImagePreprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/FaceRecognition_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/FaceRecognition_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/FaceRecognition_plotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/FaceRecognition_plotting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/SystemRozpoznawaniaTwarzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/SystemRozpoznawaniaTwarzy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/FaceRecognition_cnn.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/FaceRecognition_cnn_stream.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/FaceRecognition_eigenfaces_core.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/FaceRecognition_eigenfaces_recognition.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/FaceRecognition_imagepreprocessing.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/FaceRecognition_plotting.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/Gui_code.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.buildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/AccuracyTest.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/CreateDocumentation.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/FaceRecognition_cnn.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/FaceRecognition_cnn_stream.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/FaceRecognition_eigenfaces_core.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/FaceRecognition_eigenfaces_recognition.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/FaceRecognition_imagepreprocessing.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/FaceRecognition_plotting.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/Face_recognition_cnn_stream.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/Gui_code.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/CreateDocumentation.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/FaceRecognition_cnn.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/FaceRecognition_eigenfaces_core.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/FaceRecognition_eigenfaces_recognition.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/FaceRecognition_imagepreprocessing.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/FaceRecognition_plotting.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/Face_recognition_cnn_stream.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/Gui_code.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/New folder/modules.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/environment.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/index.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.doctrees/modules.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/.nojekyll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/FaceRecognition_cnn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/FaceRecognition_cnn_stream.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/FaceRecognition_eigenfaces_core.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/FaceRecognition_eigenfaces_recognition.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/FaceRecognition_imagepreprocessing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/FaceRecognition_plotting.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/Gui_code.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/FaceRecognition_cnn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/FaceRecognition_cnn_stream.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/FaceRecognition_eigenfaces_core.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/FaceRecognition_eigenfaces_recognition.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/FaceRecognition_imagepreprocessing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/FaceRecognition_plotting.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/Face_recognition_cnn_stream.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/Gui_code.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_modules/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/AccuracyTest.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/CreateDocumentation.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/FaceRecognition_cnn.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/FaceRecognition_cnn_stream.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/FaceRecognition_eigenfaces_core.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/FaceRecognition_eigenfaces_recognition.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/FaceRecognition_imagepreprocessing.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/FaceRecognition_plotting.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/Face_recognition_cnn_stream.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/Gui_code.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/CreateDocumentation.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/FaceRecognition_cnn.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/FaceRecognition_eigenfaces_core.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/FaceRecognition_eigenfaces_recognition.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/FaceRecognition_imagepreprocessing.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/FaceRecognition_plotting.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/Face_recognition_cnn_stream.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/Gui_code.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/New folder/modules.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/index.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_sources/modules.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/alabaster.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/basic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/comment-bright.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/comment-close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/comment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/doctools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/documentation_options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/down-pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/file.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/jquery-3.2.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/pygments.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/searchtools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/translations.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/underscore-1.3.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/underscore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/up-pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/_static/websupport.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/footnotehyper-sphinx.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/genindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/latexmkjarc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/modules.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/objects.inv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/py-modindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/python.ist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/searchindex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/sphinx.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/sphinxhowto.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/sphinxmanual.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/sphinxmulticell.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/_build/wstępna_dokumentacja.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/index.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/make.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/docs/modules.rst" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SystemRozpoznawaniaTwarzy$test.coverage" NAME="test Coverage Results" MODIFIED="1538834257342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Application" />
+    <SUITE FILE_PATH="coverage/SystemRozpoznawaniaTwarzy$SystemRozpoznawaniaTwarzy.coverage" NAME="SystemRozpoznawaniaTwarzy Coverage Results" MODIFIED="1538843874664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Application" />
+    <SUITE FILE_PATH="coverage/SystemRozpoznawaniaTwarzy$RozpoznawanieTwarzy.coverage" NAME="RozpoznawanieTwarzy Coverage Results" MODIFIED="1538818827323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Application" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1442145855">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="jpg" value="1" />
+          <entry key="py" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Image" value="1" />
+          <entry key="Python" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="19" />
+          <entry key="py" value="1835" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="19" />
+          <entry key="Python" value="1835" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.js.language.service.starts" />
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/SystemRozpoznawaniaTwarzy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="83" column="30" lean-forward="true" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+              <folding>
+                <element signature="e#0#73#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_imagepreprocessing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="370" column="96" selection-start-line="370" selection-start-column="96" selection-end-line="370" selection-end-column="96" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="199" selection-start-line="199" selection-end-line="199" />
+              <folding>
+                <element signature="e#0#80#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_cnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1630">
+              <caret line="80" column="13" lean-forward="true" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../SystemRozpoznawaniaOsobNaPodstawieZdjeciaUcha/Application/EarRecognition_cnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>show_f</find>
+      <find>show_fo</find>
+      <find>close</find>
+      <find>bulk</find>
+      <find>stacked</find>
+      <find>bulk_ide</find>
+      <find>data[2]</find>
+      <find>create_messagebox</find>
+      <find>label</find>
+      <find>add_</find>
+      <find>self.cnn_fotosperclass_number</find>
+      <find>60</find>
+      <find>20</find>
+      <find>add</find>
+      <find>efr</find>
+      <find>cnn_fotosperclass_number</find>
+      <find>fotosperclass_number</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_plotting.py" />
+        <option value="$PROJECT_DIR$/Application/test.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_cnn.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py" />
+        <option value="$PROJECT_DIR$/Application/SystemRozpoznawaniaTwarzy.py" />
+        <option value="$PROJECT_DIR$/Application/FaceRecognition_imagepreprocessing.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="291" />
+    <option name="y" value="40" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SystemRozpoznawaniaTwarzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SystemRozpoznawaniaTwarzy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SystemRozpoznawaniaTwarzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SystemRozpoznawaniaTwarzy" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SystemRozpoznawaniaOsobNaPodstawieZdjeciaUcha_TworzenieModelu" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="PyScientificConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Repositories\Internship2018_PersonIdentification\Praktyki2018-Kod_aplikacji\SystemRozpoznawaniaTwarzy\Application" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.SystemRozpoznawaniaTwarzy">
+    <configuration name="RozpoznawanieTwarzy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SystemRozpoznawaniaTwarzy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\VEnvs\InternVenv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Application" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="E:\Repositories\Internship2018_PersonIdentification\Praktyki2018-Kod_aplikacji\SystemRozpoznawaniaTwarzy\Application\FaceRecognition_gui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SystemRozpoznawaniaTwarzy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SystemRozpoznawaniaTwarzy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\VEnvs\InternVenv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Application" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/SystemRozpoznawaniaTwarzy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="SystemRozpoznawaniaTwarzy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\VEnvs\InternVenv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SystemRozpoznawaniaTwarzy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\VEnvs\InternVenv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Application" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.RozpoznawanieTwarzy" />
+      <item itemvalue="Python.SystemRozpoznawaniaTwarzy" />
+      <item itemvalue="Python.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.SystemRozpoznawaniaTwarzy" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.RozpoznawanieTwarzy" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0345364-dbed-4d11-85d5-cc134829388b" name="Default Changelist" comment="" />
+      <created>1538818694004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1538818694004</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11356119" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952183" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" auto_hide="true" x="62" y="0" width="1858" height="1080" id="SciView" order="3" show_stripe_button="false" type="FLOATING" weight="0.3296582" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="abs(                                           (im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1)" language="Python" />
+        <watch expression="(im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1" language="Python" />
+        <watch expression="(im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>(im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>abs(                                           (im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>abs(                                           (im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>round(                                           (im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>round((im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>round((im_found_id-self.efr.loaded_im_len)/self.efr.fotosperclass_number-1))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.efr.fotosperclass_number</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Application/app_icon.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../SystemRozpoznawaniaOsobNaPodstawieZdjeciaUcha/Application/EarRecognition_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../SystemRozpoznawaniaOsobNaPodstawieZdjeciaUcha/Application/EarRecognition_plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="280" column="20" selection-start-line="280" selection-start-column="20" selection-end-line="280" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="1663" selection-start-line="1663" selection-end-line="1663" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
+          <folding>
+            <element signature="e#0#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/SystemRozpoznawaniaTwarzy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="83" column="30" lean-forward="true" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_eigenfaces_recognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1630">
+          <caret line="80" column="13" lean-forward="true" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/FaceRecognition_imagepreprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="370" column="96" selection-start-line="370" selection-start-column="96" selection-end-line="370" selection-end-column="96" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
