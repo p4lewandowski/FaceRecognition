@@ -1,0 +1,223 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FaceRecognition_plotting module &#8212; SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha 1.0 - dokumentacja</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-FaceRecognition_plotting">
+<span id="facerecognition-plotting-module"></span><h1>FaceRecognition_plotting module<a class="headerlink" href="#module-FaceRecognition_plotting" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="function">
+<dt id="FaceRecognition_plotting.create_messagebox">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">create_messagebox</code><span class="sig-paren">(</span><em>self</em>, <em>wintitle</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#create_messagebox"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.create_messagebox" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja tworzy i wyświetla okno informacyjne blokujące aplikację GUI aż do zamkniecia okna.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.</p>
+<p>wintitle: Informacja do wyświetlenia w tytule okna.</p>
+<p class="last">text: Informacja do wyświetlenia w oknie informacji.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.create_plots">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">create_plots</code><span class="sig-paren">(</span><em>self</em>, <em>parent</em>, <em>toolbar=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#create_plots"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.create_plots" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja tworząca figurę osadzoną w GUI przekazanym w argumencie <em>self</em> w elemencie <em>parent</em>.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.</dt>
+<dd>Przekazany aby móc osadzić wykresy w GUI.</dd>
+</dl>
+<p>parent: Zawiera QWidget w którym zaprezentowana ma być figura.</p>
+<p class="last">toolbar: Argument opcjonalny. <em>True</em> - wyświetl pasek narzędzi. <em>False</em> - nie wyświetlaj.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>figure: Zostaje zwrócona figura na której można osadzić wykres.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.plotEigenfaces">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">plotEigenfaces</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#plotEigenfaces"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.plotEigenfaces" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wizualizująca obliczone twarze własne. Pierwszych dziewięć twarzy własnych jest
+zaprezentowanych na figurze.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.</dt>
+<dd>Przekazany aby móc osadzić wykresy w GUI oraz zaprezentować obliczone twarze własne.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.plotPCA2components">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">plotPCA2components</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#plotPCA2components"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.plotPCA2components" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wizualizująca twarze dodane do bazy danych przedstawione w 2D na podstawie obliczonych
+dla nich dwóch pierwszych składowych głównych z PCA.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.
+Przekazany aby móc osadzić wykresy w GUI oraz zaprezentować rozkład twarzy na podstawie
+wartości twarzy z dwóch pierwszych składowych głównych.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.plotPCAcomponents">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">plotPCAcomponents</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#plotPCAcomponents"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.plotPCAcomponents" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wizualizująca składowe główne obliczone metodą PCA przy obliczaniu twarzy własnych.
+Oś x: kolejne składowe główne
+Oś y: procent wariancji reprezentowanej przez składową</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.
+Przekazany aby móc osadzić wykresy w GUI oraz zaprezentować procent wariancji
+reprezentowany przez składowe.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.plotReconstructionManual">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">plotReconstructionManual</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#plotReconstructionManual"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.plotReconstructionManual" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja umożliwia wyświetlenie interaktywnego wykresu umożliwiającego manualną rekonstrukcję
+twarzy używając twarzy własnych i pierwszych dziewięciu wag. Do kontroli wag używane są suwaki.
+Przyciskk «Reset» resetuje cały wykres do stanu początkowego.
+Args:</p>
+<blockquote>
+<div>self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.
+Przekazany aby móc osadzić wykresy w GUI oraz aby uzyskać dane do wizualizacji.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.plotTSNE">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">plotTSNE</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#plotTSNE"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.plotTSNE" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wyświetla wyniki obliczone metodą t-SNE wizualizującą dane z przestrzeni wielowymiarowej
+do przestrzeni o mniejszej wymiarowości.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>self: Obiekt GUI kontrolujący aplikację wraz ze wszystkimi obliczonymi w aplikacji danymi.
+Przekazany aby móc osadzić wykresy w GUI oraz uzyskać obliczone z t-SNE dane.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="FaceRecognition_plotting.show_found_face">
+<code class="descclassname">FaceRecognition_plotting.</code><code class="descname">show_found_face</code><span class="sig-paren">(</span><em>image_s</em>, <em>data</em>, <em>cnn=False</em>, <em>id=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FaceRecognition_plotting.html#show_found_face"><span class="viewcode-link">[źródło]</span></a><a class="headerlink" href="#FaceRecognition_plotting.show_found_face" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja wyświetla w oddzielnym od aplikacji GUI oknie twarz przekazaną w argumentach w celu
+porównania szukanej i znalezionej twarzy.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">image_s: Szukana twarz w skali szarości bądź RGB.</p>
+<p>data: Zależna od wartości cnn.</p>
+<p>Gdy <em>cnn</em> = True -  przekazywane są dwa parametry:
+1. Szukane zdjęcie.
+2. Lista o trzech elementach zawierająca prawdopodobieństwa przynależności do danej klasy,
+baza danych z nieprzetworzonymi zdjęciami twarzy, etykiety do bazy danych zdjęć, umożliwiające
+połączenie prawdopodobieństw przynależności do zdjęć w bazie.
+Gdy <em>cnn</em> = False - Jedynie szukane zdjęcie.</p>
+<p class="last">cnn: Argument opcjonalny determinujący czy zdjęcia ma być szukane z użyciem danych z sieci
+neuronowej, czy wyświetlone ma być znalezione zdjęcie dla twarzy własnych.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SystemIdentyfikacjiOsobNaPodstawieZdjeciaUcha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Nawigacja</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Przemyslaw Lewandowski.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/FaceRecognition_plotting.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
